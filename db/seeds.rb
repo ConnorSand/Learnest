@@ -76,7 +76,7 @@ ash = User.create!(
   university_id: melb.id
 )
 
-ash.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/92695156?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+ash.photo.attach(io: URI.open('https://ca.slack-edge.com/T02NE0241-U02NNQD7729-fd716239206c-512'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
 
 sarah = User.create!(
   email: "sarah.pelham@gmail.com",

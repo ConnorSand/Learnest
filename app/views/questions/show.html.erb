@@ -1,0 +1,24 @@
+<%# Question %>
+  <div class="container d-flex justify-content-between w-75">
+    <strong><%= @question.content %></strong>
+    <% if policy(@question).edit? %>
+      <%= link_to "Edit", edit_question_path(@question) %>
+    <% end %>
+  </div>
+
+  <hr>
+
+<%# Answers %>
+<% @question.answers.each do |answer| %>
+
+  <div class="container d-flex justify-content-between w-75">
+    <p><%= answer.content %> <strong> Answered by: <%= answer.user.first_name %></strong></p>
+
+
+    <% if policy(answer).edit? %>
+      <%= link_to "Edit", edit_question_answer_path(@question, answer) %>
+    <% end %>
+  </div>
+
+  <hr>
+<% end %>

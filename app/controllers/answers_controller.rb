@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :find_answer, only: [:edit, :update]
-  before_action :find_question, only: [:edit, :update, :new, :create]
+  before_action :find_question, only: [ :edit, :update, :create ]
+  before_action :find_answer, only: [ :edit, :update, :create ]
 
   def new
     @answer = Answer.new
@@ -20,13 +20,16 @@ class AnswersController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:question_id])
+    authorize @answer
   end
 
   def update
-    @answer.question = @question
-    @question.update(question_params)
+    authorize @answer
+    @question = @answer.question
+    @answer.update(answer_params)
 
-    if @question.update(question_params)
+    if @answer.update(answer_params)
       redirect_to question_path(@question)
     else
       render 'questions/show'
@@ -37,12 +40,10 @@ class AnswersController < ApplicationController
 
   def find_question
     @question = Question.find(params[:question_id])
-
   end
 
   def find_answer
     @answer = Answer.find(params[:id])
-    authorize @answer
   end
 
   def answer_params

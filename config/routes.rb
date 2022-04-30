@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
 
   resources :questions, only: %i[index new create show edit update] do
-    resources :answers, only: %i[new create edit update]
+    resources :answers, only: %i[new create show edit update]
   end
   resources :universities, only: %i[index new create show edit update]
 end

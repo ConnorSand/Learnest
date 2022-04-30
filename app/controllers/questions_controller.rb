@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    authorize @question
   end
 
   def create
@@ -25,7 +26,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to question_path(@question)
     else
-      render 'show'
+      render 'new'
     end
   end
 

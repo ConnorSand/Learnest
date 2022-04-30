@@ -10,17 +10,17 @@ class QuestionPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    user.present?
-  end
+  # def new?
+  #   user.present?
+  # end
 
   def create?
     user.present?
   end
 
-  def edit?
-    user.present? && (owner? || admin?)
-  end
+  # def edit?
+  #   user.present? && (owner? || admin?)
+  # end
 
   def update?
     user.present? && (owner? || admin?)

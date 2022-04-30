@@ -8,9 +8,9 @@ class QuestionsController < ApplicationController
 
   def show
     # to facilitate responding to a question with an answer
-    # @answer = Answer.new
+    @answer = Answer.new
     # to display answers to the question
-    # @answers = Answer.where(question_id: params[:id])
+    @answers = Answer.where(question_id: params[:id])
   end
 
   def new
@@ -20,9 +20,13 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
-    @question.save!
+    @question.save
 
-    redirect_to question_path(@question)
+    if @question.save
+      redirect_to question_path(@question)
+    else
+      render 'show'
+    end
   end
 
   def edit
@@ -37,10 +41,10 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:content, :is_archived)
-    authorize @question
   end
 
   def find_id
     @question = Question.find(params[:id])
+    authorize @question
   end
 end

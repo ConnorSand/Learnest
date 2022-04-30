@@ -11,16 +11,6 @@ class AnswerPolicy < ApplicationPolicy
   end
 
   def update?
-     owner? || admin?
-  end
-
-  private
-
-  def owner?
-    record.user == user
-  end
-
-  def admin?
-    user.admin
+     record.user == user
   end
 end

@@ -52,6 +52,8 @@ connor = User.create!(
   university_id: anu.id
 )
 
+connor.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/65951311?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+
 brian = User.create!(
   email: "brian@test.com",
   password: 'password',
@@ -61,6 +63,8 @@ brian = User.create!(
   about_me: "A Chemical Engineering who loves software development",
   university_id: uos.id
 )
+
+brian.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/79491037?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
 
 ash = User.create!(
   email: "ashmeet@test.com",
@@ -72,6 +76,8 @@ ash = User.create!(
   university_id: melb.id
 )
 
+ash.photo.attach(io: URI.open('https://ca.slack-edge.com/T02NE0241-U02NNQD7729-fd716239206c-512'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+
 sarah = User.create!(
   email: "sarah.pelham@gmail.com",
   password: 'password',
@@ -81,6 +87,8 @@ sarah = User.create!(
   about_me: "Product Management Expert",
   university_id: uq.id
 )
+
+sarah.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/59895692?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
 
 puts "finished creating users"
 puts "creating questions for ash, connor, sarah and brian"

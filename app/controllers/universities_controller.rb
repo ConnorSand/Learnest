@@ -15,6 +15,9 @@ class UniversitiesController < ApplicationController
     authorize @university
     end
 
+  def edit
+  end
+
   def create
     @university = University.new(university_params)
        # @university.user 

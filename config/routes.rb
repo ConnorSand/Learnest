@@ -8,4 +8,3 @@ Rails.application.routes.draw do
     resources :answers, only: %i[create update]
   end
   resources :universities, only: %i[new create show update]
-end

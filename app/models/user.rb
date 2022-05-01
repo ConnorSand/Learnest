@@ -4,6 +4,7 @@ class User < ApplicationRecord
   belongs_to :universities, optional: true
   has_many :questions
   has_many :answers
+  has_one_attached :photo
 
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true

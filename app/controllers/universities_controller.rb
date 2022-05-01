@@ -26,9 +26,6 @@ class UniversitiesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @university.update(university_params)
       redirect_to university_path(@university)

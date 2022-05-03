@@ -11,7 +11,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
     @answer.user = current_user
     @answer.save
-
+    authorize @answer
     if @answer.save
       redirect_to question_path(@question)
     else
@@ -29,10 +29,9 @@ class AnswersController < ApplicationController
     @question = @answer.question
     @answer.update(answer_params)
 
-    if @answer.update(answer_params)
-      redirect_to question_path(@question)
-    else
-      render 'questions/show'
+    respond_to do |format|
+      format.html { redirect_to question_path(@question) }
+      format.text { render partial: "answers/answer_info", locals: { question: @question, answer: @answer }, formats: [:html] }
     end
   end
 

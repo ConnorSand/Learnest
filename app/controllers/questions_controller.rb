@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user = current_user
     @question.save
-
+    authorize @question
     if @question.save
       redirect_to question_path(@question)
     else
@@ -35,7 +35,10 @@ class QuestionsController < ApplicationController
 
   def update
     @question.update(question_params)
-    redirect_to question_path(@question)
+    respond_to do |format|
+      format.html { redirect_to question_path(@question) }
+      format.text { render partial: "questions/question_info", locals: { question: @question }, formats: [:html] }
+    end
   end
 
   private

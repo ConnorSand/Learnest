@@ -1,27 +1,13 @@
-<div class="question-card" data-controller="edit-question" data-edit-question-target="card">
-  <div>
-    <h5>
-      <%# IF ON THE INDEX PAGE %>
-      <% if current_page?(questions_path) %>
-        <%= link_to question_path(question) do  %>
-          <h5><%= question.content %><small>   - Posted by: <%= question.user.first_name%></small></h5>
+<div data-controller="edit-question" data-edit-question-target="card">
+  <h5>
+    <div data-edit-question-target="content" class="<%= 'd-none' if question.errors.any? %>">
+      <h2 ><%= question.content %><small> - Posted by: <%= question.user.first_name%></small>
+        <% if policy(question).edit? %>
+          <small><i class="fa-solid fa-pen-to-square" data-action="click->edit-question#displayForm"></i></small>
         <% end %>
-      <% end %>
-      <%# END OF INDEX PAGE %>
-
-      <%# IF ON THE SHOW PAGE %>
-      <% if current_page?(question_path(question)) %>
-        <div data-edit-question-target="content" class="<%= 'd-none' if question.errors.any? %>">
-          <h2 ><%= question.content %><small>   - Posted by: <%= question.user.first_name%></small>
-            <% if policy(question).edit? %>
-              <small><i class="fa-solid fa-pen-to-square" data-action="click->edit-question#displayForm"></i></small>
-            <% end %>
-          </h2>
-        </div>
-      <% end %>
-      <%# END OF SHOW PAGE %>
-    </h5>
-  </div>
+      </h2>
+    </div>
+  </h5>
 
   <%= simple_form_for question, html: { class: question.errors.any? ? "" : "d-none", data: { edit_question_target: "form", action: "submit->edit-question#update"} } do |f| -%>
     <%= f.input :content %>

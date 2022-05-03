@@ -1,5 +1,9 @@
 <div class="container">
   <div class="row">
-    <%= render 'questions', questions: @questions %>
+    <% @questions.each do |question| %>
+      <%= link_to question_path(question) do  %>
+        <h5><%= question.content %><small>   - Posted by: <%= question.user.first_name%></small></h5>
+      <% end %>
+    <% end %>
   </div>
 </div>

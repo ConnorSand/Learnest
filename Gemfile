@@ -66,3 +66,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pundit'
 gem 'database_cleaner'
 gem 'cloudinary', '~> 1.16.0'
+gem 'pg_search'

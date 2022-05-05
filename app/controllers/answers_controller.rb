@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :find_question, only: [ :edit, :update, :create ]
-  before_action :find_answer, only: [ :edit, :update, :create ]
+  before_action :find_answer, only: [ :edit, :update ]
 
   def new
     @answer = Answer.new

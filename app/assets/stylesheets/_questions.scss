@@ -1,22 +1,52 @@
-.has-search .form-control {
-  padding-left: 2.375rem;
-  border: solid 5px black;
-  display: inline-block;
-  position: relative;
-  border-radius: 50px;
+h2 {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 18px;
+  margin: 3px 0;
 }
 
-.has-search .form-control-feedback {
-  position: absolute;
-  z-index: 2;
-  display: block;
-  // width: 2.375rem;
-  // height: 2.375rem;
-  // line-height: 2.375rem;
-  width: 2.8rem;
-  height: 2.8rem;
-  line-height: 2.8rem;
-  text-align: center;
-  pointer-events: none;
-  color: #aaa;
+p,
+span {
+  font-family: "Avenir";
+  font-size: 14px;
+  color: rgba(34, 34, 34, 0.5);
+  margin: 5px 0;
+}
+
+.user-card {
+  background-color: #fff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  max-width: 400px;
+  min-height: 130px;
+  margin: 20px 0;
+  transition: all 0.5s ease;
+}
+
+.user-card:hover {
+  box-shadow: 8px 28px 50px rgba(39, 44, 49, 0.07),
+    1px 6px 12px rgba(39, 44, 49, 0.04);
+  transform: translate3D(0, -1px, 0) scale(1.02);
+  transition: all 0.5s ease;
+}
+
+.profile_img {
+  width: 80px;
+  height: 80px;
+
+  object-fit: cover;
+  object-position: 50% 50%;
+
+  border-radius: 100%;
+}
+
+.left {
+  margin-right: 12.5px;
+}
+
+.right {
+  margin-left: 12.5px;
 }

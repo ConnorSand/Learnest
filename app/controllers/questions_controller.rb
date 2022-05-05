@@ -3,7 +3,13 @@ class QuestionsController < ApplicationController
   before_action :find_id, only: %i[show edit update]
 
   def index
-    @questions = policy_scope(Question).order(created_at: :desc)
+    # @questions = policy_scope(Question).order(created_at: :desc)
+    if params[:query].present?
+      @question_search = policy_scope(Question).global_search(params[:query])
+      @questions = @question_search
+    else
+      @questions = policy_scope(Question)
+    end
   end
 
   def show

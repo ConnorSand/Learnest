@@ -1,4 +1,24 @@
-.button-primary {}
+.btn-blue {
+  text-decoration: none;
+  background-color: #1D9BF0;
+  padding: 8px 24px;
+  color: white;
+  font-size: 15px;
+  border-radius: 9999px;
+  transition: .3s;
+  border-width: 1px;
+  min-height: 52px;
+  min-width: 52px;
+  border-style: solid;
+  font-weight: solid;
+  }
+
+.btn-blue:hover {
+  background-color: #54a5db;
+  color: white;
+}
 
 
-.button-secondary {}
+
+  
+  

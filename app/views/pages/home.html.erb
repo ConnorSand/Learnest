@@ -1,0 +1,69 @@
+<div class="banner">
+  <div class="top">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 class="pt-5">Search your <strong>gl<span><%= image_tag("glove_40.png", width: 40) %></span>bal campus.</strong></h1>
+          <h5>Find answers to your course questions.</h5>
+          <div class="mt-5 form-group has-search">
+            <%= form_tag questions_path, method: :get do %>
+              <span class="fa fa-search form-control-feedback"></span>
+              <%# <input type= "text" id="search-bar"> %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Ask a question" %>
+              <%# <%= submit_tag "Search", class: "btn btn-secondary"  %>
+            <% end %>
+          </div>
+          <div class="mt-5 checklist d-none d-sm-block">
+            <p><i class="fa fa-circle-check"></i>  A global community of university students, lecturers and alumni.</p>
+            <p><i class="fa fa-circle-check"></i>  Search previously asked questions.</p>
+            <p><i class="fa fa-circle-check"></i>  Moderated questions and answers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom d-none d-md-block">
+    <div class="row">
+      <div class="col">
+        <div class="courses">
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner container">
+              <div class="carousel-item active">
+                <div class="scroll-items">
+                  <p><i class="fa fa-paint-brush"></i> Art</p>
+                  <p><i class="fa-solid fa-book"></i> English</p>
+                  <p><i class="fa fa-history"></i> History</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="scroll-items">
+                  <p><i class="fa fa-pie-chart"></i> Mathematics</p>
+                  <p><i class="fa-solid fa-computer"></i> Computer Science</p>
+                  <p><i class="fa fa-wrench"></i> Engineering</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="scroll-items">
+                  <p><i class="fa-solid fa-circle-radiation"></i> Physics</p>
+                  <p><i class="fa-solid fa-flask-vial"></i> Chemistry</p>
+                  <p><i class="fa-solid fa-dna"></i> Biology</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon bg-secondary" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon bg-secondary" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

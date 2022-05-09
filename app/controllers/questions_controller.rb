@@ -49,12 +49,21 @@ class QuestionsController < ApplicationController
 
   private
 
-  def question_params
-    params.require(:question).permit(:content, :is_archived)
-  end
+  # def question_params
+  #   params.require(:question).permit(:content, :is_archived)
+  #   params.require(:question).permit(:content, :tag_list)
+  # end
 
   def find_id
     @question = Question.find(params[:id])
     authorize @question
   end
+
+  # def tagged
+  #   if params[:tag].present?
+  #     @questions = Question.tagged_with(params[:tag])
+  #   else
+  #     @questions = Question.all
+  #   end
+  # end
 end

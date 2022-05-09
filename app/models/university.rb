@@ -3,4 +3,4 @@ class University < ApplicationRecord
   has_one_attached :photo
 
   validates :name, :country, :location, presence: true
-  end
+end

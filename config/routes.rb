@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get "/about", to: "pages#about"
+  # get '/tagged', to: "questions#tagged", as: :tagged
 
   resources :questions, only: %i[index new create show update] do
     resources :answers, only: %i[create update]

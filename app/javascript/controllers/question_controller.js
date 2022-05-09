@@ -104,7 +104,7 @@ function Card(classCard) {
     let cardItem = this.querySelector('.user-card'),
       halfHeight = cardItem.offsetHeight / 2,
       halfWidth = cardItem.offsetWidth / 2;
-    cardItem.style.transform = 'rotatex(' + -(event.offsetY - halfHeight) / 38 + 'deg) rotateY(' + (event.offsetX - halfWidth) / 38 + 'deg)';
+    cardItem.style.transform = 'rotatex(' + -(event.offsetY - halfHeight) / 40 + 'deg) rotateY(' + (event.offsetX - halfWidth) / 40 + 'deg)';
   }
   this.stopRotate = function (event) {
     let cardItem = this.querySelector('.user-card');

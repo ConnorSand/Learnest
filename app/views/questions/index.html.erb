@@ -2,13 +2,10 @@
 <div class="container">
   <div class="row" data-controller="question_controller">
 
-        <% @questions.each do |question| %>
-        <%= link_to question_path(question) do  %>
+    <% @questions.each do |question| %>
       <div class="question-card">
 
-
 	        <div class="user-card">
-              <div class="shine"></div>
 
             <div class="left">
               <img><%= cl_image_tag question.user.photo.key, class:"profile_img" %></img>
@@ -22,6 +19,8 @@
               </div>
 
               <div class= "question-content">
+
+              <%= link_to question_path(question) do  %>
               <% if question.photo.attached? %>
               <p id="questionimage"><%= cl_image_tag(question.photo.key,  :transformation=>[
                 {:height=>300, :width=>300, :crop=>"fit"},
@@ -31,7 +30,7 @@
               <% else %>
                 <h5><%= question.content %></h5>
               <% end %>
-
+              <% end %>
               </div>
 
               <div class="tags">
@@ -44,7 +43,6 @@
 
 
       </div>
-      <% end %>
     <% end %>
   </div>
 </div>

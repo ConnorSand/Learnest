@@ -24,11 +24,13 @@
   flex-direction: column;
   // align-items: center;
   flex-basis: 100%;
-  background-color: rgba(255, 255, 255, 0.60);
-  backdrop-filter: blur(3.5px);
-  -webkit-backdrop-filter: blur(3.5px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  transition: all 1s ease;
+  background-color: rgba(255, 248, 248, 0.6);
+
+
+  // backdrop-filter: blur(3.5px);
+  // -webkit-backdrop-filter: blur(3.5px);
+  // border: 1px solid rgba(255, 255, 255, 0.18);
+  // transition: all 1s ease;
 
   // max-width: 340px;
   // margin: auto;
@@ -46,7 +48,7 @@
 
 .user-card {
   flex-grow: 1;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.35);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   display: flex;
@@ -57,6 +59,7 @@
   margin: 20px 0;
   transition: all 0.5s ease;
 }
+
 
 .user-card:hover {
   box-shadow: 8px 28px 50px rgba(39, 44, 49, 0.07),
@@ -119,10 +122,11 @@
 //Question content
 
 .question-content {
-  margin-top: 6%;
+  margin-top: 4%;
 
   h5 {
-    font-family: 'Roboto', sans-serif;
+    // font-family: 'Roboto', sans-serif;
+    font-family: 'Fredoka One', cursive;
     position: absolute;
     // margin-top: 1px;
     margin-left: 5px;
@@ -143,7 +147,7 @@
   margin-right: 0.5em;
   line-height: 1.5em;
   transition: all, var(--transition-time);
-  margin-top: 15%;
+  margin-top: 7%;
 }
 
 .right:hover .tags .tag {

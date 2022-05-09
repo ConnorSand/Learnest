@@ -10,7 +10,6 @@ require 'database_cleaner'
 
 puts "Cleaning database..."
 
-
 DatabaseCleaner.clean_with(:truncation)
 
 puts "creating four universities"

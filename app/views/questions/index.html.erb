@@ -1,23 +1,60 @@
  <%= stylesheet_link_tag "_questions" %>
 <div class="container">
-  <div class="row">
-
-          <div class="form-group has-search">
-                <%= form_tag questions_path, method: :get do %>
-                <span class="fa fa-search form-control-feedback"></span>
-                <%# <input type= "text" id="search-bar"> %>
-                  <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control",
-                    placeholder: "What are you looking for?" %>
-                  <%= submit_tag "Search", class: "btn btn-secondary" %>
-                <% end %>
-          </div>
+  <div class="row" data-controller="question_controller">
 
     <% @questions.each do |question| %>
-      <%= link_to question_path(question) do  %>
-        <h5><%= question.content %><small>   - Posted by: <%= question.user.first_name%></small></h5>
-      <% end %>
+      <div class="question-card">
+
+	        <div class="user-card">
+
+            <div class="left">
+              <img><%= cl_image_tag question.user.photo.key, class:"profile_img" %></img>
+            </div>
+
+            <div class="right">
+              <div class= "user-bio">
+                <p class="name"><strong><%= question.user.first_name %></strong>&nbsp;</p>
+                <p class="title">&nbsp;@<%= question.user.about_me %></p>
+                <p>&nbsp; - &nbsp; Posted:&nbsp;<%= time_ago_in_words(question.created_at)%> ago</p>
+              </div>
+
+              <div class= "question-content">
+
+              <%= link_to question_path(question) do  %>
+              <% if question.photo.attached? %>
+              <p id="questionimage"><%= cl_image_tag(question.photo.key,  :transformation=>[
+                {:height=>300, :width=>300, :crop=>"fit"},
+                {:background=>"#1E1B1E"}
+
+                ]) %><%= question.content %></p>
+              <% else %>
+                <h5><%= question.content %></h5>
+              <% end %>
+              <% end %>
+              </div>
+
+              <div class="tags">
+                  <div class="tag">HTML</div>
+                  <div class="tag">CSS</div>
+                  <div class="tag">Javascript</div>
+              </div>
+
+          </div>
+
+
+      </div>
     <% end %>
   </div>
 </div>
+
+<%# <div class="question-card"> %>
+	<%# <div class="user-card"> %>
+		<%# <div class="left"> %>
+			<%# <img class="profile_img" src="/assets/Brian.jpg" alt=""> %>
+		<%# </div> %>
+		<%# <div class="right"> %>
+			<%# <h2 class="name">Brian Huynh</h2> %>
+			<%# <p class="title">Bachelor of Chemical Engineering, University of Adelaide</p> %>
+		<%# </div> %>
+  <%# </div> %>
+<%# </div> %>

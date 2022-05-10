@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
-require 'database_cleaner'
 
 puts "Cleaning database..."
 
-DatabaseCleaner.clean_with(:truncation)
+University.destroy_all
+User.destroy_all
+Question.destroy_all
+Answer.destroy_all
 
 puts "creating four universities"
 

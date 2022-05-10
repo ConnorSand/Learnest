@@ -34,14 +34,6 @@
         color: $blue;
       }
     }
-
-    .home_image {
-      z-index: 1;
-      width: 400px;
-      position: absolute;
-      right: 300px;
-      bottom: 150px;
-    }
   }
 
   .bottom {
@@ -66,7 +58,7 @@
   }
 }
 
-.bgc-image{
+.bgc-image {
   background-image: image-url("BG.JPG");
   height: 300px;
 }

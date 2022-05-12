@@ -1,15 +1,39 @@
 <div class="container">
-  <%# QUESTION %>
-  <%= render 'question_info', question: @question %>
-  <%# ANSWERS TO THE QUESTION %>
-  <% @question.answers.each do |answer| %>
-    <%= render 'answers/answer_info', answer: answer %>
-  <% end %>
-</div>
+  <div class="row">     
+    <div class="card">    
+      <div class="card-body">   
+       <%= image_tag("https://i.pravatar.cc/50", class: "question-avatar") %>    
+                   <%# QUESTION %>
+          <%= render 'question_info', question: @question %>
+      </div>
+    </div>
+  </div>                    
+                         <%# ANSWERS TO THE QUESTION %>
+    <div class="container">
+      <div class="row">     
+        <div class="card">
+          <div class="answer-card-body">              
+            <% @question.answers.each do |answer| %> 
+                <div class="card-body answer">
+                  <%= image_tag("https://i.pravatar.cc/50", class: "question-avatar") %> 
+                  <%= render 'answers/answer_info', answer: answer %> 
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  
 
-<div class="container">
-<%= simple_form_for [@question, @answer] do |f| %>
-    <%= f.input :content %>
-    <%= f.submit "Leave your Answer", class: "btn btn-blue btn-lg" %>
-  <% end %>
-</div>
+  <div class="container">
+    <div class="input-container-card">
+        <%= simple_form_for [@question, @answer], html: {class: "answer-form" } do |f| %>
+          <%= f.input :content %>
+          <%= f.submit "Leave your Answer", class: "btn btn-blue btn-lg" %>
+        <% end %> 
+    </div>
+  <div> 
+<div>
+
+
+

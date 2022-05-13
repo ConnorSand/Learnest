@@ -1,6 +1,7 @@
 <div data-controller="edit-answer" data-edit-answer-target="card">
   <p data-edit-answer-target="content" class="<%= 'd-none' if answer.errors.any? %>">
-    <%= answer.content %> <strong> Answered by: <%= answer.user.first_name %></strong>
+    <h3 ><%= answer.content %></h3>
+    <span class="Answered-by">Answered by: <%= answer.user.first_name %></span>
     <% if policy(answer).edit? %>
       <i class="fa-solid fa-pen-to-square" data-action="click->edit-answer#displayForm"></i>
     <% end %>
@@ -12,5 +13,4 @@
     <%= f.submit "Update Answer", class: "btn btn-sm btn-blue btn-block mt-2" %>
   <% end %>
 </div>
-
 

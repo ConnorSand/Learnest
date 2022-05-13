@@ -1,18 +1,20 @@
 <div data-controller="edit-question" data-edit-question-target="card">
   <h5>
     <div data-edit-question-target="content" class="<%= 'd-none' if question.errors.any? %>">
-      <h2 ><%= question.content %><small> - Posted by: <%= question.user.first_name%></small>
+      <h3 ><%= question.content %></h3>
+       <span class="posted-by">Posted by: <%= question.user.first_name%></span>
         <% if policy(question).edit? %>
           <small><i class="fa-solid fa-pen-to-square" data-action="click->edit-question#displayForm"></i></small>
         <% end %>
-      </h2>
+      
     </div>
   </h5>
 
   <%= simple_form_for question, html: { class: question.errors.any? ? "" : "d-none", data: { edit_question_target: "form", action: "submit->edit-question#update"} } do |f| -%>
-    <%= f.input :content %>
+    <%= f.input :content, input_html: { class: 'update-question' } %>
     <%= f.input :photo, as: :file %>
     <%= f.submit "Update question", class: "btn btn-sm btn-primary btn-block mt-2" %>
   <% end %>
 
 </div>
+

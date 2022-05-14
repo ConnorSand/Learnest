@@ -11,6 +11,7 @@
               <%= cl_image_tag question.user.photo.key, class:"profile_img" %>
             </div>
 
+
             <div class="right">
               <div class= "user-bio">
                 <p class="name"><strong><%= question.user.first_name %></strong>&nbsp;</p>
@@ -39,9 +40,25 @@
                   <div class="tag">Javascript</div>
               </div>
 
+              <div class="wrap">
+                <div class="vote-up">
+                    <div class="fas fa-angle-up fa-fw fa-1x">
+                      <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
+                      <div class="count"><%= question.get_upvotes.size %></div>
+                    </div>
+                  <% end %>
+                </div>
+
+                <div class="vote-down">
+                    <div class="fas fa-angle-down fa-fw fa-1x">
+                      <%= link_to downvote_question_path(question), class: "downvote", method: :patch do %>
+                      <div class="count"><%= question.get_downvotes.size %></div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+
           </div>
-
-
       </div>
     <% end %>
   </div>

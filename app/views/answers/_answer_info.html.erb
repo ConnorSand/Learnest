@@ -1,10 +1,49 @@
-<div data-controller="edit-answer" data-edit-answer-target="card">
-  <p data-edit-answer-target="content" class="<%= 'd-none' if answer.errors.any? %>">
-    <h3 ><%= answer.content %></h3>
-    <span class="Answered-by">Answered by: <%= answer.user.first_name %></span>
-    <% if policy(answer).edit? %>
-      <i class="fa-solid fa-pen-to-square" data-action="click->edit-answer#displayForm"></i>
-    <% end %>
+<div id="questionwrapper" data-controller="edit-answer" data-edit-answer-target="card">
+  <div data-edit-answer-target="content" class="<%= 'd-none' if answer.errors.any? %>">
+    <div class="question-card">
+        <div class="user-card">
+          <div class="left">
+            <%= cl_image_tag answer.user.photo.key, class:"avatar-large" %>
+            <div class="wrap">
+              <%= link_to upvote_question_path(answer), class: "upvote", method: :patch do %>
+                <i id="arrow-up" class="fa-solid fa-caret-up"></i>
+              <% end %>
+              <%# <div class="count"><%= answer.weighted_score</div>  %>
+              <%= link_to downvote_question_path(answer), class: "downvote", method: :patch do %>
+                <i id="arrow-down" class="fa-solid fa-caret-down"></i>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="right">
+            <div class= "user-bio">
+              <div class="user-info">
+                <p class="name"><strong><%= answer.user.first_name %></strong>&nbsp;</p>
+                <p class="title">&nbsp;@<%= answer.user.about_me %></p>
+              </div>
+              <p id="time-ago">&nbsp;&nbsp;<%= time_ago_in_words(answer.created_at)%> ago</p>
+              <% if policy(answer).edit? %>
+                <i class="fa-solid fa-pen-to-square" data-action="click->edit-answer#displayForm"></i>
+              <% end %>
+            </div>
+
+            <div class= "question-content">
+              <%# <%= link_to question_path(question) do  %>
+                <h5><%= answer.content %></h5>
+              <%# <% end %>
+            </div>
+
+            <div class="tags">
+                <div class="tag">HTML</div>
+                <div class="tag">CSS</div>
+                <div class="tag">Javascript</div>
+            </div>
+            <% if answer.photo.attached? %>
+              <p class="questionimage"><%= cl_image_tag(answer.photo.key, {class: "questionimage"})%></p>
+            <% end %>
+          </div>
+        </div>
+    </div>
   </p>
 
   <%= simple_form_for [@question, answer], html: { class: answer.errors.any? ? "" : "d-none", data: { edit_answer_target: "form", action: "submit->edit-answer#update"} } do |f| -%>
@@ -13,4 +52,3 @@
     <%= f.submit "Update Answer", class: "btn btn-sm btn-blue btn-block mt-2" %>
   <% end %>
 </div>
-

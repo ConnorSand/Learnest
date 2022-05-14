@@ -1,14 +1,53 @@
-<div data-controller="edit-question" data-edit-question-target="card">
-  <h5>
+<%= stylesheet_link_tag "_questions" %>
+
+<div id="questionwrapper" data-controller="edit-question" data-edit-question-target="card">
     <div data-edit-question-target="content" class="<%= 'd-none' if question.errors.any? %>">
-      <h3 ><%= question.content %></h3>
-       <span class="posted-by">Posted by: <%= question.user.first_name%></span>
-        <% if policy(question).edit? %>
-          <small><i class="fa-solid fa-pen-to-square" data-action="click->edit-question#displayForm"></i></small>
-        <% end %>
-      
+      <div class="question-card">
+	        <div class="user-card">
+            <div class="left">
+              <%= cl_image_tag question.user.photo.key, class:"avatar-large" %>
+              <div class="wrap">
+                <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
+                  <i id="arrow-up" class="fa-solid fa-caret-up"></i>
+                <% end %>
+                <div class="count"><%= question.weighted_score %></div>
+                <%= link_to downvote_question_path(question), class: "downvote", method: :patch do %>
+                  <i id="arrow-down" class="fa-solid fa-caret-down"></i>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="right">
+              <div class= "user-bio">
+                <div class="user-info">
+                  <p class="name"><strong><%= question.user.first_name %></strong>&nbsp;</p>
+                  <p class="title">&nbsp;@<%= question.user.about_me %></p>
+                </div>
+                <p id="time-ago">&nbsp;&nbsp;<%= time_ago_in_words(question.created_at)%> ago</p>
+                <% if policy(question).edit? %>
+                  <p><small><i class="fa-solid fa-pen-to-square" data-action="click->edit-question#displayForm"></i></small></p>
+                <% end %>
+              </div>
+
+              <div class= "question-content">
+                <%= link_to question_path(question) do  %>
+                  <h5><%= question.content %></h5>
+                <% end %>
+              </div>
+
+              <div class="tags">
+                  <div class="tag">HTML</div>
+                  <div class="tag">CSS</div>
+                  <div class="tag">Javascript</div>
+              </div>
+              <% if question.photo.attached? %>
+                <p class="questionimage"><%= cl_image_tag(question.photo.key, {class: "questionimage"})%></p>
+              <% end %>
+            </div>
+          </div>
+      </div>
     </div>
-  </h5>
+
 
   <%= simple_form_for question, html: { class: question.errors.any? ? "" : "d-none", data: { edit_question_target: "form", action: "submit->edit-question#update"} } do |f| -%>
     <%= f.input :content, input_html: { class: 'update-question' } %>
@@ -17,4 +56,3 @@
   <% end %>
 
 </div>
-

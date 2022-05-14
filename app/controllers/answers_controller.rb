@@ -46,6 +46,6 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:content, :selected_answer, :is_archived)
+    params.require(:answer).permit(:content, :selected_answer, :is_archived, :photo)
   end
 end

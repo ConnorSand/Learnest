@@ -1,39 +1,24 @@
-<div class="container">
-  <div class="row">     
-    <div class="card">    
-      <div class="card-body">   
-       <%= image_tag("https://i.pravatar.cc/50", class: "question-avatar") %>    
-                   <%# QUESTION %>
-          <%= render 'question_info', question: @question %>
-      </div>
-    </div>
-  </div>                    
-                         <%# ANSWERS TO THE QUESTION %>
-    <div class="container">
-      <div class="row">     
-        <div class="card">
-          <div class="answer-card-body">              
-            <% @question.answers.each do |answer| %> 
-                <div class="card-body answer">
-                  <%= image_tag("https://i.pravatar.cc/50", class: "question-avatar") %> 
-                  <%= render 'answers/answer_info', answer: answer %> 
-                </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  
+<div class="container-index">
+  <div class="row borders">
+    <%# QUESTION %>
+    <%= render 'question_info', question: @question %>
+    <%# LEAVE AN ANSWER %>
+    <%= simple_form_for [@question, @answer], html: {class: "answer-form" } do |f| %>
+      <%= f.input :content, label: false%>
+      <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue" %>
+    <% end %>
 
-  <div class="container">
-    <div class="input-container-card">
-        <%= simple_form_for [@question, @answer], html: {class: "answer-form" } do |f| %>
-          <%= f.input :content %>
-          <%= f.submit "Leave your Answer", class: "btn btn-blue btn-lg" %>
-        <% end %> 
-    </div>
-  </div> 
+
+    <%# HOW MANY ANSWERS %>
+    <%# <div class="question-card"> %>
+      <% if @question.answers.length == 1 %>
+        <h5>1 Answer</h5>
+      <% else %>
+        <h5><%= @question.answers.length %> Answers</h5>
+      <% end %>
+    <%# </div> %>
+    <%# ANSWERS TO THE QUESTION %>
+    <% @question.answers.each do |answer| %>
+        <%= render 'answers/answer_info', answer: answer %>
+    <% end %>
 </div>
-
-
-

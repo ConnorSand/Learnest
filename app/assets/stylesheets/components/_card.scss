@@ -5,3 +5,67 @@
 .card-show-question {}
 
 .card-show-answer {}
+
+
+.card {
+  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  max-width: 1200px;
+  min-height: 170px;
+  margin: 20px 0;
+  transition: all 0.5s ease;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: black;
+  margin: 5px;
+  padding: 8px;
+}
+
+.posted-by {
+  font-size: 15px;
+  color: black;
+  padding: 8px
+}
+
+
+.update-question {
+  width: 600px;
+  height: 100px;
+}
+
+.answer {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-width: 100%;
+  }
+
+.answer-form {
+  display: flex;
+  align-items: center;
+  label {
+    display: none;
+  }
+  textarea {
+    width: 1000px;
+      min-height: 100%;
+      resize: vertical;
+      margin-right: 5px;
+  }
+ }
+
+ h3, .h3 {
+  font-size: 20px;
+  padding: 10px;
+  margin: 8px;
+  height: 10%;
+  display: block;
+ }
+ 

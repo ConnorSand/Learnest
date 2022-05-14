@@ -1,6 +1,7 @@
 <div data-controller="edit-answer" data-edit-answer-target="card">
   <p data-edit-answer-target="content" class="<%= 'd-none' if answer.errors.any? %>">
-    <%= answer.content %> <strong> Answered by: <%= answer.user.first_name %></strong>
+    <h3 ><%= answer.content %></h3>
+    <span class="Answered-by">Answered by: <%= answer.user.first_name %></span>
     <% if policy(answer).edit? %>
       <i class="fa-solid fa-pen-to-square" data-action="click->edit-answer#displayForm"></i>
     <% end %>
@@ -9,8 +10,7 @@
   <%= simple_form_for [@question, answer], html: { class: answer.errors.any? ? "" : "d-none", data: { edit_answer_target: "form", action: "submit->edit-answer#update"} } do |f| -%>
     <%= f.input :content %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit "Update Answer", class: "btn btn-sm btn-primary btn-block mt-2" %>
+    <%= f.submit "Update Answer", class: "btn btn-sm btn-blue btn-block mt-2" %>
   <% end %>
 </div>
-
 

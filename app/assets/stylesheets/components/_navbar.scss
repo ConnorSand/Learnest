@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #f7f7f7;
+  // border-bottom: #282828;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +10,14 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar {
+  border-bottom: 1px solid #E7E7E8;
+
+  p {
+    font-family: "FS Rosa Black";
+    font-size: 32px;
+    margin-bottom: 0;
+  }
 }

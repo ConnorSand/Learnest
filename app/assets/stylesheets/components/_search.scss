@@ -1,4 +1,5 @@
-.has-search:focus-within {
+.has-search:focus-within,
+.has-search:hover {
   .form-control {
     box-shadow: none;
     border: solid 1px $blue;
@@ -27,4 +28,11 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
+}
+
+input[type="text"],
+textarea {
+
+  background-color: white;
+
 }

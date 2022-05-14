@@ -88,51 +88,51 @@
 //     .on('mouseleave', () => infinite.play())
 // })
 
-let card = new Card('question-card');
-card.run();
+// let card = new Card('question-card');
+// card.run();
 
 
-function Card(classCard) {
-  this.cards = document.querySelectorAll('.' + classCard);
-  this.bindEventsCard = function () {
-    for (let i = 0, length = this.cards.length; i < length; i++) {
-      this.cards[i].addEventListener('mousemove', this.startRotate);
-      this.cards[i].addEventListener('mouseout', this.stopRotate);
-    }
-  }
-  this.startRotate = function (event) {
-    let cardItem = this.querySelector('.user-card'),
-      halfHeight = cardItem.offsetHeight / 2,
-      halfWidth = cardItem.offsetWidth / 2;
-    cardItem.style.transform = 'rotatex(' + -(event.offsetY - halfHeight) / 40 + 'deg) rotateY(' + (event.offsetX - halfWidth) / 40 + 'deg)';
-  }
-  this.stopRotate = function (event) {
-    let cardItem = this.querySelector('.user-card');
-    cardItem.style.transform = 'rotate(0)';
-  }
-  this.run = () => {
-    this.bindEventsCard();
-  }
-}
+// function Card(classCard) {
+//   this.cards = document.querySelectorAll('.' + classCard);
+//   this.bindEventsCard = function () {
+//     for (let i = 0, length = this.cards.length; i < length; i++) {
+//       this.cards[i].addEventListener('mousemove', this.startRotate);
+//       this.cards[i].addEventListener('mouseout', this.stopRotate);
+//     }
+//   }
+//   this.startRotate = function (event) {
+//     let cardItem = this.querySelector('.user-card'),
+//       halfHeight = cardItem.offsetHeight / 2,
+//       halfWidth = cardItem.offsetWidth / 2;
+//     cardItem.style.transform = 'rotatex(' + -(event.offsetY - halfHeight) / 40 + 'deg) rotateY(' + (event.offsetX - halfWidth) / 40 + 'deg)';
+//   }
+//   this.stopRotate = function (event) {
+//     let cardItem = this.querySelector('.user-card');
+//     cardItem.style.transform = 'rotate(0)';
+//   }
+//   this.run = () => {
+//     this.bindEventsCard();
+//   }
+// }
 
 
-var btn1 = document.querySelector('#green');
-var btn2 = document.querySelector('#red');
+// var btn1 = document.querySelector('#green');
+// var btn2 = document.querySelector('#red');
 
-btn1.addEventListener('click', function () {
+// btn1.addEventListener('click', function () {
 
-  if (btn2.classList.contains('red')) {
-    btn2.classList.remove('red');
-  }
-  this.classList.toggle('green');
+//   if (btn2.classList.contains('red')) {
+//     btn2.classList.remove('red');
+//   }
+//   this.classList.toggle('green');
 
-});
+// });
 
-btn2.addEventListener('click', function () {
+// btn2.addEventListener('click', function () {
 
-  if (btn1.classList.contains('green')) {
-    btn1.classList.remove('green');
-  }
-  this.classList.toggle('red');
+//   if (btn1.classList.contains('green')) {
+//     btn1.classList.remove('green');
+//   }
+//   this.classList.toggle('red');
 
-});
+// });

@@ -6,24 +6,15 @@
       <div class="question-card">
 	        <div class="user-card">
             <div class="left">
-              <div>
-                <%= cl_image_tag question.user.photo.key, class:"avatar-large" %>
-              </div>
+              <%= cl_image_tag question.user.photo.key, class:"avatar-large" %>
               <div class="wrap">
-                <div class="vote-up">
-                    <div id="arrow-up" class="fa-solid fa-caret-up">
-                      <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
-                      <div class="count"><%= question.get_upvotes.size %></div>
-                    </div>
-                  <% end %>
-                </div>
-                <div class="vote-down">
-                    <div id="arrow-down" class="fa-solid fa-caret-down">
-                      <%= link_to downvote_question_path(question), class: "downvote", method: :patch do %>
-                      <div class="count"><%= question.get_downvotes.size %></div>
-                    </div>
-                  <% end %>
-                </div>
+                <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
+                  <i id="arrow-up" class="fa-solid fa-caret-up"></i>
+                <% end %>
+                <div class="count"><%= question.weighted_score %></div>
+                <%= link_to downvote_question_path(question), class: "downvote", method: :patch do %>
+                  <i id="arrow-down" class="fa-solid fa-caret-down"></i>
+                <% end %>
               </div>
             </div>
 

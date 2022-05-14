@@ -100,6 +100,8 @@ question1 = Question.create!(
   is_archived: false
 )
 
+question1.photo.attach(io: File.open("#{Rails.root}/app/assets/images/bondi.jpg"), filename: 'my_image.png', content_type: 'image/jpeg')
+
 question2 = Question.create!(
   user_id: connor.id,
   content: "How can I tackle this fourier series problem? See attached photo",

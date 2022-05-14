@@ -1,37 +1,36 @@
  <%= stylesheet_link_tag "_questions" %>
-<div class="container">
-  <div class="row" data-controller="question_controller">
+<div class="container-index">
+  <div class="row borders" data-controller="question_controller">
 
     <% @questions.each do |question| %>
       <div class="question-card">
-
 	        <div class="user-card">
-
             <div class="left">
-              <%= cl_image_tag question.user.photo.key, class:"profile_img" %>
+              <%= cl_image_tag question.user.photo.key, class:"avatar-large" %>
+              <div class="wrap">
+                <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
+                  <i id="arrow-up" class="fa-solid fa-caret-up"></i>
+                <% end %>
+                <div class="count"><%= question.weighted_score %></div>
+                <%= link_to downvote_question_path(question), class: "downvote", method: :patch do %>
+                  <i id="arrow-down" class="fa-solid fa-caret-down"></i>
+                <% end %>
+              </div>
             </div>
-
 
             <div class="right">
               <div class= "user-bio">
-                <p class="name"><strong><%= question.user.first_name %></strong>&nbsp;</p>
-                <p class="title">&nbsp;@<%= question.user.about_me %></p>
-                <p>&nbsp; - &nbsp; Posted:&nbsp;<%= time_ago_in_words(question.created_at)%> ago</p>
+                <div class="user-info">
+                  <p class="name"><strong><%= question.user.first_name %></strong>&nbsp;</p>
+                  <p class="title">&nbsp;@<%= question.user.about_me %></p>
+                </div>
+                <p id="time-ago">&nbsp;&nbsp;<%= time_ago_in_words(question.created_at)%> ago</p>
               </div>
 
               <div class= "question-content">
-
-              <%= link_to question_path(question) do  %>
-              <% if question.photo.attached? %>
-              <p id="questionimage"><%= cl_image_tag(question.photo.key,  :transformation=>[
-                {:height=>300, :width=>300, :crop=>"fit"},
-                {:background=>"#1E1B1E"}
-
-                ]) %><%= question.content %></p>
-              <% else %>
-                <h5><%= question.content %></h5>
-              <% end %>
-              <% end %>
+                <%= link_to question_path(question) do  %>
+                  <h5><%= question.content %></h5>
+                <% end %>
               </div>
 
               <div class="tags">
@@ -39,25 +38,10 @@
                   <div class="tag">CSS</div>
                   <div class="tag">Javascript</div>
               </div>
-
-              <div class="wrap">
-                <div class="vote-up">
-                    <div class="fas fa-angle-up fa-fw fa-1x">
-                      <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
-                      <div class="count"><%= question.get_upvotes.size %></div>
-                    </div>
-                  <% end %>
-                </div>
-
-                <div class="vote-down">
-                    <div class="fas fa-angle-down fa-fw fa-1x">
-                      <%= link_to downvote_question_path(question), class: "downvote", method: :patch do %>
-                      <div class="count"><%= question.get_downvotes.size %></div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-
+              <% if question.photo.attached? %>
+                <p class="questionimage"><%= cl_image_tag(question.photo.key, {class: "questionimage"})%></p>
+              <% end %>
+            </div>
           </div>
       </div>
     <% end %>

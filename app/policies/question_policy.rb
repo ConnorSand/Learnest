@@ -2,7 +2,7 @@ class QuestionPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all 
+      scope.all
     end
   end
 
@@ -16,5 +16,13 @@ class QuestionPolicy < ApplicationPolicy
 
   def update?
     record.user == user
+  end
+
+  def upvote?
+    user.present?
+  end
+
+  def downvote?
+    user.present?
   end
 end

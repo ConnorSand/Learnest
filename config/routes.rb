@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   # get '/tagged', to: "questions#tagged", as: :tagged
 
   resources :questions, only: %i[index new create show update] do
+    member do
+      patch "upvote", to: "questions#upvote"
+      patch "downvote", to: "questions#downvote"
+    end
     resources :answers, only: %i[create update]
   end
   resources :universities, only: %i[new create show update]

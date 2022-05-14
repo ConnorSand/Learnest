@@ -55,7 +55,7 @@
   flex-direction: row;
   padding: 30px;
   max-width: 1200px;
-  min-height: 170px;
+  min-height: 300px;
   margin: 20px 0;
   transition: all 0.5s ease;
 }
@@ -126,7 +126,7 @@
 
   h5 {
     // font-family: 'Roboto', sans-serif;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Comic Sans', cursive;
     position: absolute;
     // margin-top: 1px;
     margin-left: 5px;
@@ -155,4 +155,32 @@
   color: rgb(0, 0, 0);
 }
 
-//voting
+//upvote/downvote
+.wrap {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  // text-align: center;
+}
+
+.vote {
+  font-size: 36px;
+}
+
+.up {
+  color: green;
+}
+
+.down {
+  color: red;
+}
+
+.count {
+  background: rgba(255, 255, 255, 0.35);
+  // padding: 5px 10px;
+  border-radius: 30px;
+  text-decoration: underline #eee !important;
+  color: rgb(0, 0, 0) // position: absolute;
+    // top: 0;
+    // margin-left: 10px;
+}

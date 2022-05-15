@@ -10,107 +10,149 @@ require 'json'
 
 puts "Cleaning database..."
 
-# University.destroy_all
-# User.destroy_all
-# Question.destroy_all
-# Answer.destroy_all
+University.destroy_all
+User.destroy_all
+Question.destroy_all
+Answer.destroy_all
 
-# ###### UNIVERSITIES ######
+###### UNIVERSITIES ######
 
-# puts "creating universities"
+puts "creating universities and institutions"
 
-# filepath = 'db/institutions.json'
-# serialized_institutions = File.read(filepath)
-# institutions_json = JSON.parse(serialized_institutions)
-# institutions = []
-# institutions_json.each do |institution_json|
-#   institution = University.create!(
-#     name: institution_json['name'],
-#     location: institution_json['location'],
-#     country: institution_json['country']
-#   )
-#   institutions << institution
-# end
+# institutions added to an array so that each institution id can be accessed later and associated to users
+institutions = []
 
-# ###### USERS ######
+le_wagon = University.create!(
+  name: "Le Wagon - Melbourne Campus",
+  country: "Australia",
+  location: "Melbourne, VIC, Australia"
+)
 
-# puts "creating users"
+filepath = 'db/institutions.json'
+serialized_institutions = File.read(filepath)
+institutions_json = JSON.parse(serialized_institutions)
+institutions_json.first(100).each do |institution_json|
+  institution = University.create!(
+    name: institution_json['name'],
+    location: institution_json['location'],
+    country: institution_json['country']
+  )
+  institutions << institution
+end
+institutions_quantity = institutions.count
+puts "Number of institutions created: #{institutions_quantity}"
 
-# users = []
+###### USERS ######
 
-# puts "first creating connor, brian, ash and sarah"
-# connor = User.create!(
-#   email: "connor@test.com",
-#   password: 'password',
-#   display_name: "Connor Sanderson",
-#   first_name: "Connor",
-#   last_name: "Sanderson",
-#   about_me: "An engineer transitioning to software",
-#   university_id: institutions[0].id
-# )
-# connor.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/65951311?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
-# users << connor
+puts "creating users"
 
-# brian = User.create!(
-#   email: "brian@test.com",
-#   password: 'password',
-#   display_name: "Brian Huynh",
-#   first_name: "Brian",
-#   last_name: "Huynh",
-#   about_me: "A Chemical Engineering who loves software development",
-#   university_id: institutions[1].id
-# )
-# brian.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/79491037?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
-# users << brian
+# users added to an array so that each user id can be accessed later and associated with a question or answer
+users = []
 
-# ash = User.create!(
-#   email: "ashmeet@test.com",
-#   password: 'password',
-#   display_name: "Ashmeet K.",
-#   first_name: "Ashmeet",
-#   last_name: "Khurana",
-#   about_me: "HR Professional transitioning to tech",
-#   university_id: institutions[2].id
-# )
-# ash.photo.attach(io: URI.open('https://ca.slack-edge.com/T02NE0241-U02NNQD7729-fd716239206c-512'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
-# users << ash
+puts "first creating connor, brian, ash and sarah"
+connor = User.create!(
+  email: "connor@test.com",
+  password: 'password',
+  display_name: "Connor Sanderson",
+  first_name: "Connor",
+  last_name: "Sanderson",
+  about_me: "An engineer transitioning to software",
+  university_id: institutions[0].id
+)
+connor.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/65951311?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << connor
 
-# sarah = User.create!(
-#   email: "sarah@test.com",
-#   password: 'password',
-#   display_name: "Sarah P",
-#   first_name: "Sarah",
-#   last_name: "Pelham",
-#   about_me: "Product Management Expert",
-#   university_id: institutions[3].id
-# )
-# sarah.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/59895692?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
-# users << sarah
+brian = User.create!(
+  email: "brian@test.com",
+  password: 'password',
+  display_name: "Brian Huynh",
+  first_name: "Brian",
+  last_name: "Huynh",
+  about_me: "A Chemical Engineering who loves software development",
+  university_id: institutions[1].id
+)
+brian.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/79491037?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << brian
 
-# puts "now creating 1000 random users"
-# filepath = 'db/user5000.json'
-# serialized_users = File.read(filepath)
-# users_json = JSON.parse(serialized_users)['results']
+ash = User.create!(
+  email: "ashmeet@test.com",
+  password: 'password',
+  display_name: "Ashmeet K.",
+  first_name: "Ashmeet",
+  last_name: "Khurana",
+  about_me: "HR Professional transitioning to tech",
+  university_id: institutions[2].id
+)
+ash.photo.attach(io: URI.open('https://ca.slack-edge.com/T02NE0241-U02NNQD7729-fd716239206c-512'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << ash
 
-# institution_id_counter = 4
+sarah = User.create!(
+  email: "sarah@test.com",
+  password: 'password',
+  display_name: "Sarah P",
+  first_name: "Sarah",
+  last_name: "Pelham",
+  about_me: "Product Management Expert",
+  university_id: institutions[3].id
+)
+sarah.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/59895692?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << sarah
 
-# users_json.first(1000).each do |user_json|
-#   first_name = user_json['name']['first']
-#   last_name = user_json["name"]["last"]
-#   user = User.create!(
-#     email: user_json["email"],
-#     password: user_json["login"]["md5"],
-#     first_name: first_name,
-#     last_name: last_name,
-#     display_name: "#{first_name} #{last_name}",
-#     about_me: "",
-#     university_id: institutions[institution_id_counter].id
-#   )
-#   photo_url = user_json["picture"]["large"]
-#   user.photo.attach(io: URI.open("#{photo_url}"), filename: "#{user.first_name.downcase}.jpeg", content_type: 'image/jpeg')
-#   users << user
-#   institution_id_counter += 1
-# end
+
+# TO DO - Create Le Wagon and classmates as users
+# use le_wagon.id as university id
+# manon shearn
+# paal ringstad
+# glenn tippett
+# thomas temple
+# kathy tavia
+# george kettle
+# anja drayton
+# fabrice Madre
+# julian harrington
+# luca severo
+# jurek osada
+# mariya rose panikulam
+# mathieu longe
+# Talina Bayeleva
+
+# gregory Koutsantonis
+# oliver barnes
+# parisara Wongsethanoonoi
+# rachel McNamara
+# Saki Ota
+# Shane Garland
+# Tim Fawcett
+
+
+puts "now creating random users... this may take up to a half hour"
+filepath = 'db/user5000.json'
+serialized_users = File.read(filepath)
+users_json = JSON.parse(serialized_users)['results']
+
+institution_id_counter = 4
+
+users_json.first(50).each do |user_json|
+  first_name = user_json['name']['first']
+  last_name = user_json["name"]["last"]
+  user = User.create!(
+    email: user_json["email"],
+    password: user_json["login"]["md5"],
+    first_name: first_name,
+    last_name: last_name,
+    display_name: "#{first_name} #{last_name}",
+    about_me: "",
+    university_id: institutions[institution_id_counter].id
+  )
+  photo_url = user_json["picture"]["large"]
+  user.photo.attach(io: URI.open(photo_url.to_s), filename: "#{user.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+  users << user
+  # this updates the index that is accessed from the institutions array, thereby assigning a unique institution to each user
+  institution_id_counter += 1
+end
+
+users_quantity = users.count
+puts "Number of users created: #{users_quantity}"
 
 ###### POSTS ######
 
@@ -120,34 +162,73 @@ filepath = 'db/posts.json'
 serialized_posts = File.read(filepath)
 posts_json = JSON.parse(serialized_posts)
 
-# posts = []
+questions = []
+user_id_counter = 5
 posts_json.first(5).each do |post_json|
-  created_at = post_json[0]["question_post_date"].to_datetime
-  puts created_at
-  title = post_json[0]["question_title"]
-  puts title
-  image = post_json[0]["question_image_url"]
-  puts image unless image.nil?
-  question = post_json[0]["question_content"]
+  question = Question.create!(
+    user_id: users[user_id_counter].id,
+    created_at: post_json[0]["question_post_date"].to_datetime,
+    title: post_json[0]["question_title"],
+    content: post_json[0]["question_content"],
+    is_archived: false
+  )
+  photo_url = post_json[0]["question_image_url"]
+  unless photo_url.nil?
+    post.photo.attach(io: URI.open(photo_url.to_s), filename: "#{question.user_id}.jpeg", content_type: 'image/jpeg')
+  end
+
   puts question
-  tags = post_json[0]["question_tags"]
-  puts tags
-  # answer_quantity = post_json[1]["count"]
-  # puts answer_quantity
+
+  questions << question
+  user_id_counter += 1
+
+  # tags = post_json[0]["question_tags"]
+  # puts tags
+
+      # votes = answer["answer_votes"]
+      # puts votes
+
   answers = post_json[1]
   answers.each do |answer|
-    created_at = answer["answer_post_date"]
-    puts created_at
-    content = answer["answer_content"]
-    puts content
-    image = answer["answer_image_url"]
-    puts image unless image.nil?
-    votes = answer["answer_votes"]
-    puts votes
+    answer = Answer.create!(
+      user_id: users[user_id_counter].id,
+      question_id: questions.last.id,
+      created_at: answer["answer_post_date"].to_datetime,
+      content: answer["answer_content"],
+      selected_answer: false,
+      is_archived: false
+    )
+    photo_url = answer["answer_image_url"]
+    unless photo_url.nil?
+      post.photo.attach(io: URI.open(photo_url.to_s), filename: "#{answer.user_id}.jpeg", content_type: 'image/jpeg')
+    end
+    puts "user id counter: #{user_id_counter}"
+    puts "answer question id: #{answer.question_id}"
+    puts answer
+    puts answer.created_at
+    user_id_counter += 1
   end
-  answer_count = answers.count
-  puts answer_count
+  answer_quantity = answers.count
+  puts "answer quantity: #{answer_quantity}"
 end
+puts "added a question and its answers, now starting the next question and its answers"
+puts questions
+
+
+# NEED TO HAVE LOGIC SO THAT MORE THAN ONE USER AT A SCHOOL, USERS HAVE MORE THAN ONE QUESTION, ANSWER EACH
+
+# selected answer
+# TAGS for question
+# VOTES for questions and answers
+
+
+# question1 = Question.create!(
+#   user_id: sarah.id,
+#   content: "What are the core UX design principles I can apply to my product management role at google?",
+#   is_archived: false
+# )
+# question1.photo.attach(io: File.open("#{Rails.root}/app/assets/images/bondi.jpg"), filename: 'my_image.png', content_type: 'image/jpeg')
+
 
 #   user_id: brian.id,
 #   question_id: question2.id,
@@ -277,6 +358,17 @@ end
 
 # puts "finished creating questions, now creating answers"
 
+  create_table "answers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
+    t.text "content"
+    t.boolean "selected_answer"
+    t.boolean "is_archived"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
 
 # answer1 = Answer.create!(
 #   user_id: connor.id,

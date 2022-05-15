@@ -7,7 +7,8 @@ class Question < ApplicationRecord
   has_one_attached :photo
 
   validates :user, presence: true
-  validates :content, length: { maximum: 100 }
+  validates :title, presence: true, length: { maximum: 300 }
+  validates :content, length: { maximum: 10_000 }
 
   include PgSearch::Model
   pg_search_scope :global_search, against: [:content], associated_against: { answers: [:content] }, using: {

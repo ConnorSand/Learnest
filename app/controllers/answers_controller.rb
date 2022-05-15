@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :find_question, only: [ :edit, :update, :create ]
-  before_action :find_answer, only: [ :edit, :update]
+  before_action :find_question, only: [ :edit, :update, :create, :upvote, :downvote ]
+  before_action :find_answer, only: [ :edit, :update, :upvote, :downvote]
 
   def new
     @answer = Answer.new
@@ -36,16 +36,12 @@ class AnswersController < ApplicationController
   end
 
   def upvote
-    @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:id])
     authorize @answer
     @answer.upvote_by current_user
     redirect_to question_path(@question)
   end
 
   def downvote
-    @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:id])
     authorize @answer
     @answer.downvote_by current_user
     redirect_to question_path(@question)

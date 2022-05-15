@@ -5,7 +5,11 @@
       <div class="question-card">
 	        <div class="user-card">
             <div class="left">
-              <%= cl_image_tag question.user.photo.key, class:"avatar-large" %>
+              <% if question.user.photo.attached? %>
+                <%= cl_image_tag question.user.photo.key, class:"avatar-large" %>
+              <% else %>
+                <%= image_tag('anonymous.webp', class: "avatar-large") %>
+              <% end %>
               <div class="wrap">
                 <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
                   <i id="arrow-up" class="fa-solid fa-caret-up"></i>

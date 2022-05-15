@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :find_question, only: [ :edit, :update, :create ]
-  before_action :find_answer, only: [ :edit, :update ]
+  before_action :find_answer, only: [ :edit, :update]
 
   def new
     @answer = Answer.new
@@ -33,6 +33,22 @@ class AnswersController < ApplicationController
       format.html { redirect_to question_path(@question) }
       format.text { render partial: "answers/answer_info", locals: { question: @question, answer: @answer }, formats: [:html] }
     end
+  end
+
+  def upvote
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
+    authorize @answer
+    @answer.upvote_by current_user
+    redirect_to question_path(@question)
+  end
+
+  def downvote
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
+    authorize @answer
+    @answer.downvote_by current_user
+    redirect_to question_path(@question)
   end
 
   private

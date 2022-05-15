@@ -3,20 +3,18 @@
     <%# QUESTION %>
     <%= render 'question_info', question: @question %>
     <%# LEAVE AN ANSWER %>
-    <%= simple_form_for [@question, @answer], html: {class: "answer-form" } do |f| %>
+    <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
       <%= f.input :content, label: false%>
       <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue" %>
     <% end %>
 
 
     <%# HOW MANY ANSWERS %>
-    <%# <div class="question-card"> %>
-      <% if @question.answers.length == 1 %>
-        <h5>1 Answer</h5>
-      <% else %>
-        <h5><%= @question.answers.length %> Answers</h5>
-      <% end %>
-    <%# </div> %>
+    <% if @question.answers.length == 1 %>
+      <h5 class="mb-3">1 Answer</h5>
+    <% else %>
+      <h5 class="mb-3"><%= @question.answers.length %> Answers</h5>
+    <% end %>
     <%# ANSWERS TO THE QUESTION %>
     <% @question.answers.each do |answer| %>
         <%= render 'answers/answer_info', answer: answer %>

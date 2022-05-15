@@ -5,11 +5,11 @@
           <div class="left">
             <%= cl_image_tag answer.user.photo.key, class:"avatar-large" %>
             <div class="wrap">
-              <%= link_to upvote_question_path(answer), class: "upvote", method: :patch do %>
+              <%= link_to upvote_question_answer_path(@question, answer), class: "upvote", method: :patch do %>
                 <i id="arrow-up" class="fa-solid fa-caret-up"></i>
               <% end %>
-              <%# <div class="count"><%= answer.weighted_score</div>  %>
-              <%= link_to downvote_question_path(answer), class: "downvote", method: :patch do %>
+              <div class="count"><%= answer.weighted_score%></div>
+              <%= link_to downvote_question_answer_path(@question, answer), class: "downvote", method: :patch do %>
                 <i id="arrow-down" class="fa-solid fa-caret-down"></i>
               <% end %>
             </div>
@@ -44,10 +44,10 @@
           </div>
         </div>
     </div>
-  </p>
+  </div>
 
   <%= simple_form_for [@question, answer], html: { class: answer.errors.any? ? "" : "d-none", data: { edit_answer_target: "form", action: "submit->edit-answer#update"} } do |f| -%>
-    <%= f.input :content %>
+    <%= f.input :content, label: false %>
     <%= f.input :photo, as: :file %>
     <%= f.submit "Update Answer", class: "btn btn-sm btn-blue btn-block mt-2" %>
   <% end %>

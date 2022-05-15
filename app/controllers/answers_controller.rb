@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :find_question, only: [ :edit, :update, :create ]
-  before_action :find_answer, only: [ :edit, :update ]
+  before_action :find_question, only: [ :edit, :update, :create, :upvote, :downvote ]
+  before_action :find_answer, only: [ :edit, :update, :upvote, :downvote]
 
   def new
     @answer = Answer.new
@@ -35,6 +35,18 @@ class AnswersController < ApplicationController
     end
   end
 
+  def upvote
+    authorize @answer
+    @answer.upvote_by current_user
+    redirect_to question_path(@question)
+  end
+
+  def downvote
+    authorize @answer
+    @answer.downvote_by current_user
+    redirect_to question_path(@question)
+  end
+
   private
 
   def find_question
@@ -46,6 +58,6 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:content, :selected_answer, :is_archived)
+    params.require(:answer).permit(:content, :selected_answer, :is_archived, :photo)
   end
 end

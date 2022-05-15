@@ -1,6 +1,6 @@
 <section class="text-center">
   <!-- Background image -->
-  <div class="p-5 bg-image bgc-image">         
+  <div class="p-5 bg-image bgc-image">
   </div>
   <!-- Background image -->
 
@@ -17,25 +17,29 @@
               <%= f.error_notification %>
 
                 <div class="form-inputs">
-                      <%= f.input :first_name, 
-                      required: true %>
+                      <%= f.input :first_name,
+                        required: true %>
                       <%= f.input :last_name,
-                      required: true %>
-                      <%= f.input :display_name, 
-                      required: true %>
-                      <%= f.input :about_me, 
-                      required: true %>                              
+                        required: true %>
+                      <%= f.input :display_name,
+                        required: true %>
+                      <%= f.input :about_me,
+                        required: true %>
                       <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" }%>
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
                       <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
                       <%= f.input :password_confirmation,
-                      required: true,
-                      input_html: { autocomplete: "new-password" } %>
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+                      <%= f.input :photo,
+                        as: :file,
+                        label: 'Photo (optional):',
+                        required: false %>
                   </div>
 
             <div class="form-actions">
@@ -45,7 +49,7 @@
 
             <%= render "devise/shared/links" %>
         </div>
-      </div>     
-    </div>     
-  </div>  
+      </div>
+    </div>
+  </div>
 </section>

@@ -255,6 +255,7 @@ end
 #   content: "What are the core UX design principles I can apply to my product management role at google?",
 #   is_archived: false
 # )
+# question1.photo.attach(io: File.open("#{Rails.root}/app/assets/images/bondi.jpg"), filename: 'my_image.png', content_type: 'image/jpeg')
 
 # question2 = Question.create!(
 #   user_id: connor.id,
@@ -275,6 +276,7 @@ end
 # )
 
 # puts "finished creating questions, now creating answers"
+
 
 # answer1 = Answer.create!(
 #   user_id: connor.id,

@@ -1,16 +1,14 @@
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :find_id, only: %i[show edit update]
+  before_action :find_id, only: %i[show edit update upvote downvote]
 
   def upvote
-    @question = Question.find(params[:id])
     authorize @question
     @question.upvote_by current_user
     redirect_to questions_path
   end
 
   def downvote
-    @question = Question.find(params[:id])
     authorize @question
     @question.downvote_by current_user
     redirect_to questions_path

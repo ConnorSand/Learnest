@@ -26,8 +26,9 @@
                 <div class="user-info">
                   <p class="name"><strong><%= question.user.first_name %></strong>&nbsp;</p>
                   <p class="title">&nbsp;@<%= question.user.about_me %></p>
+                  <p id="time-ago">&nbsp;&nbsp;<%= time_ago_in_words(question.created_at)%> ago</p>
                 </div>
-                <p id="time-ago">&nbsp;&nbsp;<%= time_ago_in_words(question.created_at)%> ago</p>
+
                 <% if policy(question).edit? %>
                   <p><small><i class="fa-solid fa-pen-to-square" data-action="click->edit-question#displayForm"></i></small></p>
                 <% end %>

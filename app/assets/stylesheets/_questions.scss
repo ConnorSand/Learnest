@@ -15,11 +15,12 @@
 }
 
 .user-card {
-  flex-grow: 1;
+  // flex-grow: 1;
   display: flex;
   flex-direction: row;
   padding: 30px;
   transition: all 0.1s ease;
+
 }
 
 
@@ -83,6 +84,7 @@
 }
 
 .right {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   margin-left: 12.5px;
@@ -90,9 +92,19 @@
   p {
     font-size: 14px;
     margin: 5px 0;
+
+
   }
+
+
 }
 
+.title {
+  max-width: 30ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 
 .user-bio {
@@ -139,3 +151,36 @@
   padding: 0;
   margin: 0;
 }
+
+
+
+
+// MEDIA QUERIES
+
+@media (min-width: 400px) {
+  .title {
+    max-width: 20ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .title {
+    max-width: 30ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1400px) {}

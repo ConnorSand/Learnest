@@ -7,12 +7,14 @@ class AnswersController < ApplicationController
   end
 
   def create
+
     @answer = Answer.new(answer_params)
     @answer.question = @question
     @answer.user = current_user
     @answer.save
     authorize @answer
     if @answer.save
+      QuestionNotification.with(question: @question).deliver(@question.user)
       redirect_to question_path(@question)
     else
       render 'questions/show'

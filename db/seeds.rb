@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'open-uri'
 require 'json'
 
@@ -17,7 +18,7 @@ Answer.destroy_all
 
 ###### UNIVERSITIES ######
 
-puts "creating universities and institutions"
+puts "Creating universities and institutions"
 
 # institutions added to an array so that each institution id can be accessed later and associated to users
 institutions = []
@@ -27,6 +28,7 @@ le_wagon = University.create!(
   country: "Australia",
   location: "Melbourne, VIC, Australia"
 )
+institutions << le_wagon
 
 filepath = 'db/institutions.json'
 serialized_institutions = File.read(filepath)
@@ -44,12 +46,12 @@ puts "Number of institutions created: #{institutions_quantity}"
 
 ###### USERS ######
 
-puts "creating users"
+puts "Creating users"
 
 # users added to an array so that each user id can be accessed later and associated with a question or answer
 users = []
 
-puts "first creating connor, brian, ash and sarah"
+puts "First creating connor, brian, ash and sarah"
 connor = User.create!(
   email: "connor@test.com",
   password: 'password',
@@ -98,7 +100,6 @@ sarah = User.create!(
 sarah.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/59895692?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
 users << sarah
 
-
 # TO DO - Create Le Wagon and classmates as users
 # use le_wagon.id as university id
 # manon shearn
@@ -124,15 +125,14 @@ users << sarah
 # Shane Garland
 # Tim Fawcett
 
-
-puts "now creating random users... this may take up to a half hour"
+puts "Now creating random users. This is slow. Currently set to 50, which takes my machine about 2 minutes."
 filepath = 'db/user5000.json'
 serialized_users = File.read(filepath)
 users_json = JSON.parse(serialized_users)['results']
 
 institution_id_counter = 4
 
-users_json.first(50).each do |user_json|
+users_json.first(5).each do |user_json|
   first_name = user_json['name']['first']
   last_name = user_json["name"]["last"]
   user = User.create!(
@@ -164,6 +164,7 @@ posts_json = JSON.parse(serialized_posts)
 
 questions = []
 user_id_counter = 5
+
 posts_json.first(5).each do |post_json|
   question = Question.create!(
     user_id: users[user_id_counter].id,
@@ -174,13 +175,18 @@ posts_json.first(5).each do |post_json|
   )
   photo_url = post_json[0]["question_image_url"]
   unless photo_url.nil?
-    post.photo.attach(io: URI.open(photo_url.to_s), filename: "#{question.user_id}.jpeg", content_type: 'image/jpeg')
+    question.photo.attach(io: URI.open(photo_url.to_s), filename: "#{question.user_id}.jpeg", content_type: 'image/jpeg')
   end
 
-  puts question
-
   questions << question
-  user_id_counter += 1
+  puts "user id counter after question was made: #{user_id_counter}"
+    if user_id_counter == users.length - 1
+      user_id_counter = 0
+    else
+      user_id_counter += 1
+    end
+  puts "user id counter after question was made and add one to user id counter: #{user_id_counter}"
+
 
   # tags = post_json[0]["question_tags"]
   # puts tags
@@ -200,18 +206,25 @@ posts_json.first(5).each do |post_json|
     )
     photo_url = answer["answer_image_url"]
     unless photo_url.nil?
-      post.photo.attach(io: URI.open(photo_url.to_s), filename: "#{answer.user_id}.jpeg", content_type: 'image/jpeg')
+      answer.photo.attach(io: URI.open(photo_url.to_s), filename: "#{answer.user_id}.jpeg", content_type: 'image/jpeg')
     end
-    puts "user id counter: #{user_id_counter}"
     puts "answer question id: #{answer.question_id}"
     puts answer
     puts answer.created_at
-    user_id_counter += 1
+    puts "user id counter after answer was made: #{user_id_counter}"
+    if user_id_counter == users.length - 1
+      user_id_counter = 0
+    else
+      user_id_counter += 1
+    end
+    puts "user id counter after answer was made and add one to user id counter: #{user_id_counter}"
   end
   answer_quantity = answers.count
   puts "answer quantity: #{answer_quantity}"
+  puts "user array length"
+  puts users.length
 end
-puts "added a question and its answers, now starting the next question and its answers"
+puts "Added these questions and their answers"
 puts questions
 
 
@@ -357,18 +370,6 @@ puts questions
 # )
 
 # puts "finished creating questions, now creating answers"
-
-  create_table "answers", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "question_id", null: false
-    t.text "content"
-    t.boolean "selected_answer"
-    t.boolean "is_archived"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
-  end
 
 # answer1 = Answer.create!(
 #   user_id: connor.id,

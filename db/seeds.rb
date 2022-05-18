@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'open-uri'
+require 'json'
 
 puts "Cleaning database..."
 
@@ -14,144 +16,391 @@ User.destroy_all
 Question.destroy_all
 Answer.destroy_all
 
-puts "creating four universities"
+###### UNIVERSITIES ######
 
-anu = University.create!(
-  name: "Australian National University",
+puts "Creating universities and institutions"
+
+# institutions added to an array so that each institution id can be accessed later and associated to users
+institutions = []
+
+le_wagon = University.create!(
+  name: "Le Wagon - Melbourne Campus",
   country: "Australia",
-  location: "Canberra ACT 2601"
+  location: "Melbourne, VIC, Australia"
 )
+institutions << le_wagon
 
-uos = University.create!(
-  name: "University of Sydney",
-  country: "Australia",
-  location: "Camperdown NSW 2006"
-)
+filepath = 'db/institutions.json'
+serialized_institutions = File.read(filepath)
+institutions_json = JSON.parse(serialized_institutions)
+institutions_json.first(100).each do |institution_json|
+  institution = University.create!(
+    name: institution_json['name'],
+    location: institution_json['location'],
+    country: institution_json['country']
+  )
+  institutions << institution
+end
+institutions_quantity = institutions.count
+puts "Number of institutions created: #{institutions_quantity}"
 
-melb = University.create!(
-  name: "University of Melbourne",
-  country: "Australia",
-  location: "Parkville VIC 3010"
-)
+###### USERS ######
 
-uq = University.create!(
-  name: "University of Queensland",
-  country: "Australia",
-  location: "St Lucia QLD 4072"
-)
+puts "Creating users"
 
-puts "Finished creating four universities"
-puts "Creating 4 users - Connor, Brian, Ash & Sarah. Password is 'password'. Username is first name all lowercase."
+# users added to an array so that each user id can be accessed later and associated with a question or answer
+users = []
 
+puts "First creating connor, brian, ash and sarah"
 connor = User.create!(
   email: "connor@test.com",
   password: 'password',
-  display_name: "connor",
+  display_name: "Connor Sanderson",
   first_name: "Connor",
   last_name: "Sanderson",
   about_me: "An engineer transitioning to software",
-  university_id: anu.id
+  university_id: institutions[0].id
 )
-
 connor.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/65951311?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << connor
 
 brian = User.create!(
   email: "brian@test.com",
   password: 'password',
-  display_name: "brian",
+  display_name: "Brian Huynh",
   first_name: "Brian",
   last_name: "Huynh",
   about_me: "A Chemical Engineering who loves software development",
-  university_id: uos.id
+  university_id: institutions[1].id
 )
-
 brian.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/79491037?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << brian
 
 ash = User.create!(
   email: "ashmeet@test.com",
   password: 'password',
-  display_name: "ashmeet",
+  display_name: "Ashmeet K.",
   first_name: "Ashmeet",
   last_name: "Khurana",
   about_me: "HR Professional transitioning to tech",
-  university_id: melb.id
+  university_id: institutions[2].id
 )
-
 ash.photo.attach(io: URI.open('https://ca.slack-edge.com/T02NE0241-U02NNQD7729-fd716239206c-512'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << ash
 
 sarah = User.create!(
-  email: "sarah.pelham@gmail.com",
+  email: "sarah@test.com",
   password: 'password',
-  display_name: "sarah",
+  display_name: "Sarah P",
   first_name: "Sarah",
   last_name: "Pelham",
   about_me: "Product Management Expert",
-  university_id: uq.id
+  university_id: institutions[3].id
 )
-
 sarah.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/59895692?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << sarah
 
-puts "finished creating users"
-puts "creating questions for ash, connor, sarah and brian"
+# TO DO - Create Le Wagon and classmates as users
+# use le_wagon.id as university id
+# manon shearn
+# paal ringstad
+# glenn tippett
+# thomas temple
+# kathy tavia
+# george kettle
+# anja drayton
+# fabrice Madre
+# julian harrington
+# luca severo
+# jurek osada
+# mariya rose panikulam
+# mathieu longe
+# Talina Bayeleva
 
-question1 = Question.create!(
-  user_id: sarah.id,
-  content: "What are the core UX design principles I can apply to my product management role at google?",
-  is_archived: false
-)
+# gregory Koutsantonis
+# oliver barnes
+# parisara Wongsethanoonoi
+# rachel McNamara
+# Saki Ota
+# Shane Garland
+# Tim Fawcett
 
-question1.photo.attach(io: File.open("#{Rails.root}/app/assets/images/bondi.jpg"), filename: 'my_image.png', content_type: 'image/jpeg')
+puts "Now creating random users. This is slow. Currently set to 50, which takes my machine about 2 minutes."
+filepath = 'db/user5000.json'
+serialized_users = File.read(filepath)
+users_json = JSON.parse(serialized_users)['results']
 
-question2 = Question.create!(
-  user_id: connor.id,
-  content: "How can I tackle this fourier series problem? See attached photo",
-  is_archived: false
-)
+institution_id_counter = 4
 
-question3 = Question.create!(
-  user_id: brian.id,
-  content: "How can I calculate the entropy of this chemical reaction?",
-  is_archived: false
-)
+users_json.first(50).each do |user_json|
+  first_name = user_json['name']['first']
+  last_name = user_json["name"]["last"]
+  user = User.create!(
+    email: user_json["email"],
+    password: user_json["login"]["md5"],
+    first_name: first_name,
+    last_name: last_name,
+    display_name: "#{first_name} #{last_name}",
+    about_me: "",
+    university_id: institutions[institution_id_counter].id
+  )
+  photo_url = user_json["picture"]["large"]
+  user.photo.attach(io: URI.open(photo_url.to_s), filename: "#{user.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+  users << user
+  # this updates the index that is accessed from the institutions array, thereby assigning a unique institution to each user
+  institution_id_counter += 1
+end
 
-question4 = Question.create!(
-  user_id: ash.id,
-  content: "What are the key human relations principles I should apply to this problem?",
-  is_archived: false
-)
+users_quantity = users.count
+puts "Number of users created: #{users_quantity}"
 
-puts "finished creating questions, now creating answers"
+###### POSTS ######
 
-answer1 = Answer.create!(
-  user_id: connor.id,
-  question_id: question1.id,
-  content: "1. Hierarchy, 2. Consistency, 3. Confirmation, 4. User Control, 5. Accessibility. See this link I found 'https://careerfoundry.com/en/blog/ux-design/5-key-principles-for-new-ux-designers/'",
-  selected_answer: false,
-  is_archived: false
-)
+puts "creating posts with questions, answers, tags, and votes"
 
-answer2 = Answer.create!(
-  user_id: brian.id,
-  question_id: question2.id,
-  content: "Suggest you work in the frequency domain",
-  selected_answer: false,
-  is_archived: false
-)
+filepath = 'db/posts.json'
+serialized_posts = File.read(filepath)
+posts_json = JSON.parse(serialized_posts)
 
-answer3 = Answer.create!(
-  user_id: ash.id,
-  question_id: question3.id,
-  content: "Take a look at the Gibbs free energy formula. Maybe even the second law of thermodynamics",
-  selected_answer: false,
-  is_archived: false
-)
+questions = []
+user_id_counter = 5
 
-answer4 = Answer.create!(
-  user_id: sarah.id,
-  question_id: question4.id,
-  content: "Recruitment and selection. Performance management. Learning and development. Succession planning. Compensation and benefits. Human resources information systems. HR data and analysis.",
-  selected_answer: false,
-  is_archived: false
-)
+posts_json.first(50).each do |post_json|
+  question = Question.create!(
+    user_id: users[user_id_counter].id,
+    created_at: post_json[0]["question_post_date"].to_datetime,
+    title: post_json[0]["question_title"],
+    content: post_json[0]["question_content"],
+    is_archived: false
+  )
+  photo_url = post_json[0]["question_image_url"]
+  unless photo_url.nil?
+    question.photo.attach(io: URI.open(photo_url.to_s), filename: "#{question.user_id}.jpeg", content_type: 'image/jpeg')
+  end
 
-puts "finished creating answers"
+  questions << question
+  puts "user id counter after question was made: #{user_id_counter}"
+    if user_id_counter == users.length - 1
+      user_id_counter = 0
+    else
+      user_id_counter += 1
+    end
+  puts "user id counter after question was made and add one to user id counter: #{user_id_counter}"
+
+
+  # tags = post_json[0]["question_tags"]
+  # puts tags
+
+      # votes = answer["answer_votes"]
+      # puts votes
+
+  answers = post_json[1]
+  answers.each do |answer|
+    answer = Answer.create!(
+      user_id: users[user_id_counter].id,
+      question_id: questions.last.id,
+      created_at: answer["answer_post_date"].to_datetime,
+      content: answer["answer_content"],
+      selected_answer: false,
+      is_archived: false
+    )
+    photo_url = answer["answer_image_url"]
+    unless photo_url.nil?
+      answer.photo.attach(io: URI.open(photo_url.to_s), filename: "#{answer.user_id}.jpeg", content_type: 'image/jpeg')
+    end
+    puts "answer question id: #{answer.question_id}"
+    puts answer
+    puts answer.created_at
+    puts "user id counter after answer was made: #{user_id_counter}"
+    if user_id_counter == users.length - 1
+      user_id_counter = 0
+    else
+      user_id_counter += 1
+    end
+    puts "user id counter after answer was made and add one to user id counter: #{user_id_counter}"
+  end
+  answer_quantity = answers.count
+  puts "answer quantity: #{answer_quantity}"
+  puts "user array length"
+  puts users.length
+end
+puts "Added these questions and their answers"
+puts questions
+
+
+# NEED TO HAVE LOGIC SO THAT MORE THAN ONE USER AT A SCHOOL, USERS HAVE MORE THAN ONE QUESTION, ANSWER EACH
+
+# selected answer
+# TAGS for question
+# VOTES for questions and answers
+
+
+
+# OLD SEED FILE
+
+# question1 = Question.create!(
+#   user_id: sarah.id,
+#   content: "What are the core UX design principles I can apply to my product management role at google?",
+#   is_archived: false
+# )
+# question1.photo.attach(io: File.open("#{Rails.root}/app/assets/images/bondi.jpg"), filename: 'my_image.png', content_type: 'image/jpeg')
+
+
+#   user_id: brian.id,
+#   question_id: question2.id,
+#   content: "Suggest you work in the frequency domain",
+#   selected_answer: false,
+#   is_archived: false
+
+  # created_at = "31 May, 2017".to_datetime
+  # puts created_at
+  # puts post_json
+
+  # post = University.create!(
+  #   name: institution_json['name'],
+  #   location: institution_json['location'],
+  #   country: institution_json['country']
+  # )
+  # posts << post
+
+
+# anu = University.create!(
+#   name: "Australian National University",
+#   country: "Australia",
+#   location: "Canberra ACT 2601"
+# )
+
+# uos = University.create!(
+#   name: "University of Sydney",
+#   country: "Australia",
+#   location: "Camperdown NSW 2006"
+# )
+
+# melb = University.create!(
+#   name: "University of Melbourne",
+#   country: "Australia",
+#   location: "Parkville VIC 3010"
+# )
+
+# uq = University.create!(
+#   name: "University of Queensland",
+#   country: "Australia",
+#   location: "St Lucia QLD 4072"
+# )
+
+# puts "Finished creating universities"
+
+
+# puts "Creating 4 users - Connor, Brian, Ash & Sarah. Password is 'password'. Username is first name all lowercase."
+
+# connor = User.create!(
+#   email: "connor@test.com",
+#   password: 'password',
+#   display_name: "connor",
+#   first_name: "Connor",
+#   last_name: "Sanderson",
+#   about_me: "An engineer transitioning to software",
+#   university_id: anu.id
+# )
+
+# connor.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/65951311?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+
+# brian = User.create!(
+#   email: "brian@test.com",
+#   password: 'password',
+#   display_name: "brian",
+#   first_name: "Brian",
+#   last_name: "Huynh",
+#   about_me: "A Chemical Engineering who loves software development",
+#   university_id: uos.id
+# )
+
+# brian.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/79491037?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+
+# ash = User.create!(
+#   email: "ashmeet@test.com",
+#   password: 'password',
+#   display_name: "ashmeet",
+#   first_name: "Ashmeet",
+#   last_name: "Khurana",
+#   about_me: "HR Professional transitioning to tech",
+#   university_id: melb.id
+# )
+
+# ash.photo.attach(io: URI.open('https://ca.slack-edge.com/T02NE0241-U02NNQD7729-fd716239206c-512'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+
+# sarah = User.create!(
+#   email: "sarah.pelham@gmail.com",
+#   password: 'password',
+#   display_name: "sarah",
+#   first_name: "Sarah",
+#   last_name: "Pelham",
+#   about_me: "Product Management Expert",
+#   university_id: uq.id
+# )
+
+# sarah.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/59895692?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+
+# puts "finished creating users"
+# puts "creating questions for ash, connor, sarah and brian"
+
+# question1 = Question.create!(
+#   user_id: sarah.id,
+#   content: "What are the core UX design principles I can apply to my product management role at google?",
+#   is_archived: false
+# )
+# question1.photo.attach(io: File.open("#{Rails.root}/app/assets/images/bondi.jpg"), filename: 'my_image.png', content_type: 'image/jpeg')
+
+# question2 = Question.create!(
+#   user_id: connor.id,
+#   content: "How can I tackle this fourier series problem? See attached photo",
+#   is_archived: false
+# )
+
+# question3 = Question.create!(
+#   user_id: brian.id,
+#   content: "How can I calculate the entropy of this chemical reaction?",
+#   is_archived: false
+# )
+
+# question4 = Question.create!(
+#   user_id: ash.id,
+#   content: "What are the key human relations principles I should apply to this problem?",
+#   is_archived: false
+# )
+
+# puts "finished creating questions, now creating answers"
+
+# answer1 = Answer.create!(
+#   user_id: connor.id,
+#   question_id: question1.id,
+#   content: "1. Hierarchy, 2. Consistency, 3. Confirmation, 4. User Control, 5. Accessibility. See this link I found 'https://careerfoundry.com/en/blog/ux-design/5-key-principles-for-new-ux-designers/'",
+#   selected_answer: false,
+#   is_archived: false
+# )
+
+# answer2 = Answer.create!(
+#   user_id: brian.id,
+#   question_id: question2.id,
+#   content: "Suggest you work in the frequency domain",
+#   selected_answer: false,
+#   is_archived: false
+# )
+
+# answer3 = Answer.create!(
+#   user_id: ash.id,
+#   question_id: question3.id,
+#   content: "Take a look at the Gibbs free energy formula. Maybe even the second law of thermodynamics",
+#   selected_answer: false,
+#   is_archived: false
+# )
+
+# answer4 = Answer.create!(
+#   user_id: sarah.id,
+#   question_id: question4.id,
+#   content: "Recruitment and selection. Performance management. Learning and development. Succession planning. Compensation and benefits. Human resources information systems. HR data and analysis.",
+#   selected_answer: false,
+#   is_archived: false
+# )
+
+# puts "finished creating answers"

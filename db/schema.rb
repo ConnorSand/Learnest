@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_05_17_094148) do
+=======
+ActiveRecord::Schema.define(version: 2022_05_15_113958) do
+>>>>>>> 490e7f93f2928a45c3968ba915199947cdb85363
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_094148) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -83,12 +88,15 @@ ActiveRecord::Schema.define(version: 2022_05_17_094148) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
+=======
+>>>>>>> 490e7f93f2928a45c3968ba915199947cdb85363
   create_table "questions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "content"
     t.boolean "is_archived"
+    t.string "title"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
@@ -114,7 +122,6 @@ ActiveRecord::Schema.define(version: 2022_05_17_094148) do
     t.string "about_me"
     t.bigint "university_id"
     t.boolean "admin"
-    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["university_id"], name: "index_users_on_university_id"
@@ -140,8 +147,6 @@ ActiveRecord::Schema.define(version: 2022_05_17_094148) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "messages", "chatrooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "users", "universities"
 end

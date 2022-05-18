@@ -235,6 +235,9 @@ puts questions
 # VOTES for questions and answers
 
 
+
+# OLD SEED FILE
+
 # question1 = Question.create!(
 #   user_id: sarah.id,
 #   content: "What are the core UX design principles I can apply to my product management role at google?",
@@ -260,9 +263,6 @@ puts questions
   # )
   # posts << post
 
-
-
-# Old Seed
 
 # anu = University.create!(
 #   name: "Australian National University",

@@ -35,9 +35,8 @@
               </div>
 
               <div class= "question-content">
-                <%= link_to question_path(question) do  %>
-                  <h5><%= question.content %></h5>
-                <% end %>
+                  <h5><%= question.title %></h5>
+                  <p><%= question.content %></p>
               </div>
 
               <div class="tags">

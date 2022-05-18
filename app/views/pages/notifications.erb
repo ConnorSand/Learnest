@@ -1,0 +1,10 @@
+<div class="container-index">
+  <% if current_user.notifications.length == 0 %>
+    <h1>You have no notifications</h1>
+  <% end %>
+
+  <% current_user.notifications.newest_first.each do |notification| %>
+    <%= notification.mark_as_read! %>
+    Someone has posted an answer your question titled: <%= link_to notification.params[:question].title, question_path(notification.params[:question]) %>
+  <% end %>
+</div>

@@ -62,7 +62,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:content, :is_archived)
+    params.require(:question).permit(:title, :content, :is_archived)
     # params.require(:question).permit(:content, :tag_list)
   end
 

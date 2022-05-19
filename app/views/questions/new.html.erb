@@ -1,11 +1,23 @@
-<div class="container  ">
-  <div class="bg-light rounded mt-3 p-4">
+<div class="container-question">
+<h3>Ask a Question</h3>
+  <div class="border rounded mt-3 p-4">
     <%= simple_form_for @question do |f| -%>
-      <%= f.input :title, as: :string %>
-      <%= f.input :content, placeholder: 'What...', label: 'Create a question:', error: 'You must ask a question' %>
-      <%= f.input :photo, as: :file, label: 'Photo (optional):', required: false %>
+      <%= f.input :title, as: :string, input_html: {
+                style: "background-color: white;"                
+              }%>
+      <%= f.input :content,
+              placeholder: 'What...',
+              label: 'Create question:',
+              error: 'You must ask a question',
+              input_html: {
+                style: "height: 351px; background-color: white;"
+                
+              } %>
+      <%= f.input :photo, as: :file, label: 'Photo (optional):', required: false, input_html: {
+                style: "background-color: white;"
+                
+              } %>
       <%= f.submit "Ask question", class: "btn btn-blue" %>
     <% end %>
   </div>
-
 </div>

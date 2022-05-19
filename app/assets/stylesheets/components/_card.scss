@@ -83,3 +83,16 @@ h3,
 // .container {
 //   width: 800px
 // }
+
+
+.notification-card {
+  width: 100%;
+  padding-left: 3vw;
+  padding-right: 3vw;
+
+  .notification-content {
+    display: flex;
+    // flex-grow: 1;
+    justify-content: space-between;
+  }
+}

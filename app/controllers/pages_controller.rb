@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def notifications
-    @notifications = Notification.where(recipient: current_user)
+
+
   end
 end

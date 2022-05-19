@@ -36,7 +36,7 @@
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, :transformation=>[
               {:height=>32, :width=>32},
               {:radius => 50}] %>
-              <% if current_user.notifications.length != 0 %>
+              <% if current_user.notifications.unread.length != 0 %>
                 <div class="avatar-notification"></div>
               <% end %>
 

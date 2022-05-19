@@ -57,10 +57,6 @@ ActiveRecord::Schema.define(version: 2022_05_17_094148) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 51d1c947c69ea15bb8f34f00ec923faddb948e29
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -89,11 +85,6 @@ ActiveRecord::Schema.define(version: 2022_05_17_094148) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
-<<<<<<< HEAD
-=======
->>>>>>> 490e7f93f2928a45c3968ba915199947cdb85363
-=======
->>>>>>> 51d1c947c69ea15bb8f34f00ec923faddb948e29
   create_table "questions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

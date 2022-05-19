@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get "/about", to: "pages#about"
   get "/notifications", to: "pages#notifications"
+  patch "/notifications/:id", to: "notifications#mark_as_read", as: :notification
   # get '/tagged', to: "questions#tagged", as: :tagged
 
   resources :questions, only: %i[index new create show update] do
@@ -18,5 +19,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
   resources :universities, only: %i[new create show update]
 end

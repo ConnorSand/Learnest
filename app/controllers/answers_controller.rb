@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
     @answer.save
     authorize @answer
     if @answer.save
-      QuestionNotification.with(question: @question).deliver(@question.user)
+      QuestionNotification.with(answer: @answer).deliver(@question.user)
       redirect_to question_path(@question)
     else
       render 'questions/show'

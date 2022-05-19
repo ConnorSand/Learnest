@@ -10,6 +10,7 @@ require 'open-uri'
 require 'json'
 
 puts "Cleaning database..."
+puts Time.now.strftime("%I:%M %p")
 
 University.destroy_all
 User.destroy_all
@@ -19,6 +20,7 @@ Answer.destroy_all
 ###### UNIVERSITIES ######
 
 puts "Creating universities and institutions"
+puts Time.now.strftime("%I:%M %p")
 
 # institutions added to an array so that each institution id can be accessed later and associated to users
 institutions = []
@@ -47,6 +49,7 @@ puts "Number of institutions created: #{institutions_quantity}"
 ###### USERS ######
 
 puts "Creating users"
+puts Time.now.strftime("%I:%M %p")
 
 # users added to an array so that each user id can be accessed later and associated with a question or answer
 users = []
@@ -126,6 +129,8 @@ users << sarah
 # Tim Fawcett
 
 puts "Now creating random users. This is slow. Currently set to 50, which takes my machine about 2 minutes."
+puts Time.now.strftime("%I:%M %p")
+
 filepath = 'db/user5000.json'
 serialized_users = File.read(filepath)
 users_json = JSON.parse(serialized_users)['results']
@@ -157,6 +162,7 @@ puts "Number of users created: #{users_quantity}"
 ###### POSTS ######
 
 puts "creating posts with questions, answers, tags, and votes"
+puts Time.now.strftime("%I:%M %p")
 
 filepath = 'db/posts.json'
 serialized_posts = File.read(filepath)
@@ -165,7 +171,7 @@ posts_json = JSON.parse(serialized_posts)
 questions = []
 user_id_counter = 5
 
-posts_json.first(50).each do |post_json|
+posts_json.each do |post_json|
   question = Question.create!(
     user_id: users[user_id_counter].id,
     created_at: post_json[0]["question_post_date"].to_datetime,
@@ -180,11 +186,11 @@ posts_json.first(50).each do |post_json|
 
   questions << question
   puts "user id counter after question was made: #{user_id_counter}"
-    if user_id_counter == users.length - 1
-      user_id_counter = 0
-    else
-      user_id_counter += 1
-    end
+  if user_id_counter == users.length - 1
+    user_id_counter = 0
+  else
+    user_id_counter += 1
+  end
   puts "user id counter after question was made and add one to user id counter: #{user_id_counter}"
 
 
@@ -226,7 +232,8 @@ posts_json.first(50).each do |post_json|
 end
 puts "Added these questions and their answers"
 puts questions
-
+puts "Number of question answer posts created: #{questions.length}"
+puts Time.now.strftime("%I:%M %p")
 
 # NEED TO HAVE LOGIC SO THAT MORE THAN ONE USER AT A SCHOOL, USERS HAVE MORE THAN ONE QUESTION, ANSWER EACH
 

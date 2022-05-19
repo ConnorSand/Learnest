@@ -7,5 +7,5 @@ class Answer < ApplicationRecord
 
   validates :user, presence: true
   validates :question, presence: true
-  validates :content, length: { maximum: 400 }
+  validates :content, length: { maximum: 10_000 }
 end

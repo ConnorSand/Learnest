@@ -1,10 +1,11 @@
 <div class="container-question">
   <div class="bg-light rounded mt-3 p-4">
     <%= simple_form_for @question do |f| -%>
-      <%= f.input :content, placeholder: 'What...', label: 'Ask a question: Include all the information someone would need to answer your question', error: 'You must ask a question' %>
+      <%= f.input :title, as: :string %>
+      <%= f.input :content, placeholder: 'What...', label: 'Create a question:', error: 'You must ask a question' %>
       <%= f.input :photo, as: :file, label: 'Photo (optional):', required: false %>
-      <%= f.submit "Ask Question", class: "btn btn-blue" %>
-      <% end %>
-    </div>
- 
+      <%= f.submit "Ask question", class: "btn btn-blue" %>
+    <% end %>
+  </div>
+
 </div>

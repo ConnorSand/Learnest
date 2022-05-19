@@ -7,4 +7,10 @@ class NotificationsController < ApplicationController
 
     redirect_to notifications_path
   end
+
+  def mark_all_as_read
+    @notifications = current_user.notifications
+    authorize @notifications
+    @notifications.mark_as_read!
+  end
 end

@@ -1,31 +1,38 @@
 <div class="container-index borders">
-  <% if current_user.notifications.unread.length == 0 %>
-    <h3>You have no notifications</h3>
-  <% end %>
 
-  <% current_user.notifications.unread.newest_first.each do |notification| %>
-    <div class="notification-card">
-      <div class="notification-left">
-        <% if User.find(notification.params[:answer].user_id).photo.attached? %>
-          <%= cl_image_tag User.find(notification.params[:answer].user_id).photo.key, class:"avatar-large" %>
-        <% else %>
-          <%= image_tag('anonymous.webp', class: "avatar-large") %>
-        <% end %>
-      </div>
-      <div class="notification-right">
-        <div>
-          <h5><%= User.find(notification.params[:answer].user_id).first_name %> answered your <%= link_to Question.find(notification.params[:answer].question_id).title, question_path(Question.find(notification.params[:answer].question_id)) %></h5>
-          <% if notification.unread? %>
-            <%= link_to notification_path(notification), method: :patch do %>
-              <i class="fa-solid fa-envelope-circle-check"></i>
-            <% end %>
+  <% if current_user.notifications.unread.length == 0 %>
+    <div class="notification-heading border-bottom">
+      <h5 class="">You have no notifications</h5>
+    </div>
+  <% else %>
+    <div class="notification-heading border-bottom">
+      <h5>Notifications</h5>
+      <span>Mark all as read</span>
+    </div>
+    <% current_user.notifications.unread.newest_first.each do |notification| %>
+      <div class="notification-card border-bottom">
+        <div class="notification-left">
+          <% if User.find(notification.params[:answer].user_id).photo.attached? %>
+            <%= cl_image_tag User.find(notification.params[:answer].user_id).photo.key, class:"avatar-large" %>
+          <% else %>
+            <%= image_tag('anonymous.webp', class: "avatar-large") %>
           <% end %>
         </div>
-        <p><%= notification.params[:answer].content %></p>
-        <div>
-          <%= time_ago_in_words(notification.created_at)%> ago
+        <div class="notification-right ">
+          <div class="notification-title">
+            <h5><%= User.find(notification.params[:answer].user_id).first_name %> answered your question titled: <%= link_to Question.find(notification.params[:answer].question_id).title, question_path(Question.find(notification.params[:answer].question_id)) %></h5>
+            <% if notification.unread? %>
+              <%= link_to notification_path(notification), method: :patch do %>
+                <i class="fa-solid fa-envelope-circle-check"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <p><%= notification.params[:answer].content %></p>
+          <p id="answered-ago">
+            <%= time_ago_in_words(notification.created_at)%> ago
+          </p>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

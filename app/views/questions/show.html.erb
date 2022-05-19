@@ -4,8 +4,10 @@
     <%= render 'question_info', question: @question %>
     <%# LEAVE AN ANSWER %>
     <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
-      <%= f.input :content, label: false%>
-      <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue" %>
+      <div class="d-flex w-100" style= "height: 60px">
+        <%= f.input :content, label: false, wrapper_html: {class: "w-100 h-100" }%>
+        <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;" %>
+      </div>
     <% end %>
 
 

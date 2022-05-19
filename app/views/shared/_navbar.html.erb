@@ -24,14 +24,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", questions_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Ask a question", new_question_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
+        <li class="nav-item">       
+        <%= link_to "Ask a question", new_question_path, class: "nav-link" %>
+         </li>
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Home", questions_path, class: "nav-link" %>
+            </li>
+       
+            <li class="nav-item dropdown">
             <% if user_signed_in? && current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, :transformation=>[
               {:height=>32, :width=>32},

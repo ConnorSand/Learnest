@@ -86,10 +86,61 @@ h3,
   transition: all 0.5s ease;
 
 }
+
 // .container {
 //   width: 800px
 // }
 
+.notification-heading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+}
 
+.notification-card {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
 
+  &:hover {
+    background-color: #F7F7F7;
+  }
 
+  .notification-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-right: 12.5px;
+  }
+
+  .notification-right {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12.5px;
+
+    p,
+    h5 {
+      margin: 0;
+    }
+
+    .notification-title {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .notification-content {
+    display: flex;
+    // flex-grow: 1;
+    justify-content: space-between;
+  }
+}
+
+#answered-ago {
+  font-size: 10px;
+}

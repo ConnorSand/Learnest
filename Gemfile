@@ -68,3 +68,5 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'pg_search'
 # gem 'acts-as-taggable-on', '~> 9.0'
 gem 'acts_as_votable'
+
+gem "noticed", "~> 1.5"

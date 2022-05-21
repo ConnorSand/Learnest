@@ -5,22 +5,44 @@ class QuestionsController < ApplicationController
   def upvote
     authorize @question
     @question.upvote_by current_user
-    redirect_to questions_path
+    redirect_back fallback_location: root_path
   end
 
   def downvote
     authorize @question
     @question.downvote_by current_user
-    redirect_to questions_path
+    redirect_back fallback_location: root_path
   end
 
   def index
     # @questions = policy_scope(Question).order(created_at: :desc)
+    # raise
     if params[:query].present?
+
+      query = params[:query]
       @question_search = policy_scope(Question).global_search(params[:query])
-      @questions = @question_search
+      @questions = @question_search.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
+
+      if params[:order] == 'datenew'
+        @question_search = policy_scope(Question).global_search(query)
+        return @questions = @question_search.sort_by(&:created_at).reverse.paginate(page: params[:page], per_page: 10)
+      elsif params[:order] == 'dateold'
+        @question_search = policy_scope(Question).global_search(query)
+        return @questions = @question_search.sort_by(&:created_at).paginate(page: params[:page], per_page: 10)
+      else
+        @question_search = policy_scope(Question).global_search(query)
+        return @questions = @question_search.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
+      end
+
     else
       @questions = policy_scope(Question)
+      if params[:order] == 'datenew'
+        return  @questions = @questions.sort_by(&:created_at).reverse.paginate(page: params[:page], per_page: 10)
+      elsif params[:order] == 'dateold'
+        return @questions = @questions.sort_by(&:created_at).paginate(page: params[:page], per_page: 10)
+      else
+        return @questions = @questions.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
+      end
     end
   end
 
@@ -28,7 +50,20 @@ class QuestionsController < ApplicationController
     # to facilitate responding to a question with an answer
     @answer = Answer.new
     # to display answers to the question
-    @answers = Answer.where(question_id: params[:id])
+    # .sort_by(&:weighted_score).reverse
+    @answers = []
+
+    if params[:order] == 'datenew'
+      return @answers = @question.answers.order(created_at: :desc)
+    else
+      @answers = @question.answers.sort_by(&:weighted_score).reverse
+    end
+
+    if params[:order] == 'dateold'
+      return @answers = @question.answers.order(created_at: :asc)
+    else
+      @answers = @question.answers.sort_by(&:weighted_score).reverse
+    end
   end
 
   def new
@@ -58,6 +93,24 @@ class QuestionsController < ApplicationController
       format.text { render partial: "questions/question_info", locals: { question: @question }, formats: [:html] }
     end
   end
+
+    # def filter_by_votes
+  #   @answers = @question.answers.sort_by(&:weighted_score).reverse
+  #   authorize @answers
+  #   redirect_to questions_path(@question)
+  # end
+
+  # def filter_by_date_newest
+  #   @answers = @question.answers.sort_by(&:created_at).reverse
+  #   authorize @answers
+  #   redirect_to questions_path(@question)
+  # end
+
+  # def filter_by_date_oldest
+  #   @answers = @question.answers.sort_by(&:created_at)
+  #   authorize @answers
+  #   redirect_to questions_path(@question)
+  # end
 
   private
 

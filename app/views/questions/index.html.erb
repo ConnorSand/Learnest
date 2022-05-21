@@ -1,6 +1,32 @@
 <%= stylesheet_link_tag "_questions" %>
 <div class="container-index">
   <div class="row borders" data-controller="question_controller">
+    <div class="index-header">
+      <% if @questions.length == 1 %>
+        <h5 class="mb-3">1 Answer</h5>
+      <% else %>
+        <div>
+          <%= page_entries_info @questions %>
+        </div>
+      <% end %>
+
+      <div class="dropdown">
+        <button class="btn btn-sort dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Sort By
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <% if(params[:query].present?) %>
+            <li> <%= link_to "Highest Score (default)", questions_path(query: params[:query], order: 'vote'), class: 'dropdown-item' %></li>
+            <li> <%= link_to "Date Created (newest first)", questions_path(query: params[:query], order: 'datenew'), class: 'dropdown-item' %></li>
+            <li> <%= link_to "Date Created (oldest first)", questions_path(query: params[:query], order: 'dateold'), class: 'dropdown-item' %></li>
+          <% else %>
+            <li> <%= link_to "Highest Score (default)", questions_path(order: 'vote'), class: 'dropdown-item' %></li>
+            <li> <%= link_to "Date Created (newest first)", questions_path(order: 'datenew'), class: 'dropdown-item' %></li>
+            <li> <%= link_to "Date Created (oldest first)", questions_path(order: 'dateold'), class: 'dropdown-item' %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
     <% @questions.each do |question| %>
       <div class="question-card">
 	        <div class="user-card">
@@ -48,5 +74,7 @@
           </div>
       </div>
     <% end %>
-  </div>
+    <div class="page-links">
+      <%= will_paginate @questions %>
+    </div>
 </div>

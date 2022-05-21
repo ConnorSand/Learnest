@@ -53,6 +53,8 @@
     margin-top: 10px;
 
     .count {
+      margin: 0;
+      padding: 0;
       color: black;
       text-align: center;
     }
@@ -66,7 +68,8 @@
     #arrow-down {
       font-size: 40px;
       color: #E7E7E8;
-
+      margin-top: 0;
+      margin-bottom: 0;
 
     }
 
@@ -131,6 +134,11 @@
     font-size: 20px;
     color: black;
   }
+
+  p {
+    width: 100%;
+
+  }
 }
 
 .tags {
@@ -152,7 +160,37 @@
   margin: 0;
 }
 
+.page-links {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 
+  .pagination {
+    .current {
+      font-style: normal;
+      background-color: #C6E6FB;
+      border: none;
+    }
+
+    a,
+    em {
+      margin-left: 4px;
+      margin-right: 4px;
+      text-decoration: none;
+      padding-left: 4px;
+      padding-right: 4px;
+      border: 1px solid #E7E7E8;
+      border-radius: 8px;
+      color: black;
+    }
+
+    a:hover,
+    em:hover {
+      border-color: white;
+    }
+  }
+}
 
 
 // MEDIA QUERIES

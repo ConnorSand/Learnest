@@ -1,0 +1,74 @@
+=> [[32m#<Answer:0x00005642a01e0c10[0m
+  id: [1;34m1[0m,
+  user_id: [1;34m7[0m,
+  question_id: [1;34m1[0m,
+  content:
+   [31m[1;31m"[0m[31mFrom my perspective, I would say the literature is an artistic object that has the capacity to cause aesthetic affect. The feeling is an outcome of that affect, but it would still require interpretation of the feeling to make a connection between aesthetic affect and the interpretation of the piece of literature. [1;31m"[0m[31m[0m,
+  selected_answer: [1;36mfalse[0m,
+  is_archived: [1;36mfalse[0m,
+  created_at: [1;34;4mSun[0m, [1;34m20[0m [1;34;4mMar[0m [1;34m2022[0m [1;34m00[0m:[1;34m00[0m:[1;34m00[0m.[1;37;41m000000000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m17[0m [1;34;4mMay[0m [1;34m2022[0m [1;34m12[0m:[1;34m19[0m:[1;35m49.636171000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Answer:0x00005642a01e0aa8[0m
+  id: [1;34m2[0m,
+  user_id: [1;34m8[0m,
+  question_id: [1;34m1[0m,
+  content:
+   [31m[1;31m"[0m[31mYes definitely. The function of literature is to arouse emotional response.  For example the definition of Tragedy in Greek literature is : [1;35m\"[0m[31mTragedy is, therefore, an imitation (mimēsis) of a noble and complete action which through compassion and fear produces purification of the passions.[1;35m\"[0m[31mHere Mimēsis implies an imitation of human behavior and , catharsis means a certain emotional cleansing of the audience .So emotional response is a very personal and powerful form of interpretation for any literary piece.[1;31m"[0m[31m[0m,
+  selected_answer: [1;36mfalse[0m,
+  is_archived: [1;36mfalse[0m,
+  created_at: [1;34;4mSun[0m, [1;34m20[0m [1;34;4mMar[0m [1;34m2022[0m [1;34m00[0m:[1;34m00[0m:[1;34m00[0m.[1;37;41m000000000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m17[0m [1;34;4mMay[0m [1;34m2022[0m [1;34m12[0m:[1;34m19[0m:[1;35m49.668411000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Answer:0x00005642a01e0940[0m
+  id: [1;34m3[0m,
+  user_id: [1;34m9[0m,
+  question_id: [1;34m1[0m,
+  content:
+   [31m[1;31m"[0m[31mI think so. Literature is, for me, a sensor of emotions, sometimes you commit to the characters: you love them, you hate them, you become angry with one and the other... in short, from the emotions, you are at an interpretive-comprehensive level[1;31m"[0m[31m[0m,
+  selected_answer: [1;36mfalse[0m,
+  is_archived: [1;36mfalse[0m,
+  created_at: [1;34;4mTue[0m, [1;34m22[0m [1;34;4mMar[0m [1;34m2022[0m [1;34m00[0m:[1;34m00[0m:[1;34m00[0m.[1;37;41m000000000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m17[0m [1;34;4mMay[0m [1;34m2022[0m [1;34m12[0m:[1;34m19[0m:[1;35m49.708419000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Answer:0x00005642a01e07d8[0m
+  id: [1;34m4[0m,
+  user_id: [1;34m10[0m,
+  question_id: [1;34m1[0m,
+  content: [31m[1;31m"[0m[31mDefinitely. The Affective Theory of Literature is a form of literary analysis and criticism that deals with the emotions and feelings that are being aroused by a literary text in a reader.  [1;31m"[0m[31m[0m,
+  selected_answer: [1;36mfalse[0m,
+  is_archived: [1;36mfalse[0m,
+  created_at: [1;34;4mWed[0m, [1;34m23[0m [1;34;4mMar[0m [1;34m2022[0m [1;34m00[0m:[1;34m00[0m:[1;34m00[0m.[1;37;41m000000000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m17[0m [1;34;4mMay[0m [1;34m2022[0m [1;34m12[0m:[1;34m19[0m:[1;35m49.758865000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Answer:0x00005642a01e0670[0m
+  id: [1;34m5[0m,
+  user_id: [1;34m11[0m,
+  question_id: [1;34m1[0m,
+  content:
+   [31m[1;31m"[0m[31mI think that could be considered as a sort of aspect of the interpretation. However, it is worth this point consider in the context of pre-structure of understanding - its interpretation, understood by M. Heidegger (Being and Time) as an expression of the existential structure of the human being (Dasein).[1;31m"[0m[31m[0m,
+  selected_answer: [1;36mfalse[0m,
+  is_archived: [1;36mfalse[0m,
+  created_at: [1;34;4mWed[0m, [1;34m23[0m [1;34;4mMar[0m [1;34m2022[0m [1;34m00[0m:[1;34m00[0m:[1;34m00[0m.[1;37;41m000000000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m17[0m [1;34;4mMay[0m [1;34m2022[0m [1;34m12[0m:[1;34m19[0m:[1;35m49.799141000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Answer:0x00005642a01e0508[0m
+  id: [1;34m6[0m,
+  user_id: [1;34m12[0m,
+  question_id: [1;34m1[0m,
+  content:
+   [31m[1;31m"[0m[31mYou might find a paper on the neurological effects of storytelling useful - https://www.frontiersin.org/articles/10.3389/fnint.2020.618605/fullThe study of mimesis is particularly interesting as a field of study relating to how humans react to art and its link to how humans process the world. Emotional responses are important because they inform opinions. How we feel about something can bring fear or joy, depending on what a depiction solicits from our subconscious; what memory it connects to. Literature interpretation depends on individual reactions determined by the reader's unique collection of experiences. This is why some people will read Prospero as a dominating colonialist master and others will read him as a caring father, obsessed with his daughter's safety. I wish you well with your investigation. [1;31m"[0m[31m[0m,
+  selected_answer: [1;36mfalse[0m,
+  is_archived: [1;36mfalse[0m,
+  created_at: [1;34;4mWed[0m, [1;34m23[0m [1;34;4mMar[0m [1;34m2022[0m [1;34m00[0m:[1;34m00[0m:[1;34m00[0m.[1;37;41m000000000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m17[0m [1;34;4mMay[0m [1;34m2022[0m [1;34m12[0m:[1;34m19[0m:[1;35m49.839706000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Answer:0x00005642a01e0300[0m
+  id: [1;34m7[0m,
+  user_id: [1;34m13[0m,
+  question_id: [1;34m1[0m,
+  content:
+   [31m[1;31m"[0m[31mHello, Mr. Allami! In my opinion, yes, definitely. Especially when the reader are not a professional of the area, the emotion rule all the process of reading, as well as in any kind of art. Of course emotion may rule the reading of scholars too, it is essential, but, when we need to analyze critically determined book, author, gender or translation, for example, may be necessary to keep emotion a little away, at least during the process of analysis. However, without emotion, Literature may be just a bunch of words incapable of making us vibrate, feel and, above all, enjoy. We can learn from it, of course, but the happiness of reading is what makes it an eternal subject of studies. Since Homer, and certainly before, Poetry was a way to keep people full of pleasure. In the end, emotions rule all our lives, including, of course, our interpretation about everything (sometimes we may call it a [1;35m\"[0m[31mpoint of view[1;35m\"[0m[31m). Below, a study by Keith Oatley that deals a little with this topic. Perhaps we can face this under Reception Theory as well. I suggest you research this (about Reception Theory) to help you more.Article A taxonomy of literary response and a theory of identificati... Greetings![1;31m"[0m[31m[0m,
+  selected_answer: [1;36mfalse[0m,
+  is_archived: [1;36mfalse[0m,
+  created_at: [1;34;4mWed[0m, [1;34m23[0m [1;34;4mMar[0m [1;34m2022[0m [1;34m00[0m:[1;34m00[0m:[1;34m00[0m.[1;37;41m000000000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m17[0m [1;34;4mMay[0m [1;34m2022[0m [1;34m12[0m:[1;34m19[0m:[1;35m49.889617000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Answer:0x00005642a01e0120[0m
+  id: [1;34m8[0m,
+  user_id: [1;34m14[0m,
+  question_id: [1;34m1[0m,
+  content: [31m[1;31m"[0m[31mIt's not exactly. It would be an a priori 

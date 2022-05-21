@@ -51,18 +51,16 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
     # to display answers to the question
     # .sort_by(&:weighted_score).reverse
-    @answers = []
+    @answers = Answer.where(question_id: params[:id])
 
     if params[:order] == 'datenew'
-      return @answers = @question.answers.order(created_at: :desc)
+      @answers = @answers.sort_by(&:created_at).reverse.paginate(page: params[:page], per_page: 10)
+      return @answers
+    elsif  params[:order] == 'dateold'
+      @answers = @answers.sort_by(&:created_at).paginate(page: params[:page], per_page: 10)
+      return @answers
     else
-      @answers = @question.answers.sort_by(&:weighted_score).reverse
-    end
-
-    if params[:order] == 'dateold'
-      return @answers = @question.answers.order(created_at: :asc)
-    else
-      @answers = @question.answers.sort_by(&:weighted_score).reverse
+      @answers = @answers.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
     end
   end
 

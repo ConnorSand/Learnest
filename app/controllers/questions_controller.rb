@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
+    params[:tag] ? @questions = Question.tagged_with(params[:tag]) : @questions = Question.all
     # @questions = policy_scope(Question).order(created_at: :desc)
     if params[:query].present?
       @question_search = policy_scope(Question).global_search(params[:query])
@@ -62,7 +63,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :content, :is_archived)
+    params.require(:question).permit(:title, :content, :is_archived, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
     # params.require(:question).permit(:content, :tag_list)
   end
 

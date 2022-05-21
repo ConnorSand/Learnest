@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get "/about", to: "pages#about"
+  get 'tags/:tag', to: 'questions#index', as: :tag
   get "/notifications", to: "pages#notifications"
   patch "/notifications/:id", to: "notifications#mark_as_read", as: :notification
   # get '/tagged', to: "questions#tagged", as: :tagged

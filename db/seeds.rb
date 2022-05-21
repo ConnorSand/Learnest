@@ -194,11 +194,11 @@ posts_json.each do |post_json|
   puts "user id counter after question was made and add one to user id counter: #{user_id_counter}"
 
 
-  # tags = post_json[0]["question_tags"]
-  # puts tags
+  tags = Tag.add(name: post_json[0]["question_tags"])
+  puts tags
 
-      # votes = answer["answer_votes"]
-      # puts votes
+  # votes = answer["answer_votes"]
+  # puts votes
 
   answers = post_json[1]
   answers.each do |answer|
@@ -235,6 +235,12 @@ puts questions
 puts "Number of question answer posts created: #{questions.length}"
 puts Time.now.strftime("%I:%M %p")
 
+
+Tag.create(name: "Psychology")
+Tag.create(name: "Math")
+Tag.create(name: "Physics")
+Tag.create(name: "Humour")
+Tag.create(name: "Chemistry")
 # NEED TO HAVE LOGIC SO THAT MORE THAN ONE USER AT A SCHOOL, USERS HAVE MORE THAN ONE QUESTION, ANSWER EACH
 
 # selected answer

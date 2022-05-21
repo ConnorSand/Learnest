@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 class="pt-5">Search your <strong>gl<span><%= image_tag("glove_40.png", width: 40) %></span>bal campus.</strong></h1>
-          <h5>Find <strong>answers</strong> to your course <strong>questions</strong>. </h5>
+          <h1 class="pt-5">Got questions? Get answers</h1>
+          <p>Explore the world's number one question and answer website for academics, researchers and lifelong learners.</p>
           <div class="mt-5 form-group has-search">
             <%= form_tag questions_path, method: :get do %>
               <span class="fa fa-search form-control-feedback"></span>
@@ -25,7 +25,9 @@
       </div>
     </div>
   </div>
-  <div class="bottom d-none d-md-block">
+
+
+  <div class="carousel d-none d-md-block">
     <div class="row">
       <div class="col">
         <div class="courses">

@@ -1,0 +1,20 @@
+.carousel {
+    height: 100px;
+    background-color: white;
+
+    .scroll-items {
+      height: 100px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      p {
+        font-size: 20px;
+        margin: 0;
+
+        i {
+          color: $blue
+        }
+      }
+    }
+  }

@@ -15,7 +15,7 @@
     <%# HOW MANY ANSWERS %>
     <div class="answers-header">
       <div>
-        <%= page_entries_info @answers %>
+        <%# <%= page_entries_info @answers %>
       </div>
       <div class="dropdown">
         <button class="btn btn-sort dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,6 +34,6 @@
         <%= render 'answers/answer_info', answer: answer %>
     <% end %>
     <div class="page-links">
-      <%= will_paginate @answers %>
+      <%# <%= will_paginate @answers %> %>
     </div>
 </div>

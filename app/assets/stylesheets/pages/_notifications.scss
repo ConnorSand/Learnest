@@ -7,3 +7,14 @@
 h3 {
   margin-top: 0;
 }
+
+.no-notifications-gif,
+.no-search-results-gif {
+  width: 100%;
+}
+
+.mark-all-read {
+  &:hover {
+    background-color: #E7E7E8;
+  }
+}

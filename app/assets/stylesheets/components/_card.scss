@@ -39,7 +39,7 @@
 
 
 .update-question {
-  width: 600px;
+  width: 100%;
   height: 100px;
 }
 
@@ -96,6 +96,10 @@ h3,
   justify-content: space-between;
   width: 100%;
   padding: 10px 20px;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .notification-card {
@@ -123,9 +127,21 @@ h3,
     flex-direction: column;
     margin-left: 12.5px;
 
-    p,
+    p {
+      margin: 0;
+      // word-break: break-all;
+      max-width: 25ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     h5 {
       margin: 0;
+
+      a {
+        color: black;
+      }
     }
 
     .notification-title {

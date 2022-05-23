@@ -15,14 +15,12 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    # @questions = policy_scope(Question).order(created_at: :desc)
-    # raise
     if params[:query].present?
 
       query = params[:query]
       @question_search = policy_scope(Question).global_search(params[:query])
       @questions = @question_search.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
-
+      # raise
       if params[:order] == 'datenew'
         @question_search = policy_scope(Question).global_search(query)
         return @questions = @question_search.sort_by(&:created_at).reverse.paginate(page: params[:page], per_page: 10)
@@ -50,7 +48,6 @@ class QuestionsController < ApplicationController
     # to facilitate responding to a question with an answer
     @answer = Answer.new
     # to display answers to the question
-    # .sort_by(&:weighted_score).reverse
     @answers = Answer.where(question_id: params[:id])
 
     if params[:order] == 'datenew'
@@ -91,24 +88,6 @@ class QuestionsController < ApplicationController
       format.text { render partial: "questions/question_info", locals: { question: @question }, formats: [:html] }
     end
   end
-
-    # def filter_by_votes
-  #   @answers = @question.answers.sort_by(&:weighted_score).reverse
-  #   authorize @answers
-  #   redirect_to questions_path(@question)
-  # end
-
-  # def filter_by_date_newest
-  #   @answers = @question.answers.sort_by(&:created_at).reverse
-  #   authorize @answers
-  #   redirect_to questions_path(@question)
-  # end
-
-  # def filter_by_date_oldest
-  #   @answers = @question.answers.sort_by(&:created_at)
-  #   authorize @answers
-  #   redirect_to questions_path(@question)
-  # end
 
   private
 

@@ -137,7 +137,7 @@
 
   p {
     width: 100%;
-
+    word-break: break-all;
   }
 }
 
@@ -169,7 +169,7 @@
   .pagination {
     .current {
       font-style: normal;
-      background-color: #C6E6FB;
+      background-color: #E7E7E8;
       border: none;
     }
 
@@ -192,6 +192,10 @@
   }
 }
 
+.gif-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
 // MEDIA QUERIES
 
@@ -204,9 +208,6 @@
   }
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .title {
@@ -216,9 +217,3 @@
     white-space: nowrap;
   }
 }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
-
-// X-Large devices (large desktops, 1200px and up)
-@media (min-width: 1400px) {}

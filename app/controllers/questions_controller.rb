@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    params[:tag] ? @questions = Question.tagged_with(params[:tag]) : @questions = Question.all
+    # params[:tag] ? @questions = Question.tagged_with(params[:tag]) : @questions = Question.all
     # @questions = policy_scope(Question).order(created_at: :desc)
     if params[:query].present?
       @question_search = policy_scope(Question).global_search(params[:query])

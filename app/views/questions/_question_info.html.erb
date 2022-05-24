@@ -51,11 +51,9 @@
       </div>
     </div>
 
-
-  <%= simple_form_for question, html: { class: question.errors.any? ? "" : "d-none", data: { edit_question_target: "form", action: "submit->edit-question#update"} } do |f| -%>
-    <%= f.input :content, input_html: { class: 'update-question' } %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Update question", class: "btn btn-sm btn-primary btn-block mt-2" %>
-  <% end %>
-
+    <%= simple_form_for question, html: { class: question.errors.any? ? "" : "d-none update-form", data: { edit_question_target: "form", action: "submit->edit-question#update"} } do |f| -%>
+      <%= f.input :content, input_html: { class: 'update-question' } %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit "Update question", class: "btn btn-blue btn-block mt-2" %>
+    <% end %>
 </div>

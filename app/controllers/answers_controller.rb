@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :find_question, only: [ :edit, :update, :create, :upvote, :downvote ]
+  before_action :find_question, only: [ :edit, :update, :create, :upvote, :downvote]
   before_action :find_answer, only: [ :edit, :update, :upvote, :downvote]
 
   def new
@@ -40,13 +40,13 @@ class AnswersController < ApplicationController
   def upvote
     authorize @answer
     @answer.upvote_by current_user
-    redirect_to question_path(@question)
+    redirect_back fallback_location: root_path
   end
 
   def downvote
     authorize @answer
     @answer.downvote_by current_user
-    redirect_to question_path(@question)
+    redirect_back fallback_location: root_path
   end
 
   private

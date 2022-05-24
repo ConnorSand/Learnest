@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'questions#index', as: :tag
   get "/notifications", to: "pages#notifications"
   patch "/notifications/:id", to: "notifications#mark_as_read", as: :notification
+  patch "/notifications", to: "notifications#mark_all_as_read", as: :notification_all
   # get '/tagged', to: "questions#tagged", as: :tagged
 
   resources :questions, only: %i[index new create show update] do

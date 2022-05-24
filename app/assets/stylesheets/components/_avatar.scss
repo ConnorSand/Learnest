@@ -36,3 +36,17 @@
   border-radius: 50%;
   z-index: 1
 }
+
+// XSmall devices (landscape phones, 576px and up)
+@media (min-width: 400px) {
+  .avatar-notification {
+    position: absolute;
+    top: 34px;
+    left: 26px;
+    width: 10px;
+    height: 10px;
+    background-color: crimson;
+    border-radius: 50%;
+    z-index: 1
+  }
+}

@@ -18,6 +18,15 @@
   color: white;
 }
 
+.btn-sort {
+  padding: 4px 4px;
+  border-color: #E7E7E8;
+
+  &:focus {
+    box-shadow: none;
+    background-color: #E7E7E8;
+  }
+}
 
 // .btn-answer {
 //   text-decoration: none;

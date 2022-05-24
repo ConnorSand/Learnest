@@ -53,6 +53,8 @@
     margin-top: 10px;
 
     .count {
+      margin: 0;
+      padding: 0;
       color: black;
       text-align: center;
     }
@@ -66,7 +68,8 @@
     #arrow-down {
       font-size: 40px;
       color: #E7E7E8;
-
+      margin-top: 0;
+      margin-bottom: 0;
 
     }
 
@@ -131,6 +134,11 @@
     font-size: 20px;
     color: black;
   }
+
+  p {
+    width: 100%;
+    word-break: break-all;
+  }
 }
 
 .tags {
@@ -152,8 +160,42 @@
   margin: 0;
 }
 
+.page-links {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 
+  .pagination {
+    .current {
+      font-style: normal;
+      background-color: #E7E7E8;
+      border: none;
+    }
 
+    a,
+    em {
+      margin-left: 4px;
+      margin-right: 4px;
+      text-decoration: none;
+      padding-left: 4px;
+      padding-right: 4px;
+      border: 1px solid #E7E7E8;
+      border-radius: 8px;
+      color: black;
+    }
+
+    a:hover,
+    em:hover {
+      border-color: white;
+    }
+  }
+}
+
+.gif-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
 // MEDIA QUERIES
 
@@ -166,9 +208,6 @@
   }
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .title {
@@ -178,9 +217,3 @@
     white-space: nowrap;
   }
 }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
-
-// X-Large devices (large desktops, 1200px and up)
-@media (min-width: 1400px) {}

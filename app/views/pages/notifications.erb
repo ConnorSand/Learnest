@@ -4,10 +4,15 @@
     <div class="notification-heading border-bottom">
       <h5 class="">You have no notifications</h5>
     </div>
+    <div class="border-bottom">
+      <%= image_tag("no-notifications.gif", class: "no-notifications-gif") %>
+    </div>
   <% else %>
     <div class="notification-heading border-bottom">
       <h5>Notifications</h5>
-      <span>Mark all as read</span>
+      <%= link_to notification_all_path, method: :patch, data: { confirm: 'Are you sure?' } do %>
+        <span class="mark-all-read btn btn-sort">Mark all as read</span>
+      <% end %>
     </div>
     <% current_user.notifications.unread.newest_first.each do |notification| %>
       <div class="notification-card border-bottom">

@@ -178,7 +178,7 @@ posts_json = JSON.parse(serialized_posts)
 questions = []
 user_id_counter = 5
 
-posts_json.first(5).each do |post_json|
+posts_json.first(50).each do |post_json|
   question = Question.create!(
     user_id: users[user_id_counter].id,
     created_at: post_json[0]["question_post_date"].to_datetime,

@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :find_id, only: %i[show edit update upvote downvote]

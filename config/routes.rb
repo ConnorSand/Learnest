@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  get "/home", to: "pages#home"
   get "/about", to: "pages#about"
   get "/notifications", to: "pages#notifications"
   patch "/notifications/:id", to: "notifications#mark_as_read", as: :notification

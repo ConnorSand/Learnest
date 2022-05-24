@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <%= simple_form_for [@question, answer], html: { class: answer.errors.any? ? "" : "d-none", data: { edit_answer_target: "form", action: "submit->edit-answer#update"} } do |f| -%>
+  <%= simple_form_for [@question, answer], html: { class: answer.errors.any? ? "" : "d-none update-form", data: { edit_answer_target: "form", action: "submit->edit-answer#update"} } do |f| -%>
     <%= f.input :content, label: false %>
     <%= f.input :photo, as: :file %>
     <%= f.submit "Update Answer", class: "btn btn-sm btn-blue btn-block mt-2" %>

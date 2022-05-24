@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :find_question, only: [ :edit, :update, :create, :upvote, :downvote, :filter_by_date_newest, :filter_by_date_oldest, :filter_by_votes ]
+  before_action :find_question, only: [ :edit, :update, :create, :upvote, :downvote]
   before_action :find_answer, only: [ :edit, :update, :upvote, :downvote]
 
   def new

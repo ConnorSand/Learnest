@@ -4,36 +4,60 @@
     <%# QUESTION %>
     <%= render 'question_info', question: @question %>
     <%# LEAVE AN ANSWER %>
-    <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
-      <div class="d-flex w-100" style= "height: 60px">
-        <%= f.input :content, label: false, wrapper_html: {class: "w-100 h-100" }%>
-        <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;" %>
-      </div>
-    <% end %>
+    <% if page_entries_info(@answers) == "No entries found" %>
+        <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
+          <div class="d-flex w-100" style= "height: 60px">
+            <%= f.input :content, placeholder: "Be the first to leave an answer...", label: false, wrapper_html: {class: "w-100 h-100" }%>
+            <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;" %>
+          </div>
+        <% end %>
+      <% else %>
+        <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
+          <div class="d-flex w-100" style= "height: 60px">
+            <%= f.input :content, label: false, wrapper_html: {class: "w-100 h-100" }%>
+            <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;" %>
+          </div>
+        <% end %>
+      <% end %>
+
 
 
     <%# HOW MANY ANSWERS %>
     <div class="answers-header">
-      <div>
-        <%# <%= page_entries_info @answers %>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-sort dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Sort By
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li> <%= link_to "Highest Score (default)", question_path(order: 'vote'), class: 'dropdown-item' %></li>
-          <li> <%= link_to "Date Created (newest first)", question_path(order: 'datenew'), class: 'dropdown-item' %></li>
-          <li> <%= link_to "Date Created (oldest first)", question_path(order: 'dateold'), class: 'dropdown-item' %></li>
-        </ul>
-      </div>
+      <% if page_entries_info(@answers) == "No entries found" %>
+        <div>0 Answers</div>
+      <% else %>
+        <div>
+          <%= page_entries_info @answers %>
+        </div>
+      <% end %>
+      <% if page_entries_info(@answers) != "No entries found" %>
+        <div class="dropdown">
+          <button class="btn btn-sort dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort By
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li> <%= link_to "Highest Score (default)", question_path(order: 'vote'), class: 'dropdown-item' %></li>
+            <li> <%= link_to "Date Created (newest first)", question_path(order: 'datenew'), class: 'dropdown-item' %></li>
+            <li> <%= link_to "Date Created (oldest first)", question_path(order: 'dateold'), class: 'dropdown-item' %></li>
+          </ul>
+        </div>
+      <% end %>
     </div>
 
     <%# ANSWERS TO THE QUESTION %>
     <% @answers.each do |answer| %>
         <%= render 'answers/answer_info', answer: answer %>
     <% end %>
+<<<<<<< HEAD
     <div class="page-links">
       <%# <%= will_paginate @answers %> %>
     </div>
+=======
+    <% if will_paginate(@answers) != nil %>
+      <div class="page-links">
+        <%= will_paginate @answers %>
+      </div>
+    <% end %>
+>>>>>>> 1b3fd1056ec0fdf0926d8c7f6230c0a6be5a88d9
 </div>

@@ -12,5 +12,7 @@ class NotificationsController < ApplicationController
     @notifications = current_user.notifications
     authorize @notifications
     @notifications.mark_as_read!
+
+    redirect_to notifications_path
   end
 end

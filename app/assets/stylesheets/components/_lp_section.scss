@@ -1,3 +1,30 @@
+
+.section {
+  margin-bottom: 6rem;
+
+  h2 {
+    margin-bottom: 2.5rem;
+    font-weight: bold;
+  }
+}
+
+.centered {
+  text-align: center;
+
+  h2 {
+   margin-bottom: 1rem;
+  }
+}
+
+.left {
+  text-align: left;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+}
+
 .carousel {
     height: 100px;
     background-color: white;

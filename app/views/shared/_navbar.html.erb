@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <p>Learnest</p>
+      <% image_tag("Learnest-Logo.png") %>
     <% end %>
     <% unless current_page?(root_path) %>
       <div class="w-50 form-group has-search">
@@ -24,14 +24,14 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">       
+        <li class="nav-item">
         <%= link_to "Ask a question", new_question_path, class: "nav-link" %>
          </li>
           <% if user_signed_in? %>
             <li class="nav-item active">
               <%= link_to "Home", questions_path, class: "nav-link" %>
             </li>
-       
+
             <li class="nav-item dropdown">
             <% if user_signed_in? && current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, :transformation=>[

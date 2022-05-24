@@ -44,7 +44,7 @@ class QuestionsController < ApplicationController
       elsif params[:order] == 'dateold'
         return @questions = @questions.sort_by(&:created_at).paginate(page: params[:page], per_page: 10)
       else
-        return @questions = @questions.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
+        # return @questions = @questions.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
       end
     end
   end
@@ -62,7 +62,7 @@ class QuestionsController < ApplicationController
       @answers = @answers.sort_by(&:created_at).paginate(page: params[:page], per_page: 10)
       return @answers
     else
-      @answers = @answers.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
+      # @answers = @answers.sort_by(&:weighted_score).reverse.paginate(page: params[:page], per_page: 10)
     end
   end
 

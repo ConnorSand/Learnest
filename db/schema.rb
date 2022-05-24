@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2022_05_20_115955) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "content"
     t.boolean "is_archived"
-    t.text "tags"
     t.string "title"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end

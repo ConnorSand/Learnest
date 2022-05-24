@@ -14,7 +14,7 @@ class Question < ApplicationRecord
   validates :content, length: { maximum: 10_000 }
 
   def self.tagged_with(name)
-    Tag.find_by!(name: name).posts
+    Tag.find_by!(name: name).questions
   end
 
   def self.tag_counts
@@ -29,6 +29,11 @@ class Question < ApplicationRecord
     self.tags = names.split(',').map do |n|
       Tag.where(name: n.strip).first_or_create!
     end
+  end
+
+  def add_tag(tag_name)
+    tag = Tag.find_or_create_by(name: tag_name)
+    Tagging.create(tag: tag, question: self)
   end
 
   include PgSearch::Model

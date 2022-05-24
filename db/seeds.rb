@@ -9,6 +9,13 @@
 require 'open-uri'
 require 'json'
 
+def add_tags_to_question(question, tag_list)
+  tag_list.each do |tag_name|
+    question.add_tag(tag_name)
+  end
+end
+
+
 puts "Cleaning database..."
 puts Time.now.strftime("%I:%M %p")
 
@@ -179,6 +186,8 @@ posts_json.each do |post_json|
     content: post_json[0]["question_content"],
     is_archived: false
   )
+
+  add_tags_to_question(question, post_json[0]["question_tags"])
   photo_url = post_json[0]["question_image_url"]
   unless photo_url.nil?
     question.photo.attach(io: URI.open(photo_url.to_s), filename: "#{question.user_id}.jpeg", content_type: 'image/jpeg')
@@ -235,11 +244,11 @@ puts "Number of question answer posts created: #{questions.length}"
 puts Time.now.strftime("%I:%M %p")
 
 
-Tag.create(name: "Psychology")
-Tag.create(name: "Math")
-Tag.create(name: "Physics")
-Tag.create(name: "Humour")
-Tag.create(name: "Chemistry")
+# Tag.create(name: "Psychology")
+# Tag.create(name: "Math")
+# Tag.create(name: "Physics")
+# Tag.create(name: "Humour")
+# Tag.create(name: "Chemistry")
 # NEED TO HAVE LOGIC SO THAT MORE THAN ONE USER AT A SCHOOL, USERS HAVE MORE THAN ONE QUESTION, ANSWER EACH
 
 # selected answer

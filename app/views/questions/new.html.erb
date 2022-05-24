@@ -3,7 +3,7 @@
   <div class="border rounded mt-3 p-4">
     <%= simple_form_for @question do |f| -%>
       <%= f.input :title, as: :string, input_html: {
-                style: "background-color: white;"                
+                style: "background-color: white;"
               }%>
       <%= f.input :content,
               placeholder: 'What...',
@@ -11,12 +11,15 @@
               error: 'You must ask a question',
               input_html: {
                 style: "height: 351px; background-color: white;"
-                
+
               } %>
       <%= f.input :photo, as: :file, label: 'Photo (optional):', required: false, input_html: {
                 style: "background-color: white;"
-                
+
               } %>
+
+      <%= f.input :tag_ids, as: :select, label: 'Create Tag:', collection: Tag.order(:name), label_method: :name, input_html: {multiple: true} %>
+
       <%= f.submit "Ask question", class: "btn btn-blue" %>
     <% end %>
   </div>

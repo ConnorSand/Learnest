@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_17_094148) do
+ActiveRecord::Schema.define(version: 2022_05_20_115955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,8 +73,24 @@ ActiveRecord::Schema.define(version: 2022_05_17_094148) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "content"
     t.boolean "is_archived"
+    t.text "tags"
     t.string "title"
     t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_taggings_on_question_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "universities", force: :cascade do |t|
@@ -125,5 +141,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_094148) do
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "taggings", "questions"
+  add_foreign_key "taggings", "tags"
   add_foreign_key "users", "universities"
 end

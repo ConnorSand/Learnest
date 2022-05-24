@@ -49,15 +49,9 @@
     <% @answers.each do |answer| %>
         <%= render 'answers/answer_info', answer: answer %>
     <% end %>
-<<<<<<< HEAD
-    <div class="page-links">
-      <%# <%= will_paginate @answers %> %>
-    </div>
-=======
     <% if will_paginate(@answers) != nil %>
       <div class="page-links">
         <%= will_paginate @answers %>
       </div>
     <% end %>
->>>>>>> 1b3fd1056ec0fdf0926d8c7f6230c0a6be5a88d9
 </div>

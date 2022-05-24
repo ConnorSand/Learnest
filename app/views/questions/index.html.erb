@@ -72,10 +72,9 @@
               </div>
 
               <div class="tags">
-                <div class="tag">HTML</div>
-                <div class="tag">CSS</div>
-                <div class="tag">Javascript</div>
+                <p><small><%= raw question.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %></small></p>
               </div>
+
               <% if question.photo.attached? %>
                 <p class="questionimage"><%= cl_image_tag(question.photo.key, {class: "questionimage"})%></p>
               <% end %>

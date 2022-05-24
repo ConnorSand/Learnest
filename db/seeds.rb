@@ -193,8 +193,7 @@ posts_json.each do |post_json|
   end
   puts "user id counter after question was made and add one to user id counter: #{user_id_counter}"
 
-
-  tags = Tag.add(name: post_json[0]["question_tags"])
+  tags = post_json[0]["question_tags"].join(', ')
   puts tags
 
   # votes = answer["answer_votes"]

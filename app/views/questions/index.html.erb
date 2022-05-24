@@ -37,7 +37,7 @@
               </div>
 
               <div class="tags">
-                <p><small><%= raw question.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+                <p><small><%= raw question.tags.map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
               </div>
 
               <% if question.photo.attached? %>

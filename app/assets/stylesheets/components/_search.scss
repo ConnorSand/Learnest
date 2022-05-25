@@ -1,7 +1,8 @@
 form {
   .fa-search {
     transform: translateY(-3px);
-    transition: opacity .5s ease;
+    transition: color .3s ease;
+    color: $blue;
   }
 }
 
@@ -10,12 +11,10 @@ form {
 .has-search:hover {
   .form-control {
     box-shadow: -3px 3px 6px rgba(0, 0, 0, 0.05);
-    // border: solid 1px $blue;
     background-color: white;
-    transition: opacity .5s ease;
   }
 
-  span {
+  .fa-search {
     color: $blue;
   }
 }

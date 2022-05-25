@@ -10,11 +10,57 @@
 
 .centered {
   text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+  background-color: $lightest-grey;
 
   h2 {
-   margin-bottom: 1rem;
+    font-size: 3.25rem;
+    margin-bottom: 1rem;
+    i {
+      font-size: 1.75rem;
+      transform: translateY(-3px);
+    }
   }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .carousel {
+    margin-bottom: 3rem;
+  }
+
+  .carousel-inner {
+    background-color: $white;
+  }
+
+  .carousel-control-next, .carousel-control-prev {
+    color: $almost-black;
+  }
+
+  .carousel-control-next {
+    color: $almost-black;
+  }
+
+  .question-card {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    // width: 1200px;
+    // min-height: 170px;
+    margin: 20px 0;
+    transition: all 0.5s ease;
+    box-sizing: border-box;
+  }
+
 }
+
+
 
 .left {
   text-align: left;

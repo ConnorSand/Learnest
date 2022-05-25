@@ -96,7 +96,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :content, :is_archived, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
+    params.require(:question).permit(:title, :content, :photo, :is_archived, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
     # params.require(:question).permit(:content, :tag_list)
   end
 

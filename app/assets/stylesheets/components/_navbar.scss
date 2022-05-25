@@ -11,18 +11,19 @@
   width: 180px;
 }
 
-.navbar {
-
-  p {
-    font-family: "FS Rosa Black";
-    font-size: 32px;
-    margin-bottom: 0;
-  }
-}
 
 .dropdown-notification {
   width: 10px;
   height: 10px;
-  background-color: crimson;
+  background-color: #0744DF;
   border-radius: 50%;
+  position: absolute;
+  right: 8px;
+  bottom: 18px
+}
+
+.navbarDropdown {
+  div {
+    text-decoration: none;
+  }
 }

@@ -25,7 +25,9 @@
               <div class= "user-bio">
                 <div class="user-info">
                   <p class="name"><strong><%= question.user.first_name %></strong>&nbsp;</p>
-                  <p class="title">&nbsp;@<%= question.user.about_me %></p>
+                  <% if question.user.about_me != "" %>
+                    <p class="title">&nbsp;@<%= question.user.about_me %></p>
+                  <% end %>
                   <p id="time-ago">&nbsp;&nbsp;<%= time_ago_in_words(question.created_at)%> ago</p>
                 </div>
 
@@ -40,7 +42,7 @@
               </div>
 
               <div class="tags">
-                  <p><small><%= raw question.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+                <p><%= raw question.tags.map { |t| "<small class='tag'>#{t.name}</small>" }.join(' ')  %></p>
               </div>
 
               <% if question.photo.attached? %>
@@ -52,6 +54,7 @@
     </div>
 
     <%= simple_form_for question, html: { class: question.errors.any? ? "" : "d-none update-form", data: { edit_question_target: "form", action: "submit->edit-question#update"} } do |f| -%>
+      <%= f.input :title, input_html: { class: 'update-question' } %>
       <%= f.input :content, input_html: { class: 'update-question' } %>
       <%= f.input :photo, as: :file %>
       <%= f.submit "Update question", class: "btn btn-blue btn-block mt-2" %>

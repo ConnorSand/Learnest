@@ -40,6 +40,11 @@
                 <div class="tag">CSS</div>
                 <div class="tag">Javascript</div>
             </div>
+
+            <div>
+              <p><%= answer.selected_answer %></p>
+            </div>
+
             <% if answer.photo.attached? %>
               <p class="questionimage"><%= cl_image_tag(answer.photo.key, {class: "questionimage"})%></p>
             <% end %>

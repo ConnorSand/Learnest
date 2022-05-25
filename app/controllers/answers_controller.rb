@@ -7,7 +7,6 @@ class AnswersController < ApplicationController
   end
 
   def create
-
     @answer = Answer.new(answer_params)
     @answer.question = @question
     @answer.user = current_user

@@ -63,7 +63,7 @@ institutions << le_wagon
 filepath = 'db/institutions.json'
 serialized_institutions = File.read(filepath)
 institutions_json = JSON.parse(serialized_institutions)
-institutions_json.first(50).each do |institution_json|
+institutions_json.first(200).each do |institution_json|
   institution = University.create!(
     name: institution_json['name'],
     location: institution_json['location'],
@@ -156,7 +156,7 @@ users << sarah
 # Shane Garland
 # Tim Fawcett
 
-puts "Now creating random users. This is slow. Currently set to 50, which takes my machine about 2 minutes."
+puts "Now creating random users. This is slow. I set it to 100 so there could be more votes, takes about 4 mins"
 puts Time.now.strftime("%I:%M %p")
 
 filepath = 'db/user5000.json'
@@ -165,7 +165,7 @@ users_json = JSON.parse(serialized_users)['results']
 
 institution_id_counter = 4
 
-users_json.first(5).each do |user_json|
+users_json.first(100).each do |user_json|
   first_name = user_json['name']['first']
   last_name = user_json["name"]["last"]
   user = User.create!(
@@ -189,7 +189,7 @@ puts "Number of users created: #{users_quantity}"
 
 ###### POSTS ######
 
-puts "creating posts with questions, answers, tags, and votes"
+puts "creating posts with questions, answers, tags, and votes. Set this to 75"
 puts Time.now.strftime("%I:%M %p")
 
 filepath = 'db/posts.json'
@@ -199,7 +199,7 @@ posts_json = JSON.parse(serialized_posts)
 questions = []
 user_id_counter = 5
 
-posts_json.first(5).each do |post_json|
+posts_json.first(75).each do |post_json|
   question = Question.create!(
     user_id: users[user_id_counter].id,
     created_at: post_json[0]["question_post_date"].to_datetime,
@@ -222,12 +222,6 @@ posts_json.first(5).each do |post_json|
     user_id_counter += 1
   end
   puts "user id counter after question was made and add one to user id counter: #{user_id_counter}"
-
-  # tags = post_json[0]["question_tags"].join(', ')
-  # puts tags
-
-  # votes = answer["answer_votes"]
-  # puts votes
 
   answers = post_json[1]
   question_votes = 0
@@ -268,15 +262,13 @@ posts_json.first(5).each do |post_json|
     puts "user id counter after answer was made and add one to user id counter: #{user_id_counter}"
   end
 
-  find_highest_votes(answer_instances)
+  high_votes = find_highest_votes(answer_instances)
 
-  answers.each do |answer|
-    votes = answer.get_upvotes.size
-    if votes == highest_votes && votes >= 3
-      answer.selected_answer = true
+  answer_instances.each do |answer|
+    if answer.get_upvotes.size == high_votes && answer.get_upvotes.size > 3
+      answer.update!(selected_answer: true)
     end
   end
-  return answers
 
   puts "This is the total votes for the question: #{question_votes}"
   add_votes_to_question(users, question, question_votes)

@@ -1,6 +1,7 @@
 form {
   .fa-search {
     transform: translateY(-3px);
+    transition: opacity .5s ease;
   }
 }
 
@@ -16,7 +17,6 @@ form {
 
   span {
     color: $blue;
-    transition: opacity 1s ease;
   }
 }
 

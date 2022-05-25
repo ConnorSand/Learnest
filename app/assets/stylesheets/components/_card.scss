@@ -1,4 +1,26 @@
-.card-category {}
+.card-category {
+  height: 120px;
+  width: 100%;
+  border: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+  background-color: $light-gray;
+
+  i {
+    margin-bottom: .5rem;
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+}
 
 .card-index-question {}
 

@@ -9,6 +9,34 @@
 require 'open-uri'
 require 'json'
 
+def add_tags_to_question(question, tag_list)
+  tag_list.each do |tag_name|
+    question.add_tag(tag_name)
+  end
+end
+
+def add_votes_to_answer(users, answer, quantity_votes)
+  users.first(quantity_votes).each do |user|
+    answer.upvote_by user
+  end
+end
+
+def add_votes_to_question(users, question, quantity_votes)
+  users.first(quantity_votes).each do |user|
+    question.upvote_by user
+  end
+end
+
+def find_highest_votes(answers)
+  answer_votes = []
+  answers.each do |answer|
+    votes = answer.get_upvotes.size
+    answer_votes << votes
+  end
+  highest_votes = answer_votes.sort.last
+  return highest_votes
+end
+
 puts "Cleaning database..."
 puts Time.now.strftime("%I:%M %p")
 
@@ -35,7 +63,7 @@ institutions << le_wagon
 filepath = 'db/institutions.json'
 serialized_institutions = File.read(filepath)
 institutions_json = JSON.parse(serialized_institutions)
-institutions_json.first(100).each do |institution_json|
+institutions_json.first(200).each do |institution_json|
   institution = University.create!(
     name: institution_json['name'],
     location: institution_json['location'],
@@ -128,7 +156,7 @@ users << sarah
 # Shane Garland
 # Tim Fawcett
 
-puts "Now creating random users. This is slow. Currently set to 50, which takes my machine about 2 minutes."
+puts "Now creating random users. This is slow. I set it to 100 so there could be more votes, takes about 4 mins"
 puts Time.now.strftime("%I:%M %p")
 
 filepath = 'db/user5000.json'
@@ -137,7 +165,7 @@ users_json = JSON.parse(serialized_users)['results']
 
 institution_id_counter = 4
 
-users_json.first(50).each do |user_json|
+users_json.first(100).each do |user_json|
   first_name = user_json['name']['first']
   last_name = user_json["name"]["last"]
   user = User.create!(
@@ -161,7 +189,7 @@ puts "Number of users created: #{users_quantity}"
 
 ###### POSTS ######
 
-puts "creating posts with questions, answers, tags, and votes"
+puts "creating posts with questions, answers, tags, and votes. Set this to 75"
 puts Time.now.strftime("%I:%M %p")
 
 filepath = 'db/posts.json'
@@ -171,7 +199,7 @@ posts_json = JSON.parse(serialized_posts)
 questions = []
 user_id_counter = 5
 
-posts_json.each do |post_json|
+posts_json.first(75).each do |post_json|
   question = Question.create!(
     user_id: users[user_id_counter].id,
     created_at: post_json[0]["question_post_date"].to_datetime,
@@ -179,6 +207,8 @@ posts_json.each do |post_json|
     content: post_json[0]["question_content"],
     is_archived: false
   )
+
+  add_tags_to_question(question, post_json[0]["question_tags"])
   photo_url = post_json[0]["question_image_url"]
   unless photo_url.nil?
     question.photo.attach(io: URI.open(photo_url.to_s), filename: "#{question.user_id}.jpeg", content_type: 'image/jpeg')
@@ -193,15 +223,13 @@ posts_json.each do |post_json|
   end
   puts "user id counter after question was made and add one to user id counter: #{user_id_counter}"
 
-
-  # tags = post_json[0]["question_tags"]
-  # puts tags
-
-      # votes = answer["answer_votes"]
-      # puts votes
-
   answers = post_json[1]
+  question_votes = 0
+  answer_instances = []
+
   answers.each do |answer|
+    votes = answer["answer_votes"].to_i
+    puts "This answer has #{votes} votes"
     answer = Answer.create!(
       user_id: users[user_id_counter].id,
       question_id: questions.last.id,
@@ -210,13 +238,21 @@ posts_json.each do |post_json|
       selected_answer: false,
       is_archived: false
     )
+
+    add_votes_to_answer(users, answer, votes)
+    question_votes += votes
+    puts "now there are this many question_votes: #{question_votes}"
+
     photo_url = answer["answer_image_url"]
     unless photo_url.nil?
       answer.photo.attach(io: URI.open(photo_url.to_s), filename: "#{answer.user_id}.jpeg", content_type: 'image/jpeg')
     end
+
     puts "answer question id: #{answer.question_id}"
     puts answer
     puts answer.created_at
+
+    answer_instances << answer
     puts "user id counter after answer was made: #{user_id_counter}"
     if user_id_counter == users.length - 1
       user_id_counter = 0
@@ -225,6 +261,18 @@ posts_json.each do |post_json|
     end
     puts "user id counter after answer was made and add one to user id counter: #{user_id_counter}"
   end
+
+  high_votes = find_highest_votes(answer_instances)
+
+  answer_instances.each do |answer|
+    if answer.get_upvotes.size == high_votes && answer.get_upvotes.size > 3
+      answer.update!(selected_answer: true)
+    end
+  end
+
+  puts "This is the total votes for the question: #{question_votes}"
+  add_votes_to_question(users, question, question_votes)
+
   answer_quantity = answers.count
   puts "answer quantity: #{answer_quantity}"
   puts "user array length"
@@ -235,6 +283,12 @@ puts questions
 puts "Number of question answer posts created: #{questions.length}"
 puts Time.now.strftime("%I:%M %p")
 
+
+# Tag.create(name: "Psychology")
+# Tag.create(name: "Math")
+# Tag.create(name: "Physics")
+# Tag.create(name: "Humour")
+# Tag.create(name: "Chemistry")
 # NEED TO HAVE LOGIC SO THAT MORE THAN ONE USER AT A SCHOOL, USERS HAVE MORE THAN ONE QUESTION, ANSWER EACH
 
 # selected answer

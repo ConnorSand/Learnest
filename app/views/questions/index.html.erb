@@ -2,7 +2,7 @@
   <div class="container-index">
     <div class="row borders border-bottom" data-controller="question_controller">
 
-      <div class="index-header ">
+      <div class="index-header">
         <% if @questions.length == 1 %>
           <h5 class="mb-3">1 Question</h5>
         <% elsif @questions.length == 0 %>
@@ -13,7 +13,7 @@
           </div>
         <% else %>
           <div>
-            <%= page_entries_info @questions %>
+            <%= page_entries_info(@questions) %>
           </div>
         <% end %>
 
@@ -72,10 +72,9 @@
               </div>
 
               <div class="tags">
-                <div class="tag">HTML</div>
-                <div class="tag">CSS</div>
-                <div class="tag">Javascript</div>
+                <p><small><%= raw question.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %></small></p>
               </div>
+
               <% if question.photo.attached? %>
                 <p class="questionimage"><%= cl_image_tag(question.photo.key, {class: "questionimage"})%></p>
               <% end %>

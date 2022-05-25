@@ -1,0 +1,47 @@
+
+.section {
+  margin-bottom: 6rem;
+
+  h2 {
+    margin-bottom: 2.5rem;
+    font-weight: bold;
+  }
+}
+
+.centered {
+  text-align: center;
+
+  h2 {
+   margin-bottom: 1rem;
+  }
+}
+
+.left {
+  text-align: left;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+}
+
+.carousel {
+    height: 100px;
+    background-color: white;
+
+    .scroll-items {
+      height: 100px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      p {
+        font-size: 20px;
+        margin: 0;
+
+        i {
+          color: $blue
+        }
+      }
+    }
+  }

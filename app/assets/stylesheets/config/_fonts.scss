@@ -1,13 +1,12 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('//db.onlinewebfonts.com/c/35da23d6d7d68a326080792c63a6251b?family=FS+Rosa+Black');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
 // Define fonts for body and headers
-$body-font: "Work Sans",
-  "Helvetica",
-  "sans-serif";
-$headers-font: "Nunito",
-  "Helvetica",
-  "sans-serif";
+$body-font: 'DM Sans',
+sans-serif;
+$headers-font: 'DM Sans',
+sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

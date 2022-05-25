@@ -32,10 +32,11 @@
   right: 4px;
   width: 10px;
   height: 10px;
-  background-color: crimson;
+  background-color: #0744DF;
   border-radius: 50%;
   z-index: 1
 }
+
 
 // XSmall devices (landscape phones, 576px and up)
 @media (min-width: 400px) {
@@ -45,7 +46,7 @@
     left: 26px;
     width: 10px;
     height: 10px;
-    background-color: crimson;
+    background-color: #0744DF;
     border-radius: 50%;
     z-index: 1
   }

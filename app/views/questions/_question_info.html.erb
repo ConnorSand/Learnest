@@ -12,11 +12,11 @@
               <% end %>
               <div class="wrap">
                 <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
-                  <i id="arrow-up" class="fa-solid fa-caret-up"></i>
+                  <i id="arrow-up" class="fa-solid fa-chevron-up"></i>
                 <% end %>
                 <div class="count"><%= question.weighted_score %></div>
                 <%= link_to downvote_question_path(question), class: "downvote", method: :patch do %>
-                  <i id="arrow-down" class="fa-solid fa-caret-down"></i>
+                  <i id="arrow-down" class="fa-solid fa-chevron-down"></i>
                 <% end %>
               </div>
             </div>

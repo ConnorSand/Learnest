@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag "_questions" %>
   <div class="container-index">
-    <div class="row borders border-bottom" data-controller="question_controller">
 
       <div class="index-header">
         <% if @questions.length == 1 %>
@@ -20,22 +19,26 @@
         <% if page_entries_info(@questions) != "No entries found" %>
           <div class="dropdown">
             <button class="btn btn-sort dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Sort By
+              Sort
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <% if(params[:query].present?) %>
-                <li> <%= link_to "Highest Score (default)", questions_path(query: params[:query], order: 'vote'), class: 'dropdown-item' %></li>
-                <li> <%= link_to "Date Created (newest first)", questions_path(query: params[:query], order: 'datenew'), class: 'dropdown-item' %></li>
-                <li> <%= link_to "Date Created (oldest first)", questions_path(query: params[:query], order: 'dateold'), class: 'dropdown-item' %></li>
+                <li> <%= link_to "Most votes", questions_path(query: params[:query], order: 'vote'), class: 'dropdown-item' %></li>
+                <li> <%= link_to "Newest first", questions_path(query: params[:query], order: 'datenew'), class: 'dropdown-item' %></li>
+                <li> <%= link_to "Oldest first", questions_path(query: params[:query], order: 'dateold'), class: 'dropdown-item' %></li>
               <% else %>
-                <li> <%= link_to "Highest Score (default)", questions_path(order: 'vote'), class: 'dropdown-item' %></li>
-                <li> <%= link_to "Date Created (newest first)", questions_path(order: 'datenew'), class: 'dropdown-item' %></li>
-                <li> <%= link_to "Date Created (oldest first)", questions_path(order: 'dateold'), class: 'dropdown-item' %></li>
+                <li> <%= link_to "Most votes", questions_path(order: 'vote'), class: 'dropdown-item' %></li>
+                <li> <%= link_to "Newest first", questions_path(order: 'datenew'), class: 'dropdown-item' %></li>
+                <li> <%= link_to "Oldest first", questions_path(order: 'dateold'), class: 'dropdown-item' %></li>
               <% end %>
             </ul>
           </div>
         <% end %>
       </div>
+
+    <div class="row borders border-bottom" data-controller="question_controller">
+
+
       <% @questions.each do |question| %>
         <div class="question-card">
           <div class="user-card">
@@ -47,11 +50,11 @@
               <% end %>
               <div class="wrap">
                 <%= link_to upvote_question_path(question), class: "upvote", method: :patch do %>
-                  <i id="arrow-up" class="fa-solid fa-caret-up"></i>
+                  <i id="arrow-up" class="fa-solid fa-chevron-up"></i>
                 <% end %>
                 <div class="count"><%= question.weighted_score %></div>
                 <%= link_to downvote_question_path(question), class: "downvote", method: :patch do %>
-                  <i id="arrow-down" class="fa-solid fa-caret-down"></i>
+                  <i id="arrow-down" class="fa-solid fa-chevron-down"></i>
                 <% end %>
               </div>
             </div>

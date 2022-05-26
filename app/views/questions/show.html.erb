@@ -5,20 +5,20 @@
     <%= render 'question_info', question: @question %>
     <%# LEAVE AN ANSWER %>
     <% if page_entries_info(@answers) == "No entries found" %>
-        <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
-          <div class="d-flex w-100" style= "height: 60px">
-            <%= f.input :content, placeholder: "Be the first to leave an answer...", label: false, wrapper_html: {class: "w-100 h-100" }%>
-            <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;" %>
-          </div>
-        <% end %>
-      <% else %>
-        <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
-          <div class="d-flex w-100" style= "height: 60px">
-            <%= f.input :content, label: false, wrapper_html: {class: "w-100 h-100" }%>
-            <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;" %>
-          </div>
-        <% end %>
+      <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
+        <div class="d-flex w-100" style= "height: 60px">
+          <%= f.input :content, placeholder: "Be the first to leave an answer...", label: false, wrapper_html: {class: "w-100 h-100" }%>
+          <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;", data: { disable_with: "Leave your Answer"} %>
+        </div>
       <% end %>
+    <% else %>
+      <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
+        <div class="d-flex w-100" style= "height: 60px">
+          <%= f.input :content, label: false, wrapper_html: {class: "w-100 h-100" }%>
+          <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;", data: { disable_with: "Leave your Answer"} %>
+        </div>
+      <% end %>
+    <% end %>
 
 
 
@@ -43,7 +43,6 @@
           </ul>
         </div>
       <% end %>
-      </div>
     </div>
 
     <%# ANSWERS TO THE QUESTION %>
@@ -55,4 +54,5 @@
         <%= will_paginate @answers %>
       </div>
     <% end %>
+  </div>
 </div>

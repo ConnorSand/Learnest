@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag "_questions" %>
   <div class="container-index">
-    <div class="row borders border-bottom" data-controller="question_controller">
 
       <div class="index-header">
         <% if @questions.length == 1 %>
@@ -36,6 +35,10 @@
           </div>
         <% end %>
       </div>
+
+    <div class="row borders border-bottom" data-controller="question_controller">
+
+
       <% @questions.each do |question| %>
         <div class="question-card">
           <div class="user-card">

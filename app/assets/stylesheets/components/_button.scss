@@ -1,16 +1,17 @@
 .btn-blue {
   text-decoration: none;
   background-color: $blue;
-  padding: 8px 24px;
+  padding: .75rem 2.5rem;
   color: white;
   font-size: 15px;
   border-radius: 9999px;
-  transition: .3s;
+  transition: background-color .3s ease;
   border-width: 1px;
-  min-height: 52px;
-  min-width: 52px;
+  // min-height: 52px;
+  // min-width: 52px;
   border-style: solid;
-  font-weight: solid;
+  font-weight: bold;
+  font-size: 1.15rem;
 }
 
 .btn-blue:hover {
@@ -26,6 +27,26 @@
     box-shadow: none;
     background-color: #F6E33D;
   }
+}
+
+.btn-orange {
+  text-decoration: none;
+  background-color: $yellow;
+  padding: .75rem 2.5rem;
+  color: $almost-black;
+  font-size: 15px;
+  border-radius: 9999px;
+  transition: background-color .3s ease;
+  border-width: 1px;
+  border-style: solid;
+  font-weight: bold;
+  font-size: 1.15rem;
+  min-width: 52px;
+}
+
+.btn-orange:hover {
+  background-color: $gold;
+  color: $almost-black;
 }
 
 // .btn-answer {

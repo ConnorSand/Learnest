@@ -1,12 +1,20 @@
+form {
+  .fa-search {
+    transform: translateY(-3px);
+    transition: color .3s ease;
+    color: $blue;
+  }
+}
+
+
 .has-search:focus-within,
 .has-search:hover {
   .form-control {
-    box-shadow: none;
-    border: solid 1px $blue;
+    box-shadow: -3px 3px 6px rgba(0, 0, 0, 0.05);
     background-color: white;
   }
 
-  span {
+  .fa-search {
     color: $blue;
   }
 }

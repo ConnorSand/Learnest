@@ -1,15 +1,21 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding-top: 100px;
-  padding-bottom: 200px;
+  padding-top: 80px;
+  padding-bottom: 140px;
   display: flex;
   flex-direction: row;
   margin-bottom: 4rem;
 
+  .banner-content {
+    padding-right: 1rem;
+    padding-left: 4rem;
+  }
+
   h1 {
     margin-bottom: 1.25rem;
     font-weight: bold;
+    font-size: 3.5rem;
   }
 
   p {
@@ -19,9 +25,57 @@
   }
 }
 
+@media only screen and (max-width: 980px) {
+  .banner {
+    .banner-content {
+      padding-right: 0rem;
+      padding-left: 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .banner {
     background-position: left;
+
+    .banner-content {
+      padding-right: 0rem;
+      padding-left: 1rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .banner {
+    background-position: left;
+
+    .banner-content {
+      padding-right: 1rem;
+      padding-left: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .banner {
+    background-position: left;
+
+    .banner-content {
+      padding-right: 1rem;
+      padding-left: 2rem;
+    }
   }
 }
 
@@ -49,6 +103,10 @@
       font-size: 1.15rem;
       box-shadow: -3px 3px 6px rgba(0, 0, 0, 0.05);
       font-weight: bold;
+    }
+
+    .fa-search {
+      transform: translateY(0px);
     }
   }
 }

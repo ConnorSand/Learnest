@@ -37,7 +37,7 @@ class Question < ApplicationRecord
   end
 
   include PgSearch::Model
-  pg_search_scope :global_search, against: [:title, :content], associated_against: { tags: [:content] }, using: {
+  pg_search_scope :global_search, against: [:title, :content], associated_against: { tags: [:name] }, using: {
     tsearch: { prefix: true }
   }
 

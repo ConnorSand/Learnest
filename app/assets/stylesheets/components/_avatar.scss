@@ -26,6 +26,15 @@
   border: white 1px solid;
 }
 
+.avatar-largest {
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+  min-height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .avatar-notification {
   position: absolute;
   top: 34px;

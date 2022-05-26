@@ -78,71 +78,69 @@
     <%# <h2 class="h2-p">Join our gl<i class="fa-solid fa-earth-americas"></i>bal campus</h2> %>
     <p>Learnest is where post-secondary students and teachers come together to learn.</p>
       <div class="carousel">
-        <div class="row">
-          <div class="col">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner container">
                 <div class="carousel-item active">
                   <div class="scroll-items question-card">
-                    <p><i class="fa fa-paint-brush"></i> Art</p>
+                    <%= image_tag("Cindy_Sherman.jpg", class:"avatar-largest") %>
+                    <div class="question-content">
+                      <h5>Cindy Sherman, Artist, Photographer & Filmmaker</h5>
+                      <p>What role should artists play in shaping how women are portrayed in the media?</p>
+                    </div>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <div class="scroll-items question-card">
-                    <p><i class="fa fa-pie-chart"></i> Mathematics</p>
+                    <%= image_tag("Robert_Brandom.jpg", class:"avatar-largest") %>
+                    <div class="question-content">
+                      <h5>Robert Brandom, Philosophy Professor @ University of Pittsburgh</h5>
+                      <p>If we had developed our formal logic explicitly with an expressivist view in mind, how would we have done it differently?</p>
+                    </div>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <div class="scroll-items question-card">
-                    <p><i class="fa-solid fa-circle-radiation"></i> Physics</p>
+                    <%= image_tag("Mary_Frances_Berry.jpg", class:"avatar-largest") %>
+                    <div class="question-content">
+                      <h5>Mary Frances Berry, Historian @ University of Pennsylvania</h5>
+                      <p>What are the pros and cons of having simple slogans, such as "End the War" for political movements?</p>
+                    </div>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <div class="scroll-items question-card">
-                    <p><i class="fa fa-paint-brush"></i> Art</p>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="scroll-items question-card">
-                    <p><i class="fa fa-pie-chart"></i> Mathematics</p>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="scroll-items question-card">
-                    <p><i class="fa-solid fa-circle-radiation"></i> Physics</p>
+                    <%= image_tag("Hermoine_Granger.jpg", class:"avatar-largest") %>
+                    <div class="question-content">
+                      <h5>Hermoine Granger, Gryffindor Student @ Hogwarts School of Witchcraft and Wizardry</h5>
+                      <p>Is the Ministry of Magic's list of registered Animagi available online?</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <%# <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span> %>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <%# <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span> %>
-              </button>
             </div>
           </div>
         </div>
       </div>
       <div>
-       <%= link_to "Join the conversation", "/user/sign_up", class: "btn btn-blue mt-4" %>
+       <%= link_to "Join the conversation", "/user/sign_up", class: "btn btn-blue mt-5" %>
       </div>
-    <%# <button>Join the conversation</button> %>
   </div>
 </div>
 
+<div class="container">
   <div class="section left row">
-    <div class="col-6">
+    <div class="col-12 col-sm-6 content">
       <h2 class="h2-p">Follow your curiosity</h2>
-      <p>Discover interesting perspectives on questions never even thought to ask. Solve problems with the support of a global community</p>
-      <button>Browse questions</button>
+      <p>Discover interesting perspectives on questions never even thought to ask. Solve problems with the support of a global community.</p>
+      <%= link_to "Browse questions", "/questions", class: "btn btn-orange mt-4 mb-5" %>
     </div>
-    <div class="col-6">
-      <%= image_tag "spidermanreading.jpg", height: 460 %>
+    <div class="col-12 col-sm-6">
+      <%= image_tag "researchers.jpg", class: "section-portrait-img" %>
     </div>
   </div>
-
+</div>
 
   <div class="banner" style="background-image: url(<%= image_path('graduation.jpg') %>);">
   </div>
@@ -155,7 +153,7 @@
       <button>Answer a question</button>
   </div>
 
-    <div class="section">
+    <%# <div class="section">
     <h2>Learnest is where great minds meet</h2>
     <div class="cards">
       <div class="card-category">
@@ -191,7 +189,7 @@
         <p>Chemistry</p>
       </div>
     </div>
-  </div>
+  </div> %>
 
 </div>
     <%# <div class="carousel d-none d-md-block">

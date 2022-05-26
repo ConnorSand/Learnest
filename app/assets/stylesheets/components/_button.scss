@@ -29,6 +29,26 @@
   }
 }
 
+.btn-orange {
+  text-decoration: none;
+  background-color: $yellow;
+  padding: .75rem 2.5rem;
+  color: $almost-black;
+  font-size: 15px;
+  border-radius: 9999px;
+  transition: background-color .3s ease;
+  border-width: 1px;
+  border-style: solid;
+  font-weight: bold;
+  font-size: 1.15rem;
+  min-width: 52px;
+}
+
+.btn-orange:hover {
+  background-color: $gold;
+  color: $almost-black;
+}
+
 // .btn-answer {
 //   text-decoration: none;
 //   background-color: #1D9BF0;

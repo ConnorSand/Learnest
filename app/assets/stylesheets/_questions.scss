@@ -53,9 +53,9 @@
     margin-top: 10px;
 
     .count {
-      margin: 0;
+      margin: .25rem 0;
       padding: 0;
-      color: black;
+      color: #0f0000;
       text-align: center;
     }
 
@@ -66,18 +66,18 @@
 
     #arrow-up,
     #arrow-down {
-      font-size: 40px;
-      color: #E7E7E8;
-      margin-top: 0;
-      margin-bottom: 0;
-
+      font-size: 1.5rem;
+      color: #3d3d3d;
     }
 
     .upvote,
     .downvote {
-      font-size: 10px;
+      font-size: 1.5rem;
       text-align: center;
 
+      &:hover {
+
+      }
     }
   }
 
@@ -137,21 +137,23 @@
 
   p {
     width: 100%;
-    word-break: break-word;
+    word-break: break-all;
   }
 }
 
 .tags {
   display: flex;
-  margin-top: 5px;
 
   .tag {
-    font-size: 12px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-right: 5px;
-    background-color: #E7E7E8;
-    border-radius: 25px;
+    font-size: .75rem;
+    padding: 4px 12px;
+    margin-right: .25rem;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
+
+  p {
+    line-height: 2rem;
   }
 }
 
@@ -169,7 +171,7 @@
   .pagination {
     .current {
       font-style: normal;
-      background-color: #F6E33D;
+      background-color: #E7E7E8;
       border: none;
     }
 

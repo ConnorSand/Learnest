@@ -72,7 +72,7 @@
 </div>
 
 <%# GLOBAL CAMPUS SECTION CENTERED %>
-<div class="section centered">
+<div class="section centered lightest-grey-bg">
   <div class = "container">
     <h2 class="h2-p">Join our global campus</h2>
     <%# <h2 class="h2-p">Join our gl<i class="fa-solid fa-earth-americas"></i>bal campus</h2> %>
@@ -133,7 +133,7 @@
   <div class="section left row">
     <div class="col-12 col-sm-6 content">
       <h2 class="h2-p">Follow your curiosity</h2>
-      <p>Discover interesting perspectives on questions never even thought to ask. Solve problems with the support of a global community.</p>
+      <p>Discover interesting perspectives on questions you never even thought to ask. Solve problems with the support of a global community.</p>
       <%= link_to "Browse questions", "/questions", class: "btn btn-orange mt-4 mb-5" %>
     </div>
     <div class="col-12 col-sm-6">
@@ -146,11 +146,17 @@
   </div>
 
   <div class="section centered">
+    <div class="container">
       <h2 class="h2-p">Master your chosen subject</h2>
-      <p>'"If I have seen further it is by standing on the shoulders of Giants" - Sir Isaac Newton'</p>
-      <p>Knowledge isn't limited to location. Benefit from the collective minds of a global campus</p>
-      <button>Ask a question</button>
-      <button>Answer a question</button>
+      <p>Knowledge isn't limited to location. Benefit from the collective minds of a global campus.</p>
+      <div class="quote">
+        <p>'"If I have seen further it is by standing on the shoulders of Giants"<br>— Sir Isaac Newton</p>
+      </div>
+      <div>
+        <%= link_to "Ask a question", "/questions/new", class: "btn btn-blue mx-2 mt-4 mb-2" %>
+        <%= link_to "Answer a question", "/questions", class: "btn btn-orange mx-2 mt-4 mb-2" %>
+      </div>
+    </div>
   </div>
 
     <%# <div class="section">

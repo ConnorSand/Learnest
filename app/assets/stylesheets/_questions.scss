@@ -66,23 +66,12 @@
 
     #arrow-up,
     #arrow-down {
-      font-size: 1.5rem;
-      color: #3d3d3d;
-      transition: color 0.3s ease;
     }
-
-    #arrow-up:hover {
-      color: #1EDD88 ;
-    }
-
-    #arrow-down:hover {
-      color: #f72381;
-    }
-
 
     .upvote,
     .downvote {
       font-size: 1.5rem;
+      color: #3d3d3d;
       text-align: center;
       background: none;
       border-radius: 50px;
@@ -92,10 +81,12 @@
 
     .upvote:hover {
       background: rgba(30, 221, 136, .1);
+      color: #1edd88;
     }
 
     .downvote:hover {
       background: rgba(247, 35, 129, .1);
+      color: #f72381
     }
   }
 

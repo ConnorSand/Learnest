@@ -1,6 +1,8 @@
+
+
 .borders {
-  border-right: 1px solid #E7E7E8;
-  border-left: 1px solid #E7E7E8;
+  border-right: 1px solid $grey;
+  border-left: 1px solid $grey;
 }
 
 .question-card {
@@ -10,8 +12,7 @@
   flex-basis: 100%;
   padding-left: 0px;
   padding-right: 0px;
-  border-top: 1px solid #E7E7E8;
-  border-bottom: 1px solid #E7E7E8;
+  border-top: 1px solid $grey;
 }
 
 .user-card {
@@ -26,7 +27,7 @@
 
 
 .user-card:hover {
-  background-color: #F7F7F7;
+  background-color: $lightest-grey;
 }
 
 .questionimage {
@@ -55,7 +56,7 @@
     .count {
       margin: .25rem 0;
       padding: 0;
-      color: #0f0000;
+      color: $almost-black;
       text-align: center;
     }
 
@@ -64,25 +65,10 @@
       ;
     }
 
-    #arrow-up,
-    #arrow-down {
-      font-size: 1.5rem;
-      color: #3d3d3d;
-      transition: color 0.3s ease;
-    }
-
-    #arrow-up:hover {
-      color: #1EDD88 ;
-    }
-
-    #arrow-down:hover {
-      color: #f72381;
-    }
-
-
     .upvote,
     .downvote {
       font-size: 1.5rem;
+      color: $dark-grey;
       text-align: center;
       background: none;
       border-radius: 50px;
@@ -92,10 +78,12 @@
 
     .upvote:hover {
       background: rgba(30, 221, 136, .1);
+      color: $green;
     }
 
     .downvote:hover {
       background: rgba(247, 35, 129, .1);
+      color: $red;
     }
   }
 
@@ -150,7 +138,7 @@
 
   h5 {
     font-size: 20px;
-    color: black;
+    color: $almost-black;
   }
 
   p {
@@ -166,7 +154,7 @@
     font-size: .75rem;
     padding: 4px 12px;
     margin-right: .25rem;
-    background-color: #f0f0f0;
+    background-color: $light-grey;
     border-radius: 4px;
   }
 
@@ -189,25 +177,23 @@
   .pagination {
     .current {
       font-style: normal;
-      background-color: #E7E7E8;
+      background-color: $light-grey;
+      color: $blue;
       border: none;
     }
 
-    a,
+    .previous_page, a,
     em {
-      margin-left: 4px;
-      margin-right: 4px;
+      margin: 0 .25rem;
+      padding: .15rem .65rem;
       text-decoration: none;
-      padding-left: 4px;
-      padding-right: 4px;
-      border: 1px solid #E7E7E8;
-      border-radius: 8px;
-      color: black;
+      border-radius: 50px;
+      color: $almost-black;
     }
 
-    a:hover,
+    .previous_page:hover, a:hover,
     em:hover {
-      border-color: white;
+      background-color: $grey;
     }
   }
 }

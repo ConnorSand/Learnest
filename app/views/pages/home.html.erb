@@ -30,131 +30,136 @@
     </div>
   </div>
 
+<div class="sticky-outer-container">
 <%# TOPIC SECTION %>
-<div class="container">
-  <div class="section">
-    <h2>Browse questions by topic</h2>
-    <div class="cards">
-      <%= link_to "#", class: "card-category" do %>
-        <i class="fa fa-paint-brush"></i>
-        <p>Arts</p>
-      <% end %>
-      <%= link_to "#", class: "card-category" do %>
-        <i class="fa-solid fa-book"></i>
-        <p>Literature</p>
-      <% end %>
-      <%= link_to "#", class: "card-category" do %>
-        <i class="fa-solid fa-landmark"></i>
-        <p>History</p>
-      <% end %>
-      <%= link_to "#", class: "card-category" do %>
-        <i class="fa fa-pie-chart"></i>
-        <p>Mathematics</p>
-      <% end %>
-      <%= link_to "#", class: "card-category" do %>
-        <i class="fa-solid fa-computer"></i>
-        <p>Computer Science</p>
-      <% end %>
-      <%= link_to "#", class: "card-category" do %>
-        <i class="fa fa-wrench"></i>
-        <p>Engineering</p>
-      <% end %>
-      <%= link_to "#", class: "card-category" do %>
-        <i class="fa-solid fa-circle-radiation"></i>
-        <p>Physics</p>
-      <% end %>
-      <%= link_to "#", class: "card-category" do %>
-        <i class="fa-solid fa-flask-vial"></i>
-        <p>Chemistry</p>
-      <% end %>
+  <div class="container sticks-above-fold">
+    <div class="section" style="z-index: 1;">
+      <h2>Browse questions by topic</h2>
+      <div class="cards">
+        <%= link_to "/questions?query=arts", class: "card-category" do %>
+          <i class="fa fa-paint-brush"></i>
+          <p>Arts</p>
+        <% end %>
+        <%= link_to "/questions?query=literature", class: "card-category" do %>
+          <i class="fa-solid fa-book"></i>
+          <p>Literature</p>
+        <% end %>
+        <%= link_to "/questions?query=history", class: "card-category" do %>
+          <i class="fa-solid fa-landmark"></i>
+          <p>History</p>
+        <% end %>
+        <%= link_to "/questions?query=math", class: "card-category" do %>
+          <i class="fa fa-pie-chart"></i>
+          <p>Mathematics</p>
+        <% end %>
+        <%= link_to "/questions?query=computer+science", class: "card-category" do %>
+          <i class="fa-solid fa-computer"></i>
+          <p>Computer Science</p>
+        <% end %>
+        <%= link_to "/questions?query=engineering", class: "card-category" do %>
+          <i class="fa fa-wrench"></i>
+          <p>Engineering</p>
+        <% end %>
+        <%= link_to "/questions?query=physics", class: "card-category" do %>
+          <i class="fa-solid fa-circle-radiation"></i>
+          <p>Physics</p>
+        <% end %>
+        <%= link_to "/questions?query=chemistry", class: "card-category" do %>
+          <i class="fa-solid fa-flask-vial"></i>
+          <p>Chemistry</p>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<%# GLOBAL CAMPUS SECTION CENTERED %>
-<div class="section centered lightest-grey-bg">
-  <div class = "container">
-    <h2 class="h2-p">Join our global campus</h2>
-    <%# <h2 class="h2-p">Join our gl<i class="fa-solid fa-earth-americas"></i>bal campus</h2> %>
-    <p>Learnest is where post-secondary students and teachers come together to learn.</p>
-      <div class="carousel">
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-10 col-lg-8">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner container">
-                <div class="carousel-item active">
-                  <div class="scroll-items question-card">
-                    <%= image_tag("Cindy_Sherman.jpg", class:"avatar-largest") %>
-                    <div class="question-content">
-                      <h5>Cindy Sherman, Artist, Photographer & Filmmaker</h5>
-                      <p>What role should artists play in shaping how women are portrayed in the media?</p>
+  <%# GLOBAL CAMPUS SECTION CENTERED %>
+  <div class="section centered lightest-grey-bg" style="z-index: 2;">
+    <div class = "container">
+      <h2 class="h2-p">Join our global campus</h2>
+      <%# <h2 class="h2-p">Join our gl<i class="fa-solid fa-earth-americas"></i>bal campus</h2> %>
+      <p>Learnest is where post-secondary students and teachers come together to learn.</p>
+        <div class="carousel">
+            <div class="col-12">
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner container">
+                  <div class="carousel-item active">
+                    <div class="scroll-items question-card">
+                      <%= image_tag("Cindy_Sherman.jpg", class:"avatar-largest") %>
+                      <div class="question-content">
+                        <h5>Cindy Sherman, Artist, Photographer & Filmmaker</h5>
+                        <p>What role should artists play in shaping how women are portrayed in the media?</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="scroll-items question-card">
-                    <%= image_tag("Robert_Brandom.jpg", class:"avatar-largest") %>
-                    <div class="question-content">
-                      <h5>Robert Brandom, Philosophy Professor @ University of Pittsburgh</h5>
-                      <p>If we had developed our formal logic explicitly with an expressivist view in mind, how would we have done it differently?</p>
+                  <div class="carousel-item">
+                    <div class="scroll-items question-card">
+                      <%= image_tag("Robert_Brandom.jpg", class:"avatar-largest") %>
+                      <div class="question-content">
+                        <h5>Robert Brandom, Philosophy Professor @ University of Pittsburgh</h5>
+                        <p>If we had developed our formal logic explicitly with an expressivist view in mind, how would we have done it differently?</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="scroll-items question-card">
-                    <%= image_tag("Mary_Frances_Berry.jpg", class:"avatar-largest") %>
-                    <div class="question-content">
-                      <h5>Mary Frances Berry, Historian @ University of Pennsylvania</h5>
-                      <p>What are the pros and cons of having simple slogans, such as "End the War" for political movements?</p>
+                  <div class="carousel-item">
+                    <div class="scroll-items question-card">
+                      <%= image_tag("Mary_Frances_Berry.jpg", class:"avatar-largest") %>
+                      <div class="question-content">
+                        <h5>Mary Frances Berry, Historian @ University of Pennsylvania</h5>
+                        <p>What are the pros and cons of having simple slogans, such as "End the War" for political movements?</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="scroll-items question-card">
-                    <%= image_tag("Hermoine_Granger.jpg", class:"avatar-largest") %>
-                    <div class="question-content">
-                      <h5>Hermoine Granger, Gryffindor Student @ Hogwarts School of Witchcraft and Wizardry</h5>
-                      <p>Is the Ministry of Magic's list of registered Animagi available online?</p>
+                  <div class="carousel-item">
+                    <div class="scroll-items question-card">
+                      <%= image_tag("Hermoine_Granger.jpg", class:"avatar-largest") %>
+                      <div class="question-content">
+                        <h5>Hermoine Granger, Gryffindor Student @ Hogwarts School of Witchcraft and Wizardry</h5>
+                        <p>Is the Ministry of Magic's list of registered Animagi available online?</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div>
-       <%= link_to "Join the conversation", "/user/sign_up", class: "btn btn-blue mt-5" %>
-      </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="section left row">
-    <div class="col-12 col-sm-6 content">
-      <h2 class="h2-p">Follow your curiosity</h2>
-      <p>Discover interesting perspectives on questions you never even thought to ask. Solve problems with the support of a global community.</p>
-      <%= link_to "Browse questions", "/questions", class: "btn btn-orange mt-4 mb-5" %>
-    </div>
-    <div class="col-12 col-sm-6">
-      <%= image_tag "researchers.jpg", class: "section-portrait-img" %>
+        <div>
+        <%= link_to "Join the conversation", "/user/sign_up", class: "btn btn-blue mt-5" %>
+        </div>
     </div>
   </div>
 </div>
 
-  <div class="banner banner-img" style="background-image: url(<%= image_path('graduation-caps.png') %>);">
-  </div>
 
-  <div class="section centered">
-    <div class="container">
-      <h2 class="h2-p">Master your chosen subject</h2>
-      <p>Knowledge isn't limited to location. Benefit from the collective minds of a global campus.</p>
-      <div class="quote">
-        <p>'"If I have seen further it is by standing on the shoulders of Giants"<br>— Sir Isaac Newton</p>
+<div class="sticky-outer-container">
+  <div class="container">
+    <div class="section-left section row">
+      <div class="col-12 col-sm-6">
+        <%= image_tag "researchers.jpg", class: "section-portrait-img" %>
       </div>
-      <div>
-        <%= link_to "Ask a question", "/questions/new", class: "btn btn-blue mx-2 mt-4 mb-2" %>
-        <%= link_to "Answer a question", "/questions", class: "btn btn-orange mx-2 mt-4 mb-2" %>
+      <div class="col-12 col-sm-6 content sticks-to-top">
+        <h2 class="h2-p">Follow your curiosity</h2>
+        <p>Discover interesting perspectives on questions you never even thought to ask. Solve problems with the support of a global community.</p>
+        <%= link_to "Browse questions", "/questions", class: "btn btn-orange mt-4 mb-5" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sticky-outer-container">
+    <div class="section-banner sticks-above-fold" style="background-image: url(<%= image_path('graduation-caps.png') %>); background-position: center top; z-index: 1;" >
+    </div>
+
+    <div class="no-padding-top-section centered sticks-to-top" style="z-index: 2;">
+      <div class="container">
+        <h2 class="h2-p">Master your chosen subject</h2>
+        <p>Knowledge isn't limited to location. Benefit from the collective minds of a global campus.</p>
+        <div class="quote">
+          <p>'"If I have seen further it is by standing on the shoulders of Giants"<br>— Sir Isaac Newton</p>
+        </div>
+        <div>
+          <%= link_to "Ask a question", "/questions/new", class: "btn btn-blue mx-2 mt-4 mb-2" %>
+          <%= link_to "Answer a question", "/questions", class: "btn btn-orange mx-2 mt-4 mb-2" %>
+        </div>
       </div>
     </div>
   </div>

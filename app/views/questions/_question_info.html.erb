@@ -1,5 +1,3 @@
-<%= stylesheet_link_tag "_questions" %>
-
 <div id="questionwrapper" data-controller="edit-question" data-edit-question-target="card">
     <div data-edit-question-target="content" class="<%= 'd-none' if question.errors.any? %>">
       <div class="question-card">

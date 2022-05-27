@@ -48,7 +48,6 @@ footer#footer-2-cols div#copyright-information div#footer-logo {
 footer#footer-2-cols div#footer-search input {
   font-family: "Open Sans", sans-serif;
   border: 2px solid #999999;
-  background: #2a2a2a;
   outline: none;
   color: $dark-grey;
   padding: 2px;
@@ -188,9 +187,8 @@ footer#footer-2-cols div#copyright-information div#social-buttons i.fa:hover {
     margin: 0;
     display: block;
     padding: 15px;
-    background: grey;
-    border-bottom: 1px solid #444444;
     text-decoration: none;
+    text-align: start;
   }
 
   footer#footer-2-cols div#right-footer-section ul li:last-child a {
@@ -240,6 +238,7 @@ footer#footer-2-cols div#copyright-information div#social-buttons i.fa:hover {
   footer#footer-2-cols div#copyright-information div#social-buttons i.fa {
     font-size: 24pt;
   }
+
 }
 
 @media screen and (max-width: 576px) {

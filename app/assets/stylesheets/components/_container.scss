@@ -1,13 +1,29 @@
 .container-index {
   width: 35vw;
-  margin: 0 auto;
+  margin-bottom: 8rem;
+  margin-top: 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 // XSmall devices (landscape phones, 576px and up)
+
+@media (min-width: 200px) {
+  .container-index {
+    width: 90vw;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
 @media (min-width: 400px) {
   .container-index {
-    width: 95vw;
-    margin: 0 auto;
+    width: 90vw;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -15,7 +31,10 @@
 @media (min-width: 576px) {
   .container-index {
     width: 75vw;
-    margin: 0 auto;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -23,7 +42,10 @@
 @media (min-width: 768px) {
   .container-index {
     width: 70vw;
-    margin: 0 auto;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -31,7 +53,10 @@
 @media (min-width: 850px) {
   .container-index {
     width: 65vw;
-    margin: 0 auto;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -39,7 +64,10 @@
 @media (min-width: 992px) {
   .container-index {
     width: 65vw;
-    margin: 0 auto;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -47,7 +75,10 @@
 @media (min-width: 1150px) {
   .container-index {
     width: 55vw;
-    margin: 0 auto;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -55,7 +86,10 @@
 @media (min-width: 1300px) {
   .container-index {
     width: 55vw;
-    margin: 0 auto;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 

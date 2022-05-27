@@ -23,11 +23,11 @@
           <div class="right">
             <div class= "user-bio">
               <div class="user-info">
-                <p class="name"><strong><%= answer.user.first_name %></strong>&nbsp;</p>
-                <% if answer.user.about_me != "" %>
-                  <p class="title">&nbsp;@<%= answer.user.about_me %></p>
+                <p class="name"><strong><%= answer.user.first_name  %> <%= answer.user.last_name  %></strong>&nbsp;
+                <% if answer.user.university_id != "" %>
+                  &nbsp;@&nbsp;<%= University.find(answer.user.university_id).name %>
                 <% end %>
-                <p id="time-ago">&nbsp;&nbsp;<%= time_ago_in_words(answer.created_at)%> ago</p>
+                <span id="time-ago">&nbsp;&nbsp;·&nbsp;&nbsp;<%= time_ago_in_words(answer.created_at)%> ago</span></p>
               </div>
               <% if policy(answer).edit? %>
                 <i class="fa-solid fa-pen-to-square" data-action="click->edit-answer#displayForm"></i>
@@ -35,24 +35,20 @@
             </div>
 
             <div class= "question-content">
-              <% if answer.selected_answer %>
-                <p><i class="selected-answer fa-solid fa-circle-check"></i>&nbsp;<%= answer.content %></p>
-              <% else %>
                 <p><%= answer.content %></p>
-              <% end %>
             </div>
-
-            <div class="tags">
-                <p><%= raw @question.tags.map { |t| "<small class='tag'>#{t.name}</small>" }.join(' ')  %></p>
-              </div>
-
-
-
-
 
             <% if answer.photo.attached? %>
               <p class="questionimage"><%= cl_image_tag(answer.photo.key, {class: "questionimage"})%></p>
             <% end %>
+
+            <% if answer.selected_answer %>
+              <div class="selected-answer">
+                <i class="selected-answer fa-solid fa-circle-check"></i>
+                <p>selected<br>answer</p>
+              </div>
+            <% end %>
+
           </div>
         </div>
     </div>

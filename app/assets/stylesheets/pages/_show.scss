@@ -10,3 +10,29 @@
 .update-form {
   padding: 10px;
 }
+
+.leave-an-answer {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  z-index: 2;
+
+  .answer-form textarea {
+      border-radius: 50px;
+      border: none;
+      min-height: 60px;
+      resize: both;
+
+    &:focus {
+      border: none;
+    }
+
+    // .leave-answer-button {
+    // }
+
+  }
+}
+
+// @media only screen and (max-width: 400px) {
+
+// }

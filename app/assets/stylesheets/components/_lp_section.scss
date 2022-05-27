@@ -84,7 +84,8 @@
 
   .scroll-items p {
     text-align: start;
-    transform: translateY(11px)
+    transform: translateY(11px);
+    word-break: break-word;
   }
 
   .avatar-largest {
@@ -137,8 +138,8 @@
 
   .content {
     text-align: left;
-    padding-right: 4rem;
-    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-left: 4rem;
 
     h2 {
         margin-bottom: 1rem;

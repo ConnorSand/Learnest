@@ -3,29 +3,32 @@
   <div class="row borders border-bottom">
     <%# QUESTION %>
     <%= render 'question_info', question: @question %>
+
     <%# LEAVE AN ANSWER %>
-    <% if page_entries_info(@answers) == "No entries found" %>
-      <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
-        <div class="d-flex w-100" style= "height: 60px">
-          <%= f.input :content, placeholder: "Be the first to leave an answer...", label: false, wrapper_html: {class: "w-100 h-100" }%>
-          <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;", data: { disable_with: "Leave your Answer"} %>
-        </div>
+    <div class="leave-an-answer">
+      <% if page_entries_info(@answers) == "No entries found" %>
+        <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
+          <div class="d-flex w-100" style= "height: 60px">
+            <%= f.input :content, placeholder: "Be the first to leave an answer...", label: false, wrapper_html: {class: "w-100 h-100" }%>
+            <%= f.button :submit, value: "Leave your answer", class: "btn btn-blue ml-2 leave-answer-button", style: "flex-shrink: 0;", data: { disable_with: "Leave your Answer"} %>
+          </div>
+        <% end %>
+      <% else %>
+        <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
+          <div class="d-flex w-100" style= "height: 60px">
+            <%= f.input :content, label: false, wrapper_html: {class: "w-100 h-100" }%>
+            <%= f.button :submit, value: "Leave your answer", class: "btn btn-blue ml-2 leave-answer-button", style: "flex-shrink: 0;", data: { disable_with: "Leave your Answer"} %>
+          </div>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= simple_form_for [@question, @answer], html: {class: "my-3 answer-form" } do |f| %>
-        <div class="d-flex w-100" style= "height: 60px">
-          <%= f.input :content, label: false, wrapper_html: {class: "w-100 h-100" }%>
-          <%= f.button :submit, value: "Leave your Answer", class: "btn btn-blue ml-2", style: "flex-shrink: 0;", data: { disable_with: "Leave your Answer"} %>
-        </div>
-      <% end %>
-    <% end %>
+    </div>
 
 
 
     <%# HOW MANY ANSWERS %>
-    <div class="answers-header">
+    <div class="answers-header" style="z-index: 1;">
       <% if page_entries_info(@answers) == "No entries found" %>
-        <div>0 Answers</div>
+        <div>0 answers</div>
       <% else %>
         <div>
           <%= page_entries_info @answers %>
@@ -47,7 +50,7 @@
 
     <%# ANSWERS TO THE QUESTION %>
     <% @answers.each do |answer| %>
-        <%= render 'answers/answer_info', answer: answer %>
+        <%= render 'answers/answer_info', style: 'z-index: 1;', answer: answer %>
     <% end %>
     <% if will_paginate(@answers) != nil %>
       <div class="page-links">

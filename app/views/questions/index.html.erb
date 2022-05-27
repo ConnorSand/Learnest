@@ -62,11 +62,11 @@
             <div class="right">
               <div class= "user-bio">
                 <div class="user-info">
-                  <p class="name"><strong><%= question.user.first_name %></strong>&nbsp;</p>
-                  <% if question.user.about_me != "" %>
-                    <p class="title">&nbsp;@<%= question.user.about_me %></p>
+                  <p class="name"><strong><%= question.user.first_name  %> <%= question.user.last_name  %></strong>&nbsp;
+                  <% if question.user.university_id != "" %>
+                    &nbsp;@&nbsp;<%= University.find(question.user.university_id).name %>
                   <% end %>
-                  <p id="time-ago">&nbsp;&nbsp;<%= time_ago_in_words(question.created_at)%> ago</p>
+                  <span id="time-ago">&nbsp;&nbsp;·&nbsp;&nbsp;<%= time_ago_in_words(question.created_at)%> ago</span></p>
                 </div>
               </div>
 
@@ -76,13 +76,14 @@
                 <% end %>
               </div>
 
-              <div class="tags">
-                <p><%= raw question.tags.map { |t| "<small class='tag'>#{t.name}</small>" }.join(' ')  %></p>
-              </div>
-
               <% if question.photo.attached? %>
                 <p class="questionimage"><%= cl_image_tag(question.photo.key, {class: "questionimage"})%></p>
               <% end %>
+
+              <div class="tags tags-index">
+                <p><%= raw question.tags.map { |t| "<small class='tag'>#{t.name}</small>" }.join(' ')  %></p>
+              </div>
+
             </div>
           </div>
         </div>

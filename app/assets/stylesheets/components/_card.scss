@@ -138,7 +138,7 @@ h3,
   // padding-right: 20px;
 
   &:hover {
-    background-color: #F7F7F7;
+    background-color: $lightest-grey;
   }
 
   .notification-left {
@@ -168,7 +168,7 @@ h3,
       margin: 0;
 
       a {
-        color: black;
+        color: $almost-black;
       }
     }
 
@@ -187,8 +187,4 @@ h3,
 
 #answered-ago {
   font-size: 10px;
-}
-
-.selected-answer {
-  color: green;
 }

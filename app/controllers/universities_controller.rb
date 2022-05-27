@@ -13,14 +13,14 @@ class UniversitiesController < ApplicationController
   def new
     @university = University.new
     authorize @university
-    end
+  end
 
   def edit
   end
 
   def create
     @university = University.new(university_params)
-       # @university.user 
+       # @university.user
     authorize @university
     if @university.save
       redirect_to university_path(@university)
@@ -48,4 +48,3 @@ class UniversitiesController < ApplicationController
     authorize @university
   end
 end
-

@@ -1,6 +1,8 @@
+
+
 .borders {
-  border-right: 1px solid #E7E7E8;
-  border-left: 1px solid #E7E7E8;
+  border-right: 1px solid $grey;
+  border-left: 1px solid $grey;
 }
 
 .question-card {
@@ -10,8 +12,8 @@
   flex-basis: 100%;
   padding-left: 0px;
   padding-right: 0px;
-  border-top: 1px solid #E7E7E8;
-  border-bottom: 1px solid #E7E7E8;
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
 }
 
 .user-card {
@@ -26,7 +28,7 @@
 
 
 .user-card:hover {
-  background-color: #F7F7F7;
+  background-color: $lightest-grey;
 }
 
 .questionimage {
@@ -55,7 +57,7 @@
     .count {
       margin: .25rem 0;
       padding: 0;
-      color: #0f0000;
+      color: $almost-black;
       text-align: center;
     }
 
@@ -67,7 +69,7 @@
     .upvote,
     .downvote {
       font-size: 1.5rem;
-      color: #3d3d3d;
+      color: $dark-grey;
       text-align: center;
       background: none;
       border-radius: 50px;
@@ -77,12 +79,12 @@
 
     .upvote:hover {
       background: rgba(30, 221, 136, .1);
-      color: #1edd88;
+      color: $green;
     }
 
     .downvote:hover {
       background: rgba(247, 35, 129, .1);
-      color: #f72381
+      color: $red;
     }
   }
 
@@ -137,7 +139,7 @@
 
   h5 {
     font-size: 20px;
-    color: black;
+    color: $almost-black;
   }
 
   p {
@@ -153,7 +155,7 @@
     font-size: .75rem;
     padding: 4px 12px;
     margin-right: .25rem;
-    background-color: #f0f0f0;
+    background-color: $light-grey;
     border-radius: 4px;
   }
 
@@ -176,8 +178,8 @@
   .pagination {
     .current {
       font-style: normal;
-      background-color: #f0f0f0;;
-      color: #002afe;
+      background-color: $light-grey;
+      color: $blue;
       border: none;
     }
 
@@ -187,12 +189,12 @@
       padding: .15rem .65rem;
       text-decoration: none;
       border-radius: 50px;
-      color: #0f0000;
+      color: $almost-black;
     }
 
     .previous_page:hover, a:hover,
     em:hover {
-      background-color: #E7E7E8;
+      background-color: $grey;
     }
   }
 }

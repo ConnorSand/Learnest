@@ -79,8 +79,7 @@
       <%# <h2 class="h2-p">Join our gl<i class="fa-solid fa-earth-americas"></i>bal campus</h2> %>
       <p>Learnest is where post-secondary students and teachers come together to learn.</p>
         <div class="carousel">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
+            <div class="col-12">
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner container">
                   <div class="carousel-item active">
@@ -122,7 +121,6 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
         <div>
         <%= link_to "Join the conversation", "/user/sign_up", class: "btn btn-blue mt-5" %>
@@ -135,13 +133,13 @@
 <div class="sticky-outer-container">
   <div class="container">
     <div class="section-left section row">
-      <div class="col-12 col-md-6 content sticks-to-top">
+      <div class="col-12 col-sm-6">
+        <%= image_tag "researchers.jpg", class: "section-portrait-img" %>
+      </div>
+      <div class="col-12 col-sm-6 content sticks-to-top">
         <h2 class="h2-p">Follow your curiosity</h2>
         <p>Discover interesting perspectives on questions you never even thought to ask. Solve problems with the support of a global community.</p>
         <%= link_to "Browse questions", "/questions", class: "btn btn-orange mt-4 mb-5" %>
-      </div>
-      <div class="col-12 col-md-6">
-        <%= image_tag "researchers.jpg", class: "section-portrait-img" %>
       </div>
     </div>
   </div>

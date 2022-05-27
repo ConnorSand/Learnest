@@ -38,7 +38,7 @@
   }
 
   .carousel {
-    background-color: white;
+    background-color: none;
     height: 100%;
 
     .scroll-items p {
@@ -53,7 +53,8 @@
 
   .carousel-inner {
     background-color: $white;
-    padding: 2rem 0;
+    padding: 1rem 4rem;
+    border-radius: 4rem;
   }
 
   .carousel-control-next, .carousel-control-prev {
@@ -73,6 +74,12 @@
     margin: 2rem 0;
     transition: all 0.5s ease;
     box-sizing: border-box;
+    border-top: none;
+    border-bottom: none;
+
+    h5 {
+      font-size: 1rem;
+    }
   }
 
   .scroll-items p {
@@ -170,6 +177,33 @@
       padding: 0 1rem;
     }
   }
+
+  .centered .question-card h5,
+  .centered .question-card .h5 {
+    font-size: 1rem;
+  }
+
+  .centered .carousel .scroll-items p {
+    font-size: 1.15rem;
+  }
+
+  .centered .avatar-largest {
+    margin-right: 2rem;
+  }
+
+  .avatar-largest {
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    min-height: 80px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .section-banner {
+    padding-bottom: 22rem;
+  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -184,6 +218,37 @@
       padding: 0 1rem;
     }
   }
+
+  .centered .question-card h5,
+  .centered .question-card .h5 {
+    font-size: .8rem;
+  }
+
+  .centered .carousel .scroll-items p {
+    font-size: 1rem;
+  }
+
+  .centered .avatar-largest {
+    margin-right: 2rem;
+  }
+
+  .avatar-largest {
+    width: 75px;
+    min-width: 75px;
+    height: 75px;
+    min-height: 75px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .section-left .content {
+    padding: 3rem;
+  }
+
+  .section-banner {
+    padding-bottom: 15rem;
+  }
 }
 
 
@@ -193,6 +258,30 @@
     width: 80%;
     margin-left: 2rem;
   }
+
+  .centered .question-card h5,
+  .centered .question-card .h5 {
+    font-size: .8rem;
+  }
+
+  .centered .carousel .scroll-items p {
+    font-size: 1rem;
+  }
+
+  .centered .avatar-largest {
+    margin-right: 2rem;
+  }
+
+  .avatar-largest {
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
+    min-height: 60px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
 }
 
 

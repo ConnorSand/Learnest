@@ -31,7 +31,7 @@
 }
 
 .questionimage {
-  margin-top: 5px;
+  margin-bottom: .5rem;
   height: 300px;
   width: 100%;
   border-radius: 25px;
@@ -97,41 +97,64 @@
   display: flex;
   flex-direction: column;
   margin-left: 12.5px;
+  position: relative;
 
   p {
     font-size: 14px;
     margin: 5px 0;
-
-
   }
 
+  .selected-answer {
+    display: flex;
+    align-items: center;
+    margin-top: 2.75rem;
+
+    i {
+      color: $green;
+      font-size: 2.2rem;
+      display: flex;
+      margin-right: .5rem;
+      position: absolute;
+      bottom: 0;
+      right: 56px;
+    }
+
+    p {
+      color: $light-grey-text;
+      line-height: 1rem;
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+    }
+  }
 
 }
 
-.title {
-  max-width: 30ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+// .university {
+//   max-width: 30ch;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }
 
 
 .user-bio {
-  display: flex;
-  justify-content: space-between;
+  margin-bottom: .5rem;
 
-  .user-info {
-    display: flex;
+  p {
+    width: 100%;
+    word-break: break-all;
   }
 
   #time-ago {
-    font-size: 12px;
+    color: $light-grey-text;
   }
 }
 
 //Question content
 
 .question-content {
+
   a {
     text-decoration: none;
   }
@@ -144,11 +167,33 @@
   p {
     width: 100%;
     word-break: break-all;
+    line-height: 1.5rem;
   }
 }
 
 .tags {
-  display: flex;
+  max-width: 50ch;
+}
+
+.tags-index {
+
+  .tag {
+    font-size: .75rem;
+    padding: 4px 12px;
+    margin-right: .25rem;
+    background-color: $light-grey;
+    border-radius: 4px;
+  }
+
+  p {
+    line-height: 2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.tags-question-show {
 
   .tag {
     font-size: .75rem;
@@ -205,12 +250,29 @@
 
 // MEDIA QUERIES
 
+@media (min-width: 200px) {
+  .title {
+    max-width: 20ch;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+  }
+
+  .tags {
+    max-width: 20ch;
+  }
+}
+
 @media (min-width: 400px) {
   .title {
     max-width: 20ch;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+  }
+
+  .tags {
+    max-width: 20ch;
   }
 }
 
@@ -218,8 +280,26 @@
 @media (min-width: 768px) {
   .title {
     max-width: 30ch;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+  }
+
+  .tags {
+    max-width: 30ch;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 1000px) {
+  .title {
+    max-width: 40ch;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+  }
+
+  .tags {
+    max-width: 40ch;
   }
 }

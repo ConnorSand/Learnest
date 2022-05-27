@@ -7,9 +7,19 @@
 }
 
 // XSmall devices (landscape phones, 576px and up)
+
+@media (min-width: 200px) {
+  .container-index {
+    width: 90vw;
+    margin-bottom: 8rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
 @media (min-width: 400px) {
   .container-index {
-    width: 95vw;
+    width: 90vw;
     margin-bottom: 8rem;
     margin-top: 0;
     margin-right: auto;

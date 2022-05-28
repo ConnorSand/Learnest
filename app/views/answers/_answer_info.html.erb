@@ -30,7 +30,7 @@
                 <span id="time-ago">&nbsp;&nbsp;·&nbsp;&nbsp;<%= time_ago_in_words(answer.created_at)%> ago</span></p>
               </div>
               <% if policy(answer).edit? %>
-                <i class="fa-solid fa-pen-to-square" data-action="click->edit-answer#displayForm"></i>
+                <small><i class="fa-solid fa-pen-to-square" data-action="click->edit-answer#displayForm"></i></small>
               <% end %>
             </div>
 

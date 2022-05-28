@@ -83,17 +83,7 @@ puts Time.now.strftime("%I:%M %p")
 users = []
 
 puts "First creating connor, brian, ash and sarah"
-connor = User.create!(
-  email: "connor@test.com",
-  password: 'password',
-  display_name: "Connor Sanderson",
-  first_name: "Connor",
-  last_name: "Sanderson",
-  about_me: "An engineer transitioning to software",
-  university_id: institutions[0].id
-)
-connor.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/65951311?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
-users << connor
+
 
 brian = User.create!(
   email: "brian@test.com",
@@ -106,6 +96,18 @@ brian = User.create!(
 )
 brian.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/79491037?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
 users << brian
+
+connor = User.create!(
+  email: "connor@test.com",
+  password: 'password',
+  display_name: "Connor Sanderson",
+  first_name: "Connor",
+  last_name: "Sanderson",
+  about_me: "An engineer transitioning to software",
+  university_id: institutions[0].id
+)
+connor.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/65951311?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+users << connor
 
 ash = User.create!(
   email: "ashmeet@test.com",

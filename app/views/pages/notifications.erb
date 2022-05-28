@@ -13,6 +13,7 @@
         <span class="mark-all-read btn btn-sort">Mark all as read</span>
       <% end %>
     </div>
+
     <% current_user.notifications.unread.newest_first.each do |notification| %>
       <div class="notification-card border-bottom">
         <div class="notification-left">

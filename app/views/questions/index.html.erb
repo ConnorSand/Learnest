@@ -37,8 +37,6 @@
       </div>
 
     <div class="row borders border-bottom" data-controller="question_controller">
-
-
       <% @questions.each do |question| %>
         <div class="question-card">
           <div class="user-card">
@@ -83,7 +81,14 @@
               <div class="tags tags-index">
                 <p><%= raw question.tags.map { |t| "<small class='tag'>#{t.name}</small>" }.join(' ')  %></p>
               </div>
-
+              <% question.answers.each do |answer| %>
+                <% if answer.selected_answer %>
+                  <div class="answered">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p>&nbsp;Answered</p>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

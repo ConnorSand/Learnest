@@ -1,5 +1,3 @@
-
-
 .borders {
   border-right: 1px solid $grey;
   border-left: 1px solid $grey;
@@ -36,6 +34,7 @@
   width: 100%;
   border-radius: 25px;
   object-fit: cover;
+  // object-fit: fill;
 }
 
 
@@ -128,6 +127,30 @@
     }
   }
 
+  .answered {
+    display: flex;
+    align-items: center;
+    margin-top: 2.75rem;
+
+    i {
+      color: $green;
+      font-size: 2.2rem;
+      display: flex;
+      margin-right: .5rem;
+      position: absolute;
+      bottom: 0;
+      right: 56px;
+    }
+
+    p {
+      color: $light-grey-text;
+      line-height: 1rem;
+      position: absolute;
+      bottom: 2px;
+      right: -8px;
+    }
+  }
+
 }
 
 // .university {
@@ -139,9 +162,14 @@
 
 
 .user-bio {
+  display: flex;
   margin-bottom: .5rem;
+  justify-content: space-between;
+  align-items: center;
+
 
   p {
+    flex-grow: 1;
     width: 100%;
     word-break: break-all;
   }
@@ -227,7 +255,8 @@
       border: none;
     }
 
-    .previous_page, a,
+    .previous_page,
+    a,
     em {
       margin: 0 .25rem;
       padding: .15rem .65rem;
@@ -236,7 +265,8 @@
       color: $almost-black;
     }
 
-    .previous_page:hover, a:hover,
+    .previous_page:hover,
+    a:hover,
     em:hover {
       background-color: $grey;
     }

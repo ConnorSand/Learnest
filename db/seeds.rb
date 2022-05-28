@@ -94,7 +94,7 @@ brian = User.create!(
   about_me: "A Chemical Engineering who loves software development",
   university_id: institutions[1].id
 )
-brian.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/79491037?v=4'), filename: "#{connor.first_name.downcase}.jpeg", content_type: 'image/jpeg')
+brian.photo.attach(io: URI.open('https://avatars.githubusercontent.com/u/79491037?v=4'), filename: "#{brian.first_name.downcase}.jpeg", content_type: 'image/jpeg')
 users << brian
 
 connor = User.create!(

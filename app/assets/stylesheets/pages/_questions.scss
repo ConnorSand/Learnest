@@ -30,15 +30,6 @@
   background-color: $lightest-grey;
 }
 
-.questionimage {
-  margin-bottom: .5rem;
-  height: 300px;
-  width: 100%;
-  border-radius: 25px;
-  object-fit: cover;
-}
-
-
 
 .left {
   display: flex;
@@ -126,6 +117,16 @@
       bottom: -4px;
       right: 0;
     }
+  }
+
+  .questionimage {
+    margin-bottom: .5rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+    max-width: 500px;
+    max-height: 380px;
   }
 
 }
@@ -261,6 +262,10 @@
   .tags {
     max-width: 20ch;
   }
+
+  .questionimage {
+    max-height: 220px;
+  }
 }
 
 @media (min-width: 400px) {
@@ -273,6 +278,10 @@
 
   .tags {
     max-width: 20ch;
+  }
+
+  .questionimage {
+    max-height: 280px;
   }
 }
 
@@ -288,6 +297,10 @@
   .tags {
     max-width: 30ch;
   }
+
+  .questionimage {
+    max-height: 320px;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
@@ -301,5 +314,9 @@
 
   .tags {
     max-width: 40ch;
+  }
+
+  .questionimage {
+    max-height: 380px;
   }
 }

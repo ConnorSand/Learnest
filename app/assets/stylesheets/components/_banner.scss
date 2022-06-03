@@ -112,6 +112,8 @@
 
 @media only screen and (max-width: 600px) {
   .banner-search {
+    margin-right: 0;
+
     form {
       display: block;
 
@@ -125,6 +127,7 @@
         margin-top: 1rem;
       }
     }
+
   }
 }
 

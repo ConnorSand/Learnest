@@ -118,14 +118,14 @@
   margin-bottom: 2rem;
   padding-top: 0rem;
   background-color: rgba(255, 255, 255, .7);
-  background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
+  background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5))
 }
 
 .section-banner {
   width: 100%;
   height: auto;
   background-size: contain;
-  padding-bottom: 26rem;
+  padding-bottom: 16rem;
   background-repeat: no-repeat;
 }
 
@@ -203,7 +203,7 @@
   }
 
   .section-banner {
-    padding-bottom: 22rem;
+    padding-bottom: 10rem;
   }
 }
 
@@ -248,7 +248,7 @@
   }
 
   .section-banner {
-    padding-bottom: 15rem;
+    padding-bottom: 10rem;
   }
 }
 
@@ -283,6 +283,10 @@
     border-radius: 50%;
   }
 
+  .section-banner {
+    padding-bottom: 10rem;
+  }
+
 }
 
 
@@ -293,6 +297,11 @@
 }
 
 .sticks-above-fold {
+  position: sticky;
+  top: -20rem;
+}
+
+.sticks-way-above-fold {
   position: sticky;
   top: -20rem;
 }

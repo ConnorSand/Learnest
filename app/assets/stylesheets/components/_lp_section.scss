@@ -133,13 +133,13 @@
 .section-left {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
   margin-bottom: 4rem;
+  justify-content: center;
 
   .content {
     text-align: left;
-    padding-right: 3rem;
-    padding-left: 4rem;
+    padding: 2rem;
 
     h2 {
         margin-bottom: 1rem;
@@ -150,6 +150,11 @@
 .section-portrait-img {
   border-radius: 1.5rem;
   height: 600px;
+  width: auto;
+}
+
+.btn-stack-top {
+  margin-right: .75rem;
 }
 
 @media only screen and (max-width: 1100px) {
@@ -257,7 +262,11 @@
     .btn {
     display: block;
     width: 80%;
-    margin-left: 2rem;
+    margin: 0 auto;
+  }
+
+  .btn-stack-top {
+    margin: 0 auto 1rem auto;
   }
 
   .centered .question-card h5,

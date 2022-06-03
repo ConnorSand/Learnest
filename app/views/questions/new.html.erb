@@ -2,25 +2,40 @@
 <h3>Ask a Question</h3>
   <div class="border bg-light rounded mt-3 p-4">
     <%= simple_form_for @question do |f| -%>
-      <%= f.input :title, as: :string, input_html: {
+      <%= f.input :title,
+              as: :string,
+              required: true,
+              label: "Your question's title",
+              placeholder: 'How...?',
+              error: 'Please enter a question title',
+              input_html: {
                 style: "background-color: white;"
               }%>
       <%= f.input :content,
-              placeholder: 'What...',
-              label: 'Create question:',
-              error: 'You must ask a question',
+              # placeholder: 'What...',
+              label: 'Question details',
+              required: true,
+              error: 'Please enter extra content details for your question',
               input_html: {
                 style: "height: 351px; background-color: white;"
-
               } %>
-      <%= f.input :photo, as: :file, label: 'Photo (optional):', required: false, input_html: {
+      <%= f.input :photo, as: :file, label: 'Attach a photo (optional)', required: false, input_html: {
                 style: "background-color: white;"
 
               } %>
 
-      <%= f.input :tag_ids, as: :select, label: 'Create Tag:', collection: Tag.order(:name), label_method: :name, input_html: {multiple: true, style: "background-color: white;"} %>
+      <%= f.input :tag_ids,
+               as: :select,
+               label: 'Add a tag (optional)',
+               required: false,
+               collection: Tag.order(:name),
+               label_method: :name,
+               input_html: {
+                 multiple: true,
+                 style: "background-color: white;"
+                 } %>
 
-      <%= f.submit "Ask question", class: "btn btn-blue" %>
+      <%= f.submit "Post your question", class: "btn btn-blue" %>
     <% end %>
   </div>
 </div>

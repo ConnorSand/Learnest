@@ -23,7 +23,7 @@
               <div class= "user-bio">
                 <div class="user-info">
                   <p class="name"><strong><%= question.user.first_name  %> <%= question.user.last_name  %></strong>&nbsp;
-                  <% if question.user.university_id != "" %>
+                  <% if University.where.not(university_id: nil) %>
                     &nbsp;@&nbsp;<%= University.find(question.user.university_id).name %>
                   <% end %>
                   <span id="time-ago">&nbsp;&nbsp;·&nbsp;&nbsp;<%= time_ago_in_words(question.created_at)%> ago</span></p>
